@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:orderInCategory="100"/>
+
+    <item
+        android:title="Explore"
+        android:id="@+id/nav_explore"
+        android:icon="@drawable/ic_explore"
+        android:orderInCategory="100"/>
+
+    <item
+        android:title=""
+        android:id="@+id/nav_add"
+        android:icon="@drawable/app_logo_resized"
+        android:orderInCategory="100"/>
+
+    <item
+        android:title="Messages"
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_chat"
+        android:orderInCategory="100"/>
+
+    <item
+        android:title="Profile"
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:orderInCategory="100"/>
+
+</menu>

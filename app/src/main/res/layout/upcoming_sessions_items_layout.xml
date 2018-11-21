@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rootLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/upcomingIV"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        tools:src="@drawable/player"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:id="@+id/metaLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/upcomingIV"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+            android:id="@+id/upcomingNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Session 1" />
+
+        <TextView
+            android:id="@+id/dateTimeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="31-10-18 05:04am"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/statusTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ongoing"
+        android:padding="5dp"
+        android:background="@drawable/btn_bkg"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"/>
+
+</RelativeLayout>

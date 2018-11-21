@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:padding="5dp">
+
+    <RadioButton
+        android:id="@+id/radioTodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/todoItemTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Item Todo 1"
+        android:textSize="16sp"
+        android:textColor="@color/gray"
+        android:layout_centerVertical="true"
+        android:maxLines="1"
+        android:layout_toRightOf="@id/radioTodo"
+        android:layout_marginLeft="20dp"/>
+
+</RelativeLayout>

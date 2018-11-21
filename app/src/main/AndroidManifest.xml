@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="in.sashi.sporteco">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".extras.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="sport_eco_app2.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="03" />
+
+        <provider
+            android:name=".providers.DBProvider"
+            android:authorities="in.sashi.sporteco"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".ui.activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activities.MainActivity" />
+        <activity android:name=".ui.activities.ChooseAuthActivity" />
+        <activity android:name=".ui.activities.LoginActivity" />
+        <activity android:name=".ui.activities.AttendanceActivity" />
+        <activity android:name=".ui.activities.EvaluateActivity" />
+        <activity android:name=".ui.activities.CalendarViewActivity"></activity>
+    </application>
+
+</manifest>
