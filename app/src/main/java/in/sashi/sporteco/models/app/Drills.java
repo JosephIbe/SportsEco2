@@ -2,87 +2,93 @@ package in.sashi.sporteco.models.app;
 
 public class Drills {
 
-    public String progId;
-    public String progSessId;
-    public String progSessionStepsId;
-    public String drill_Title;
-    public String drill_CoverImg;
-    public String drillDesc;
-    public String drillVideo;
+    public int iconImg;
+    public String title;
+    public String duration;
+    public String coverImg;
+    public String desc;
+    public String focusPts;
+    public boolean isFavorite;
+    public boolean isPlaying;
     public String drillFocusPts;
-    public String drillStartTime;
-    public String drillEndTime;
 
     public Drills() {
     }
 
-    public Drills(String progId, String progSessId, String progSessionStepsId, String drill_Title, String drill_CoverImg, String drillDesc, String drillVideo, String drillFocusPts, String drillStartTime, String drillEndTime) {
-        this.progId = progId;
-        this.progSessId = progSessId;
-        this.progSessionStepsId = progSessionStepsId;
-        this.drill_Title = drill_Title;
-        this.drill_CoverImg = drill_CoverImg;
-        this.drillDesc = drillDesc;
-        this.drillVideo = drillVideo;
+    public Drills(int iconImg, String title, String duration, String coverImg, String desc, String focusPts, boolean isFavorite, boolean isPlaying, String drillFocusPts) {
+        this.iconImg = iconImg;
+        this.title = title;
+        this.duration = duration;
+        this.coverImg = coverImg;
+        this.desc = desc;
+        this.focusPts = focusPts;
+        this.isFavorite = isFavorite;
+        this.isPlaying = isPlaying;
         this.drillFocusPts = drillFocusPts;
-        this.drillStartTime = drillStartTime;
-        this.drillEndTime = drillEndTime;
     }
 
-    public String getProgId() {
-        return progId;
+    public int getIconImg() {
+        return iconImg;
     }
 
-    public void setProgId(String progId) {
-        this.progId = progId;
+    public void setIconImg(int iconImg) {
+        this.iconImg = iconImg;
     }
 
-    public String getProgSessId() {
-        return progSessId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProgSessId(String progSessId) {
-        this.progSessId = progSessId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getProgSessionStepsId() {
-        return progSessionStepsId;
+    public String getDuration() {
+        return duration;
     }
 
-    public void setProgSessionStepsId(String progSessionStepsId) {
-        this.progSessionStepsId = progSessionStepsId;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
-    public String getDrill_Title() {
-        return drill_Title;
+    public String getCoverImg() {
+        return coverImg;
     }
 
-    public void setDrill_Title(String drill_Title) {
-        this.drill_Title = drill_Title;
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
     }
 
-    public String getDrill_CoverImg() {
-        return drill_CoverImg;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDrill_CoverImg(String drill_CoverImg) {
-        this.drill_CoverImg = drill_CoverImg;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getDrillDesc() {
-        return drillDesc;
+    public String getFocusPts() {
+        return focusPts;
     }
 
-    public void setDrillDesc(String drillDesc) {
-        this.drillDesc = drillDesc;
+    public void setFocusPts(String focusPts) {
+        this.focusPts = focusPts;
     }
 
-    public String getDrillVideo() {
-        return drillVideo;
+    public boolean isFavorite() {
+        return isFavorite;
     }
 
-    public void setDrillVideo(String drillVideo) {
-        this.drillVideo = drillVideo;
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
     }
 
     public String getDrillFocusPts() {
@@ -91,21 +97,5 @@ public class Drills {
 
     public void setDrillFocusPts(String drillFocusPts) {
         this.drillFocusPts = drillFocusPts;
-    }
-
-    public String getDrillStartTime() {
-        return drillStartTime;
-    }
-
-    public void setDrillStartTime(String drillStartTime) {
-        this.drillStartTime = drillStartTime;
-    }
-
-    public String getDrillEndTime() {
-        return drillEndTime;
-    }
-
-    public void setDrillEndTime(String drillEndTime) {
-        this.drillEndTime = drillEndTime;
     }
 }

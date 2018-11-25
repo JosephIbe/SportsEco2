@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/date_dialog_bkg"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -30,69 +31,61 @@
                 android:text="Session 1"/>
 
             <TextView
-                android:id="@+id/batchTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Batch Name"
-                android:layout_below="@id/sessionTV"
-                android:layout_marginTop="3dp"/>
-
-            <TextView
-                android:id="@+id/sessionCountTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(23)"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/sessionTV"
-                android:layout_marginLeft="140dp"/>
-
-            <TextView
                 android:id="@+id/timeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12pm - 3pm"
-                android:layout_toRightOf="@id/sessionCountTV"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="40dp"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/sessionTV1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Session 1"/>
-
-            <TextView
-                android:id="@+id/batchTV1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Batch Name"
-                android:layout_below="@id/sessionTV1"
+                android:layout_below="@id/sessionTV"
                 android:layout_marginTop="3dp"/>
 
-            <TextView
-                android:id="@+id/sessionCountTV1"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(23)"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/sessionTV1"
-                android:layout_marginLeft="140dp"/>
+                android:minWidth="150dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:paddingLeft="40dp">
 
-            <TextView
-                android:id="@+id/timeTV1"
+                <TextView
+                    android:id="@+id/programNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Program Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/batchTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batch Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12pm - 3pm"
-                android:layout_toRightOf="@id/sessionCountTV1"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="40dp"/>
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_no_players"/>
+
+                <TextView
+                    android:id="@+id/sessionCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(23)"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentRight="true" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -108,30 +101,131 @@
                 android:text="Session 1"/>
 
             <TextView
-                android:id="@+id/batchTV2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Batch Name"
-                android:layout_below="@id/sessionTV2"
-                android:layout_marginTop="3dp"/>
-
-            <TextView
-                android:id="@+id/sessionCountTV2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(23)"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/sessionTV2"
-                android:layout_marginLeft="140dp"/>
-
-            <TextView
                 android:id="@+id/timeTV2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12pm - 3pm"
-                android:layout_toRightOf="@id/sessionCountTV2"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="40dp"/>
+                android:layout_below="@id/sessionTV2"
+                android:layout_marginTop="3dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:paddingLeft="40dp">
+
+                <TextView
+                    android:id="@+id/programNameTV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Program Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/batchTV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batch Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_no_players"/>
+
+                <TextView
+                    android:id="@+id/sessionCountTV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(23)"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentRight="true" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/sessionTV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Session 1"/>
+
+            <TextView
+                android:id="@+id/timeTV3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12pm - 3pm"
+                android:layout_below="@id/sessionTV3"
+                android:layout_marginTop="3dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:paddingLeft="40dp">
+
+                <TextView
+                    android:id="@+id/programNameTV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Program Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/batchTV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batch Name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_no_players"/>
+
+                <TextView
+                    android:id="@+id/sessionCountTV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(23)"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentRight="true" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 

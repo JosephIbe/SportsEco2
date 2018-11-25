@@ -16,4 +16,7 @@
     <string name="todo_list">Todo List</string>
     <string name="week">Week</string>
     <string name="todays">Today\'s</string>
+    <string name="description">Description</string>
+    <string name="focus_pts">Focus Points</string>
+    <string name="equip_reqd">Equipments Required</string>
 </resources>

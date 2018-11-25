@@ -274,7 +274,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
         DateDialogFragment dateDialogFragment = new DateDialogFragment();
         dateDialogFragment.setArguments(bundle);
-//        dateDialogFragment.show(getActivity().getSupportFragmentManager(), "DateDialogFragment");
+        dateDialogFragment.show(getActivity().getSupportFragmentManager(), "DateDialogFragment");
 
     }
 

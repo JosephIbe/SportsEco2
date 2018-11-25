@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activities.ViewSessionActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="@color/toolbar_red">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_button"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/nameSessTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Session 1"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_toRightOf="@id/backIV"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/actionsLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/app_logo_resized"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textSize="22sp"
+                    android:textColor="@color/text_color"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_gray"
+                    android:layout_marginTop="3dp"/>
+
+                <TextView
+                    android:id="@+id/sessDescTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consecteteur adipscing elit, sed diam nonummy nibh euismond tincidunt ut laoreet dolor magna aliquam erat voluptat"
+                    android:textSize="18sp"
+                    android:minHeight="60dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/focus_pts"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_gray"
+                        android:layout_marginTop="3dp"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/focusRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/equip_reqd"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_gray"
+                        android:layout_marginTop="3dp"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/equipmentsRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/actionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_margin="4dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/attendanceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/session_btn_bkg"
+            android:text="Attendance"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/session_btn_bkg"
+            android:text="Start Session"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+
+        <Button
+            android:id="@+id/addPlayerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/session_btn_bkg"
+            android:text="Add Player"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

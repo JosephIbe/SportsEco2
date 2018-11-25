@@ -22,10 +22,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/toolbarLogoIV"
+                    android:id="@+id/backIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_new_big_icon"
+                    android:src="@drawable/ic_back_button"
                     android:padding="1dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"/>
@@ -39,14 +39,6 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/toolbarLogoIV"
                     android:layout_marginLeft="3dp"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_sort"
-                    android:layout_centerVertical="true"
-                    android:padding="10dp"
-                    android:layout_alignParentRight="true"/>
 
             </RelativeLayout>
 

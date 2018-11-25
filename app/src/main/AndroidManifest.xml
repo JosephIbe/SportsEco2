@@ -38,7 +38,9 @@
         <activity android:name=".ui.activities.LoginActivity" />
         <activity android:name=".ui.activities.AttendanceActivity" />
         <activity android:name=".ui.activities.EvaluateActivity" />
-        <activity android:name=".ui.activities.CalendarViewActivity"></activity>
+        <activity android:name=".ui.activities.CalendarViewActivity" />
+        <activity android:name=".ui.activities.ViewSessionActivity" />
+        <activity android:name=".ui.activities.StartSessionActivity"></activity>
     </application>
 
 </manifest>

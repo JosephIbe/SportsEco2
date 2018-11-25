@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/drillIconIV"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        tools:src="@drawable/ic_basket_ball"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/drillIconIV"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/drillIconIV"
+        android:layout_marginTop="5dp">
+
+        <RelativeLayout
+            android:id="@+id/nameContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/drillNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Carolina Shooting"
+                android:textSize="16sp"
+                android:textColor="@color/text_color"/>
+
+            <TextView
+                android:id="@+id/durationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20:00"
+                android:textSize="14sp"
+                android:layout_below="@id/drillNameTV"
+                android:layout_marginTop="5dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/timerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/nameContainer"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/favoriteDrillIV"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_star"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/countDownTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="01:15"
+                android:textSize="18sp"
+                android:textColor="@color/text_color"
+                android:layout_toRightOf="@id/favoriteDrillIV"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
