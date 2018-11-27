@@ -36,11 +36,12 @@
         <activity android:name=".ui.activities.MainActivity" />
         <activity android:name=".ui.activities.ChooseAuthActivity" />
         <activity android:name=".ui.activities.LoginActivity" />
-        <activity android:name=".ui.activities.AttendanceActivity" />
+        <activity android:name=".ui.activities.AttendanceMainActivity" />
         <activity android:name=".ui.activities.EvaluateActivity" />
         <activity android:name=".ui.activities.CalendarViewActivity" />
         <activity android:name=".ui.activities.ViewSessionActivity" />
-        <activity android:name=".ui.activities.StartSessionActivity"></activity>
+        <activity android:name=".ui.activities.StartSessionActivity" />
+        <activity android:name=".ui.activities.MarkAttendanceActivity"></activity>
     </application>
 
 </manifest>

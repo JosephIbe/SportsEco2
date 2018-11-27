@@ -18,7 +18,6 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.HistoryAdapter;
-import in.sashi.sporteco.adapters.UpComingAdapter;
 import in.sashi.sporteco.models.app.Batch;
 import in.sashi.sporteco.models.app.Coach;
 import in.sashi.sporteco.models.app.Sessions;

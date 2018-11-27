@@ -1,7 +1,6 @@
 package in.sashi.sporteco.ui.fragments;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +31,7 @@ import in.sashi.sporteco.interfaces.RecyclerClickListener;
 import in.sashi.sporteco.models.app.HomeActions;
 import in.sashi.sporteco.models.app.Sessions;
 import in.sashi.sporteco.models.app.ToDo;
-import in.sashi.sporteco.ui.activities.AttendanceActivity;
+import in.sashi.sporteco.ui.activities.AttendanceMainActivity;
 import in.sashi.sporteco.ui.activities.CalendarViewActivity;
 import in.sashi.sporteco.ui.activities.EvaluateActivity;
 import in.sashi.sporteco.utils.RecyclerItemTouchListener;
@@ -245,7 +244,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
             public void onClick(View view, int position) {
                 switch (position){
                     case 0:
-                        startActivity(new Intent(getActivity(), AttendanceActivity.class));
+                        startActivity(new Intent(getActivity(), AttendanceMainActivity.class));
                         break;
                     case 1:
                         startActivity(new Intent(getActivity(), EvaluateActivity.class));

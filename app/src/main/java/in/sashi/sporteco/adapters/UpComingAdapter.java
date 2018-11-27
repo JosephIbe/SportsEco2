@@ -1,5 +1,6 @@
 package in.sashi.sporteco.adapters;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import in.sashi.sporteco.viewholders.UpComingViewHolder;
 
 public class UpComingAdapter extends RecyclerView.Adapter<UpComingViewHolder> {
 
-    protected final Context context;
+    private final Context context;
     private List<Sessions> itemsList;
 
     public UpComingAdapter(Context context, List<Sessions> itemsList) {

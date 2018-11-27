@@ -12,7 +12,7 @@ import in.sashi.sporteco.R;
 public class UpComingViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView upcomingIV;
-    public TextView upcomingNameTV, timeTV, dateTV;
+    public TextView upcomingNameTV, dateTimeTV, statusTV, timeTV, dateTV;
     public RelativeLayout rootLayout;
 
     public UpComingViewHolder(@NonNull View itemView) {

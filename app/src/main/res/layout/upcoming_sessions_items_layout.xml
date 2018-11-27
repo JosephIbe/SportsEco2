@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/rootLayout"
     android:orientation="horizontal"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="5dp"
-    android:weightSum="5">
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/upcomingIV"
         android:layout_width="65dp"
         android:layout_height="65dp"
         tools:src="@drawable/ic_players"
-        android:scaleType="centerCrop"
-        android:layout_weight="1"/>
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:id="@+id/metaLayout"
@@ -23,9 +21,8 @@
         android:orientation="vertical"
         android:layout_toRightOf="@+id/upcomingIV"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="5dp"
-        android:layout_centerVertical="true"
-        android:layout_weight="1">
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true">
 
         <TextView
             android:id="@+id/upcomingNameTV"
@@ -36,115 +33,22 @@
             android:textColor="@color/text_color"/>
 
         <TextView
-            android:id="@+id/numSessions"
+            android:id="@+id/dateTimeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="No. Session: 8"/>
+            tools:text="23-0ct-18 21:49"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/batchLayout"
+    <TextView
+        android:id="@+id/statusTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp">
-
-        <TextView
-            android:id="@+id/batchNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            tools:text="Batch Name"
-            android:textColor="@color/text_color"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/programNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            tools:text="Program Name"
-            android:textColor="@color/text_color"
-            android:textSize="15sp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/countLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_vertical"
-        android:layout_toRightOf="@+id/batchLayout"
-        android:layout_weight="1"
-        android:layout_marginLeft="3dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_player_small"
-            android:layout_gravity="center_horizontal"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/count1TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10"
-                android:textColor="@color/text_color"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="10dp"
-                android:background="@color/toolbar_red"
-                android:layout_marginLeft="1dp"/>
-
-            <TextView
-                android:id="@+id/count2TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23"
-                android:textColor="@color/text_color"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
+        tools:text="Ongoing"
+        android:padding="8dp"
+        android:background="@drawable/btn_bkg"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="1dp">
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:id="@+id/timeTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3:30pm"
-            android:textColor="@color/text_color"
-            android:textSize="17sp"/>
-
-        <TextView
-            android:id="@+id/dateTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="31-10-18"
-            android:textColor="@color/text_color"
-            android:textSize="12sp"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

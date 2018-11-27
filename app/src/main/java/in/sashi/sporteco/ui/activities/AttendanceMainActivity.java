@@ -14,9 +14,9 @@ import in.sashi.sporteco.adapters.ViewPagerAdapter;
 import in.sashi.sporteco.ui.fragments.AttendanceHistoryFragment;
 import in.sashi.sporteco.ui.fragments.UpComingFragment;
 
-public class AttendanceActivity extends AppCompatActivity {
+public class AttendanceMainActivity extends AppCompatActivity {
 
-    private static final String TAG = AttendanceActivity.class.getSimpleName();
+    private static final String TAG = AttendanceMainActivity.class.getSimpleName();
 
     private Toolbar toolbar;
     private ImageView backIV;
@@ -34,7 +34,7 @@ public class AttendanceActivity extends AppCompatActivity {
         backIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AttendanceActivity.this, MainActivity.class));
+                startActivity(new Intent(AttendanceMainActivity.this, MainActivity.class));
                 finish();
             }
         });

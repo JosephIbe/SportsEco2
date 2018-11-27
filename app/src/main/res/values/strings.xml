@@ -19,4 +19,5 @@
     <string name="description">Description</string>
     <string name="focus_pts">Focus Points</string>
     <string name="equip_reqd">Equipments Required</string>
+    <string name="done">Done</string>
 </resources>

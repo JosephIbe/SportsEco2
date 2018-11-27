@@ -61,6 +61,7 @@ public class ViewSessionActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.attendanceBtn:
+                startActivity(new Intent(ViewSessionActivity.this, MarkAttendanceActivity.class));
                 break;
             case R.id.startBtn:
                 Intent startIntent = new Intent(ViewSessionActivity.this, StartSessionActivity.class);

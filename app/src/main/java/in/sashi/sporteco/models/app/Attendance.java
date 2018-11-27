@@ -7,6 +7,7 @@ public class Attendance {
     public Date attendanceDate;
     public PlayerSession playerSession;
     public boolean isPresent;
+    public boolean allChecked;
 
     public Attendance() {
     }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/playerAvatarLayout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/avatar_container_bkg">
+
+        <ImageView
+            android:id="@+id/playerAvatarIV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_players" />
+
+        <CheckBox
+            android:id="@+id/checkBoxPlayer"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:checked="false"
+            android:background="@drawable/ic_attendance_check"
+            android:button="@android:color/transparent"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/namePlayerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerAvatarLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        tools:text="Player Name22222"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:maxLength="13" />
+
+</RelativeLayout>
