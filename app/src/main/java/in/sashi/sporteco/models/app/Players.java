@@ -55,10 +55,12 @@ public class Players extends Model {
     @Column(name = "batch_player")
     public String batchPlayer;
 
+    public boolean isSelected;
+
     public Players() {
     }
 
-    public Players(String userId, String firstName, String lastName, String imageURL, String username, String address, String dobPlayer, String genderPlayer, String pinCodePlayer, String heightPlayer, String weightPlayer, String bsktballExpPlayer, String positionPlayer, String statePlayer, String mobilePlayer, String batchPlayer) {
+    public Players(String userId, String firstName, String lastName, String imageURL, String username, String address, String dobPlayer, String genderPlayer, String pinCodePlayer, String heightPlayer, String weightPlayer, String bsktballExpPlayer, String positionPlayer, String statePlayer, String mobilePlayer, String batchPlayer, boolean isSelected) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -75,6 +77,7 @@ public class Players extends Model {
         this.statePlayer = statePlayer;
         this.mobilePlayer = mobilePlayer;
         this.batchPlayer = batchPlayer;
+        this.isSelected = isSelected;
     }
 
     public String getUserId() {
@@ -205,4 +208,11 @@ public class Players extends Model {
         this.batchPlayer = batchPlayer;
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 }

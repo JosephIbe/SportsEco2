@@ -41,7 +41,6 @@
         <activity android:name=".ui.activities.CalendarViewActivity" />
         <activity android:name=".ui.activities.ViewSessionActivity" />
         <activity android:name=".ui.activities.StartSessionActivity" />
-        <activity android:name=".ui.activities.MarkAttendanceActivity"></activity>
     </application>
 
 </manifest>

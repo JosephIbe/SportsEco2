@@ -104,34 +104,34 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/batchLayout"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
 
             <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:padding="15dp"
-                android:src="@drawable/ic_profile" />
+                android:id="@+id/profileCountIV"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_profile"/>
 
             <TextView
                 android:id="@+id/countTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/batchLayout"
                 android:textColor="@color/gray"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
                 android:textStyle="bold"
-                tools:text="(23)" />
+                tools:text="(23)"
+                android:layout_toRightOf="@id/profileCountIV"
+                android:layout_marginLeft="2dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 

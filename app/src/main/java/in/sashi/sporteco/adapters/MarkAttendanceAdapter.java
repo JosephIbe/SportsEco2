@@ -38,8 +38,8 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
     }
 
     @Override
-    public void onBindViewHolder(final MarkAttendanceViewHolder viewholder, int position) {
-        Players players = itemsList.get(position);
+    public void onBindViewHolder(final MarkAttendanceViewHolder viewholder, final int position) {
+        final Players players = itemsList.get(position);
         viewholder.namePlayerTV.setText(players.getFirstName() + " " + players.getLastName());
         Picasso.with(context)
                 .load(players.getImageURL())
@@ -53,38 +53,17 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
         viewholder.playerAvatarIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                boolean isChecked = viewholder.checkBoxPlayer.isChecked();
-
+                viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
                 if (viewholder.checkBoxPlayer.isChecked()){
-                    Log.d(TAG, "UnChecked:\t" + isChecked);
-                    viewholder.checkBoxPlayer.setChecked(false);
-                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
-                    if (numPresent > 0){
-                        numPresent -= 1;
-                    } else {
-                        numPresent = 0;
-                    }
-                } else {
-                    Log.d(TAG, "Checked:\t" + isChecked);
-                    viewholder.checkBoxPlayer.setChecked(true);
-                    viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
-                    numPresent += 1;
+                    players.setSelected(true);
+                    Log.d(TAG, "Checked");
+                } else if (!viewholder.checkBoxPlayer.isChecked()){
+                    players.setSelected(false);
+                    Log.d(TAG, "Unchecked");
                 }
             }
         });
 
-        viewholder.checkBoxPlayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d(TAG, "Checked:\t" + isChecked);
-                if (isChecked){
-                    viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
-                } else {
-                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
-                }
-            }
-        });
     }
 
     @Override
@@ -103,7 +82,7 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
 
     }
 
-    public int sendNumChecked(){
+    public int sendNumChecked() {
         return numPresent;
     }
 

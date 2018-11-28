@@ -89,7 +89,6 @@ public class HomeFragment extends Fragment implements DatePickerListener {
         setUpActions();
 
         setUpTodos();
-        Log.d(TAG, "Todos Size:\t" + toDoList.size());
 
         viewAllSchedulesTV.setOnClickListener(new View.OnClickListener() {
             @Override

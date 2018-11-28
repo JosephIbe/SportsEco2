@@ -2,7 +2,9 @@ package in.sashi.sporteco.adapters;
 
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Drills;
+import in.sashi.sporteco.ui.fragments.DrillsDetailsFragment;
 import in.sashi.sporteco.viewholders.DrillItemsViewHolder;
 
 public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
@@ -34,7 +37,22 @@ public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
     @Override
     public void onBindViewHolder(final DrillItemsViewHolder viewholder, int position) {
         final Drills drills = itemsList.get(position);
+
+        viewholder.drillsContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrillsDetailsFragment fragment = new DrillsDetailsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("drill_name", drills.getTitle());
+                fragment.setArguments(bundle);
+                fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar);
+                fragment.setCancelable(true);
+                fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "DrillsDetailsFragment");
+            }
+        });
+
 //        viewholder.drillIconIV.setImageResource(R.drawable.ic_drill_icon_bordered);
+
         viewholder.drillIconIV.setImageResource(drills.getIconImg());
 
         viewholder.favoriteDrillIV.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +72,7 @@ public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
                 drills.setPlaying(true);
                 if(drills.isPlaying){
                     viewholder.playBtn.setImageResource(R.drawable.ic_stop);
+                    viewholder.timerLayout.setVisibility(View.VISIBLE);
                 }
             }
         });

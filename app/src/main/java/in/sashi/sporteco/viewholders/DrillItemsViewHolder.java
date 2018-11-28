@@ -13,7 +13,7 @@ public class DrillItemsViewHolder extends RecyclerView.ViewHolder {
 
     public TextView drillNameTV, durationTV, countDownTV;
     public ImageView drillIconIV, favoriteDrillIV, playBtn;
-    public RelativeLayout timerLayout;
+    public RelativeLayout drillsContainer, timerLayout;
 
     public DrillItemsViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,6 +24,7 @@ public class DrillItemsViewHolder extends RecyclerView.ViewHolder {
         drillIconIV = itemView.findViewById(R.id.drillIconIV);
         favoriteDrillIV = itemView.findViewById(R.id.favoriteDrillIV);
         playBtn = itemView.findViewById(R.id.playBtn);
+        drillsContainer = itemView.findViewById(R.id.drillsContainer);
         timerLayout = itemView.findViewById(R.id.timerLayout);
 
     }

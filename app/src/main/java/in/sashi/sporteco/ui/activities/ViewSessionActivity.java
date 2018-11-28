@@ -2,6 +2,8 @@ package in.sashi.sporteco.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import in.sashi.sporteco.R;
+import in.sashi.sporteco.ui.fragments.MarkAttendanceFragment;
 
 public class ViewSessionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,7 +64,10 @@ public class ViewSessionActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.attendanceBtn:
-                startActivity(new Intent(ViewSessionActivity.this, MarkAttendanceActivity.class));
+                MarkAttendanceFragment fragment = new MarkAttendanceFragment();
+                fragment.setCancelable(true);
+                fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar_Fullscreen);
+                fragment.show(getSupportFragmentManager(), "MarkAttendanceFragment");
                 break;
             case R.id.startBtn:
                 Intent startIntent = new Intent(ViewSessionActivity.this, StartSessionActivity.class);
@@ -69,6 +75,7 @@ public class ViewSessionActivity extends AppCompatActivity implements View.OnCli
                 startActivity(startIntent);
                 break;
             case R.id.addPlayerBtn:
+                Snackbar.make(findViewById(android.R.id.content), "What View?", Snackbar.LENGTH_LONG).show();
                 break;
         }
     }

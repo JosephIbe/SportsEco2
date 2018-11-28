@@ -1,13 +1,17 @@
-package in.sashi.sporteco.ui.activities;
+package in.sashi.sporteco.ui.fragments;
 
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -21,9 +25,9 @@ import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.MarkAttendanceAdapter;
 import in.sashi.sporteco.models.app.Players;
 
-public class MarkAttendanceActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class MarkAttendanceFragment extends DialogFragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private static final String TAG = MarkAttendanceActivity.class.getSimpleName();
+    private static final String TAG = MarkAttendanceFragment.class.getSimpleName();
 
     private Toolbar toolbar;
     private ImageView closeIV;
@@ -38,29 +42,30 @@ public class MarkAttendanceActivity extends AppCompatActivity implements Compoun
 
     private int amountChecked = 0, numPresent = 0, numAbsent = 0, sumPlayers = 0;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mark_attendance);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_mark_attendance, container, false);
 
-        init();
+        init(view);
 
         closeIV.setOnClickListener(this);
         checkAll.setOnCheckedChangeListener(this);
         doneBtn.setOnClickListener(this);
 
+        return view;
     }
 
-    private void init() {
-        toolbar = findViewById(R.id.toolbar);
-        closeIV = findViewById(R.id.closeIV);
-        sessionNameAttendanceTV = findViewById(R.id.sessionNameAttendanceTV);
-        checkAll = findViewById(R.id.checkAll);
-        attRV = findViewById(R.id.attRV);
-        totalTV = findViewById(R.id.totalTV);
-        presentTV = findViewById(R.id.presentTV);
-        absentTV = findViewById(R.id.absentTV);
-        doneBtn = findViewById(R.id.doneBtn);
+    private void init(View view) {
+        toolbar = view.findViewById(R.id.toolbar);
+        closeIV = view.findViewById(R.id.closeIV);
+        sessionNameAttendanceTV = view.findViewById(R.id.sessionNameAttendanceTV);
+        checkAll = view.findViewById(R.id.checkAll);
+        attRV = view.findViewById(R.id.attRV);
+        totalTV = view.findViewById(R.id.totalTV);
+        presentTV = view.findViewById(R.id.presentTV);
+        absentTV = view.findViewById(R.id.absentTV);
+        doneBtn = view.findViewById(R.id.doneBtn);
 
         setUpView();
 
@@ -78,7 +83,7 @@ public class MarkAttendanceActivity extends AppCompatActivity implements Compoun
 
     private void setUpView() {
         attRV.setHasFixedSize(true);
-        attRV.setLayoutManager(new GridLayoutManager(this, 3));
+        attRV.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         populate();
 
@@ -145,20 +150,20 @@ public class MarkAttendanceActivity extends AppCompatActivity implements Compoun
         ten.setImageURL("https://bit.ly/2SaeAEs");
         playersList.add(ten);
 
-        adapter = new MarkAttendanceAdapter(this, playersList);
+        adapter = new MarkAttendanceAdapter(getActivity(), playersList);
         attRV.setAdapter(adapter);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.closeIV:
-                Snackbar.make(findViewById(android.R.id.content), "Close to Where?", Snackbar.LENGTH_LONG).show();
+                dismiss();
                 break;
             case R.id.doneBtn:
-                if (amountChecked <= 0){
-                    Snackbar.make(findViewById(android.R.id.content), "Please MArk Attendance", Snackbar.LENGTH_LONG).show();
+                if (amountChecked <= 0) {
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Please Mark Attendance", Snackbar.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -166,10 +171,11 @@ public class MarkAttendanceActivity extends AppCompatActivity implements Compoun
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked){
+        if (isChecked) {
             adapter.checkAll();
         } else {
             adapter.unCheckAll();
         }
     }
+
 }

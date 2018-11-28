@@ -143,8 +143,8 @@ public class StartSessionActivity extends AppCompatActivity {
         Drills nine = new Drills();
         nine.setPlaying(false);
         nine.setFavorite(false);
-        nine.setTitle("Carolina Shooting8");
-        nine.setDuration("20:08");
+        nine.setTitle("Carolina Shooting9");
+        nine.setDuration("20:09");
         nine.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(nine);
 
