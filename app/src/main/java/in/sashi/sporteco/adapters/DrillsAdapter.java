@@ -15,7 +15,7 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Drills;
-import in.sashi.sporteco.ui.fragments.DrillsDetailsFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.DrillsDetailsFragment;
 import in.sashi.sporteco.viewholders.DrillItemsViewHolder;
 
 public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
@@ -86,4 +86,5 @@ public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
         }
         return itemsList.size();
     }
+
 }

@@ -72,68 +72,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-//    private void getBatches(final String coach_id) {
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("coach_id", coach_id);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        AndroidNetworking.post(Constants.COACH_BATCH_LIST)
-//                .setTag("Get Coach Batches")
-//                .setPriority(Priority.HIGH)
-//                .addJSONObjectBody(jsonObject)
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        if (response != null) {
-//                            Log.d(TAG, "Batch Response:\t" + response.toString());
-//
-//                            try {
-//                                JSONObject object = new JSONObject(response.toString());
-//
-//                                JSONArray array = object.getJSONArray("batch_details");
-//                                for (int m = 0; m < array.length(); m++) {
-//
-//                                    JSONObject jsonObject = array.getJSONObject(m);
-//
-//                                    String name_batch = jsonObject.getString("batch_name");
-//                                    String id_batch = jsonObject.getString("batch_id");
-//
-//                                    Log.d(TAG, "Batch Details:\tname:\t" + name_batch + " and id:\t" + id_batch);
-//                                    hasBatch = true;
-//
-//                                    batch = new Batch();
-//                                    batch.setBatchId(id_batch);
-//                                    batch.setBatchName(name_batch);
-//                                    batch.save();
-//
-//                                }
-//
-//                                if (hasBatch) {
-//                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                                    finish();
-//                                } else {
-//                                    Snackbar.make(findViewById(android.R.id.content), "Problem Logging In..Check Connection", Snackbar.LENGTH_LONG).show();
-//                                }
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError anError) {
-//
-//                    }
-//                });
-//
-//    }
-
     private void doLogin(String email, String pwd) {
 
         JSONObject jsonObject = new JSONObject();

@@ -1,4 +1,4 @@
-package in.sashi.sporteco.ui.fragments;
+package in.sashi.sporteco.ui.fragments.dialogs;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +34,6 @@ public class DrillsDetailsFragment extends DialogFragment implements View.OnClic
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         drill_name = getArguments().getString("drill_name");
-        if (drill_name != null){
-            Log.d(TAG, "Drill Name:\t" + drill_name);
-        }
     }
 
     @Nullable
@@ -82,4 +78,5 @@ public class DrillsDetailsFragment extends DialogFragment implements View.OnClic
                 break;
         }
     }
+
 }

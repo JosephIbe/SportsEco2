@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.ui.fragments.MarkAttendanceFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.MarkAttendanceFragment;
 
 public class ViewSessionActivity extends AppCompatActivity implements View.OnClickListener {
 
