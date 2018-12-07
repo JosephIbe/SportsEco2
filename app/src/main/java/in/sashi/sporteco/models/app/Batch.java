@@ -9,15 +9,32 @@ public class Batch extends Model{
 
     private String message;
 
+    @Column(name = "batch_id")
+    public String batchId;
+
     @Column(name = "batch_name")
     public String batchName;
 
-    @Column(name = "batch_id")
-    public String batchId;
+    @Column(name = "program_name")
+    public String programName;
+
+    @Column(name = "start_date")
+    public String startDate;
+
+    @Column(name = "playesr_count")
+    public String playersCount;
 
     public BatchFooter batchFooter;
 
     public Batch() {
+    }
+
+    public Batch(String batchId, String batchName, String programName, String startDate, String playersCount) {
+        this.batchId = batchId;
+        this.batchName = batchName;
+        this.programName = programName;
+        this.startDate = startDate;
+        this.playersCount = playersCount;
     }
 
     public String getMessage() {
@@ -42,6 +59,30 @@ public class Batch extends Model{
 
     public void setBatchId(String batchId) {
         this.batchId = batchId;
+    }
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getPlayersCount() {
+        return playersCount;
+    }
+
+    public void setPlayersCount(String playersCount) {
+        this.playersCount = playersCount;
     }
 
     public BatchFooter getBatchFooter() {

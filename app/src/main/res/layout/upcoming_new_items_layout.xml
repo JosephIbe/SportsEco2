@@ -8,7 +8,7 @@
     android:padding="5dp"
     android:weightSum="5">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/upcomingIV"
         android:layout_width="65dp"
         android:layout_height="65dp"
@@ -32,14 +32,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Session 1"
-            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/text_color"/>
 
         <TextView
             android:id="@+id/numSessions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="No. Session: 8"/>
+            tools:text="No. Session: 8"
+            android:textAppearance="android:textAppearance="@style/TextAppearance.AppCompat./>
 
     </LinearLayout>
 

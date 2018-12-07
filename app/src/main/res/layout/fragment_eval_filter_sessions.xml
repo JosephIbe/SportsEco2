@@ -88,20 +88,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/text_color" />
 
-            <!--<RadioButton-->
-                <!--android:id="@+id/weekBtn"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:layout_marginRight="15dp"-->
-                <!--android:background="@drawable/filter_btns_bkg"-->
-                <!--android:button="@null"-->
-                <!--android:paddingLeft="15dp"-->
-                <!--android:paddingRight="15dp"-->
-                <!--android:text="Last Week"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
-                <!--android:textColor="@color/text_color" />-->
-
         </RadioGroup>
 
         <TextView

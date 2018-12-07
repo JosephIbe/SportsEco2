@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/evalBatchlayout"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iconBatch"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/app_logo_resized"/>
+
+    <LinearLayout
+        android:id="@+id/batchMetaLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/iconBatch"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="18dp">
+
+        <TextView
+            android:id="@+id/batch_nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Batch Name"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Program: "/>
+
+            <TextView
+                android:id="@+id/program_nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Program Name"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/batchMetaLayout">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_player_small"/>
+
+        <TextView
+            android:id="@+id/playersCountTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="23"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:maxLength="3"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/startDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12-Oct-18"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"/>
+
+</RelativeLayout>
