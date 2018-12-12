@@ -67,6 +67,9 @@ public class Sessions extends Model {
     @Column(name = "session_duration")
     public String sessDuration;
 
+    @Column(name = "present_count_players")
+    public String presentCountPlayers;
+
     @Column(name = "session_status")
     public String status;
 
@@ -83,10 +86,11 @@ public class Sessions extends Model {
         this.participantsCount = participantsCount;
     }
 
-    public Sessions(int sessionIcon, String sessionName, String batchName, String participantsCount, String dateTime, String sessionFocusPoints, String equipmentsReqd, String date_start, String date_end, String hour_start, String hour_end, String minute_start, String minute_end, String coachId, String programSessionId, String programId, String programName, String sessionDesc, String sessionCoverImage, String sessDuration, String status) {
+    public Sessions(int sessionIcon, String sessionName, String batchName, String presentCountPlayers, String participantsCount, String dateTime, String sessionFocusPoints, String equipmentsReqd, String date_start, String date_end, String hour_start, String hour_end, String minute_start, String minute_end, String coachId, String programSessionId, String programId, String programName, String sessionDesc, String sessionCoverImage, String sessDuration, String status) {
         this.sessionIcon = sessionIcon;
         this.sessionName = sessionName;
         this.batchName = batchName;
+        this.presentCountPlayers = presentCountPlayers;
         this.participantsCount = participantsCount;
         this.dateTime = dateTime;
         this.sessionFocusPoints = sessionFocusPoints;
@@ -129,6 +133,14 @@ public class Sessions extends Model {
 
     public void setBatchName(String batchName) {
         this.batchName = batchName;
+    }
+
+    public String getPresentCountPlayers() {
+        return presentCountPlayers;
+    }
+
+    public void setPresentCountPlayers(String presentCountPlayers) {
+        this.presentCountPlayers = presentCountPlayers;
     }
 
     public String getParticipantsCount() {

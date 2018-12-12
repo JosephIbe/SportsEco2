@@ -10,13 +10,13 @@ import in.sashi.sporteco.R;
 
 public class EvalBatchViewHolder extends RecyclerView.ViewHolder {
 
-    public RelativeLayout evalBatchlayout;
+    public RelativeLayout evalBatchLayout;
     public TextView batch_nameTV, program_nameTV, startDateTV, playersCountTV;
 
     public EvalBatchViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        evalBatchlayout = itemView.findViewById(R.id.evalBatchlayout);
+        evalBatchLayout = itemView.findViewById(R.id.evalBatchLayout);
         batch_nameTV = itemView.findViewById(R.id.batch_nameTV);
         program_nameTV = itemView.findViewById(R.id.program_nameTV);
         startDateTV = itemView.findViewById(R.id.startDateTV);

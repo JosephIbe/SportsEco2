@@ -40,7 +40,7 @@ public class DateDialogFragment extends RoundedCornersSheet {
 
         dateText = v.findViewById(R.id.dateText);
         SimpleDateFormat sdf = new SimpleDateFormat("");
-        formattedDate = sdf.format(dateText);
+//        formattedDate = sdf.format(dateText);
         Log.d(TAG, "FD:\t" + formattedDate);
         dateText.setText(date);
 

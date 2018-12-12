@@ -57,7 +57,7 @@ public class MessagesFragment extends Fragment {
     private void setUpViewPager(ViewPager viewPager) {
 
         ChatsFragment cf = new ChatsFragment();
-        ProgramsFragment gf = new ProgramsFragment();
+        GroupsFragment gf = new GroupsFragment();
 
 //        pagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         pagerAdapter = new ViewPagerAdapter(getChildFragmentManager());

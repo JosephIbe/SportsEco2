@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/toolbar_red"
+        android:background="@color/colorPrimary"
         android:minHeight="?android:attr/actionBarSize">
 
         <RelativeLayout
@@ -89,7 +89,7 @@
                     android:id="@+id/totalTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/toolbar_red"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     tools:text="13" />
 
@@ -112,7 +112,7 @@
                     android:id="@+id/presentTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/toolbar_red"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     tools:text="13" />
 
@@ -136,7 +136,7 @@
                     android:id="@+id/absentTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/toolbar_red"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     tools:text="13" />
 
@@ -148,7 +148,7 @@
             android:id="@+id/doneBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/toolbar_red"
+            android:background="@color/colorPrimary"
             android:text="@string/done"
             android:textSize="20sp"
             android:textColor="@color/white"

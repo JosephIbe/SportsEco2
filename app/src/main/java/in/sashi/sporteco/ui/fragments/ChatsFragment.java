@@ -1,8 +1,8 @@
 package in.sashi.sporteco.ui.fragments;
 
-
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import in.sashi.sporteco.R;
+import in.sashi.sporteco.ui.fragments.dialogs.AddGroupFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.NewChatFragment;
 import in.sashi.sporteco.utils.EmptyRecyclerView;
 
 /**
@@ -55,6 +57,15 @@ public class ChatsFragment extends Fragment {
         chatsRV = view.findViewById(R.id.chatsRV);
         emptyState = view.findViewById(R.id.emptyState);
         msgFAB = view.findViewById(R.id.msgFAB);
+
+        msgFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewChatFragment fragment = new NewChatFragment();
+                fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar);
+                fragment.show(getActivity().getSupportFragmentManager(), "NewChatFragment");
+            }
+        });
     }
 
 }

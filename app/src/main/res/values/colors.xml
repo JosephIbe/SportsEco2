@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#f15429</color>
+    <color name="colorPrimaryDark">#f15429</color> //change cpd
     <color name="colorAccent">#FF4081</color>
 
     <color name="et_border_color">#dadada</color>
@@ -20,7 +20,6 @@
     <color name="white">#FFF</color>
     <color name="circle_bkg_color">#ED1C24</color>
     <color name="app_red">#f04928</color>
-    <color name="toolbar_red">#f15429</color>
     <color name="bluish">#2789e4</color>
     <color name="text_color">#777777</color>
     <color name="nav_icon_color">#f37e58</color>

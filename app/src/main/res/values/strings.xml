@@ -20,4 +20,6 @@
     <string name="focus_pts">Focus Points</string>
     <string name="equip_reqd">Equipments Required</string>
     <string name="done">Done</string>
+    <string name="comments">Comments</string>
+    <string name="group_name">Group Name</string>
 </resources>

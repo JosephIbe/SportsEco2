@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/rootLayout"
+    android:id="@+id/eval_sess_rootLayout"
     android:orientation="horizontal"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="5dp"
@@ -10,10 +10,11 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/upcomingIV"
-        android:layout_width="60dp"
-        android:layout_height="65dp"
-        tools:src="@drawable/ic_players"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_players"
         android:scaleType="centerCrop"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"/>
 
     <LinearLayout
@@ -23,52 +24,70 @@
         android:orientation="vertical"
         android:layout_toRightOf="@+id/upcomingIV"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="2dp"
         android:layout_centerVertical="true"
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/upcomingNameTV"
+            android:id="@+id/eval_session_nameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Session 1"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/text_color"/>
+            android:textColor="@color/text_color" />
 
-        <TextView
-            android:id="@+id/numSessions"
+        <LinearLayout
+            android:id="@+id/eval_programLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="No. Session: 8"/>
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Program:"
+                android:textColor="@color/text_color"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
-    <LinearLayout
-        android:id="@+id/batchLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dp">
+            <TextView
+                android:id="@+id/eval_program_nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                tools:text="Program Name"
+                android:textColor="@color/text_color"
+                android:textSize="15sp"/>
 
-        <TextView
-            android:id="@+id/batchNameTV"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/batchLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            tools:text="Batch Name"
-            android:textColor="@color/text_color"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/programNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            tools:text="Program Name"
-            android:textColor="@color/text_color"
-            android:textSize="15sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Batch: "
+                android:textColor="@color/text_color"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+            <TextView
+                android:id="@+id/eval_batch_nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                tools:text="Program Name"
+                android:textColor="@color/text_color"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -79,8 +98,7 @@
         android:orientation="vertical"
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/batchLayout"
-        android:layout_weight="1"
-        android:layout_marginLeft="3dp">
+        android:layout_weight="1">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -95,7 +113,7 @@
             android:layout_gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/count1TV"
+                android:id="@+id/eval_present_countTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
@@ -111,7 +129,7 @@
                 android:layout_marginRight="5dp"/>
 
             <TextView
-                android:id="@+id/count2TV"
+                android:id="@+id/eval_total_countTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="23"
@@ -126,24 +144,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1"
+        android:layout_marginLeft="10dp"
         android:layout_gravity="center_vertical|end">
 
         <TextView
-            android:id="@+id/timeTV"
+            android:id="@+id/eval_timeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3:30pm"
+            tools:text="3:30pm"
             android:textColor="@color/text_color"
             android:textSize="17sp"/>
 
         <TextView
-            android:id="@+id/dateTV"
+            android:id="@+id/eval_dateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="31-10-18"
             android:textColor="@color/text_color"
-            android:textSize="12sp"
-            android:layout_marginLeft="8dp"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 
