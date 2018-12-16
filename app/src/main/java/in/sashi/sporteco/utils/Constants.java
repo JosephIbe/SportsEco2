@@ -55,4 +55,23 @@ public class Constants {
 //
 //    public static final String GET_COMPLETED_SESSIONS = BASE_URL + "/completed_sessions'";
 
+    /**
+     *  Player Constants
+     *
+     * */
+
+    public static final String PLAYER_KEY_IMAGE_URL = "player_img_url";
+    public static final String PLAYER_KEY_NAME = "player_name";
+    public static final String PLAYER_KEY_ADDRESS = "player_address";
+    public static final String PLAYER_KEY_STATE = "player_state";
+
+    /**
+     *  Player Constants
+     *
+     * */
+
+    public static final String PROGRAM_NAME_KEY = "program_name";
+    public static final String PROGRAM_DESC_KEY = "program_desc";
+    public static final String PROGRAM_PLACE_NAME_KEY = "program_place_name";
+
 }

@@ -17,10 +17,10 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="sport_eco_app2.db" />
+            android:value="sports_eco3.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="03" />
+            android:value="0405" />
 
         <provider
             android:name=".providers.DBProvider"
@@ -28,15 +28,16 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".ui.activities.SplashActivity">
+        <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.MainActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".ui.activities.SplashActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".ui.activities.ChooseAuthActivity" />
         <activity android:name=".ui.activities.LoginActivity" />
         <activity android:name=".ui.activities.AttendanceMainActivity" />
@@ -44,6 +45,8 @@
         <activity android:name=".ui.activities.CalendarViewActivity" />
         <activity android:name=".ui.activities.ViewSessionActivity" />
         <activity android:name=".ui.activities.StartSessionActivity" />
+        <activity android:name=".ui.activities.PlayersActivity" />
+        <activity android:name=".ui.activities.ProgramsActivity"></activity>
     </application>
 
 </manifest>

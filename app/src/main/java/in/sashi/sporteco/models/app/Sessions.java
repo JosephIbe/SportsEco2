@@ -73,6 +73,8 @@ public class Sessions extends Model {
     @Column(name = "session_status")
     public String status;
 
+    public String numSessions_Drills;
+
 //    @Column(name = "session_video_link")
 //    public String sessionVideoLink;
 
@@ -86,7 +88,7 @@ public class Sessions extends Model {
         this.participantsCount = participantsCount;
     }
 
-    public Sessions(int sessionIcon, String sessionName, String batchName, String presentCountPlayers, String participantsCount, String dateTime, String sessionFocusPoints, String equipmentsReqd, String date_start, String date_end, String hour_start, String hour_end, String minute_start, String minute_end, String coachId, String programSessionId, String programId, String programName, String sessionDesc, String sessionCoverImage, String sessDuration, String status) {
+    public Sessions(int sessionIcon, String sessionName, String batchName, String presentCountPlayers, String participantsCount, String dateTime, String sessionFocusPoints, String equipmentsReqd, String date_start, String date_end, String hour_start, String hour_end, String minute_start, String minute_end, String coachId, String programSessionId, String programId, String programName, String sessionDesc, String sessionCoverImage, String sessDuration, String status, String numSessions_Drills) {
         this.sessionIcon = sessionIcon;
         this.sessionName = sessionName;
         this.batchName = batchName;
@@ -109,6 +111,7 @@ public class Sessions extends Model {
         this.sessionCoverImage = sessionCoverImage;
         this.sessDuration = sessDuration;
         this.status = status;
+        this.numSessions_Drills = numSessions_Drills;
     }
 
     public int getSessionIcon() {
@@ -285,5 +288,13 @@ public class Sessions extends Model {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNumSessions_Drills() {
+        return numSessions_Drills;
+    }
+
+    public void setNumSessions_Drills(String numSessions_Drills) {
+        this.numSessions_Drills = numSessions_Drills;
     }
 }

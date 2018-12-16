@@ -34,6 +34,8 @@ import in.sashi.sporteco.models.app.ToDo;
 import in.sashi.sporteco.ui.activities.AttendanceMainActivity;
 import in.sashi.sporteco.ui.activities.CalendarViewActivity;
 import in.sashi.sporteco.ui.activities.EvaluateActivity;
+import in.sashi.sporteco.ui.activities.PlayersActivity;
+import in.sashi.sporteco.ui.activities.ProgramsActivity;
 import in.sashi.sporteco.ui.fragments.dialogs.DateDialogFragment;
 import in.sashi.sporteco.utils.RecyclerItemTouchListener;
 
@@ -250,9 +252,10 @@ public class HomeFragment extends Fragment implements DatePickerListener {
                         startActivity(new Intent(getActivity(), EvaluateActivity.class));
                         break;
                     case 2:
-                        Toast.makeText(getActivity(), "Players Clicked", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), PlayersActivity.class));
                         break;
                     case 3:
+                        startActivity(new Intent(getActivity(), ProgramsActivity.class));
                         Toast.makeText(getActivity(), "Programs Clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:

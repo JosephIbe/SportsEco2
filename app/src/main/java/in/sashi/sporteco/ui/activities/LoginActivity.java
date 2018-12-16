@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginBtn:
+                Snackbar.make(findViewById(android.R.id.content), "Login Clicked", Snackbar.LENGTH_LONG).show();
                 // add validation later;
                 username = etUsername.getText().toString();
                 pwd = etPwd.getText().toString();
@@ -92,7 +93,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Snackbar.make(findViewById(android.R.id.content), "Waiting for Response", Snackbar.LENGTH_LONG).show();
                         if (response != null) {
+
+                            Snackbar.make(findViewById(android.R.id.content), "Got Response", Snackbar.LENGTH_LONG).show();
 
                             Log.d(TAG, "Login Resp:\t" + response.toString());
 
@@ -124,12 +128,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onError(ANError anError) {
-
+                        Log.d(TAG, anError.getErrorDetail());
                     }
                 });
     }
 
     private void saveCoachDetails(String idCoach, String academyId, String username, String firstName, String lastName, String midName, String nick, String gender, String mobile, String state, String email) {
+
+        Snackbar.make(findViewById(android.R.id.content), "Saving Coach Bio", Snackbar.LENGTH_LONG).show();
 
         coach = new Coach();
         coach.setCoachId(idCoach);
@@ -145,6 +151,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         coach.setOriginState(state);
 
         coach.save();
+        Snackbar.make(findViewById(android.R.id.content), "Save Complete", Snackbar.LENGTH_LONG).show();
 
         Coach coachQuery = new Select()
                 .from(Coach.class)
@@ -159,6 +166,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void getAllData(String coach_id) {
+
+        Snackbar.make(findViewById(android.R.id.content), "Getting All Data", Snackbar.LENGTH_LONG).show();
 
         Log.d(TAG, "Getting Data");
 
@@ -177,9 +186,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Snackbar.make(findViewById(android.R.id.content), "Waiting For GAD Response", Snackbar.LENGTH_LONG).show();
                         if (response != null){
+                            Snackbar.make(findViewById(android.R.id.content), "Response Complete", Snackbar.LENGTH_LONG).show();
                             Log.d(TAG, "GAD:\t" + response.toString());
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            Snackbar.make(findViewById(android.R.id.content), "Transitioning...", Snackbar.LENGTH_LONG).show();
                         }
                     }
 

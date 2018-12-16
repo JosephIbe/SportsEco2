@@ -5,7 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table(name = "program_details")
-public class ProgramDetails extends Model {
+public class Programs extends Model {
 
     @Column(name = "program_name")
     public String programName;
@@ -28,10 +28,16 @@ public class ProgramDetails extends Model {
     @Column(name = "coach_id")
     public String coachId;
 
-    public ProgramDetails() {
+    public String numSessions;
+
+    public String programDesc;
+
+    public String placeName;
+
+    public Programs() {
     }
 
-    public ProgramDetails(String programName, String progId, String progUserMapId, String startDate, String endDate, Batch batch, String coachId) {
+    public Programs(String programName, String progId, String progUserMapId, String startDate, String endDate, Batch batch, String coachId) {
         this.programName = programName;
         this.progId = progId;
         this.progUserMapId = progUserMapId;
@@ -97,4 +103,27 @@ public class ProgramDetails extends Model {
         this.coachId = coachId;
     }
 
+    public String getNumSessions() {
+        return numSessions;
+    }
+
+    public void setNumSessions(String numSessions) {
+        this.numSessions = numSessions;
+    }
+
+    public String getProgramDesc() {
+        return programDesc;
+    }
+
+    public void setProgramDesc(String programDesc) {
+        this.programDesc = programDesc;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
+    }
 }

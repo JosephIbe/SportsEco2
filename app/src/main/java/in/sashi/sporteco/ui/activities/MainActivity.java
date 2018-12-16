@@ -49,14 +49,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void init() {
-//        bottomNav = findViewById(R.id.bottomNav);
         navEx = findViewById(R.id.navEx);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         fragment = new HomeFragment();
         switchFragment(fragment);
-
 
         navEx.enableAnimation(true);
         navEx.enableShiftingMode(false);
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navEx.setIconSizeAt(centerPos, 50, 40);
 
         navEx.setOnNavigationItemSelectedListener(this);
-
 
     }
 
@@ -95,9 +92,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 switchFragment(fragment);
                 return true;
 
-//                TestDialog dialog = new TestDialog(this);
+//                TestDialog dialog = new TestDialog();
 //                dialog.show();
-//
+
 //                Window window = dialog.getWindow();
 //                window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 

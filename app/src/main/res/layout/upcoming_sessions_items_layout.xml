@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
     android:orientation="horizontal"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="5dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/upcomingIV"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        tools:src="@drawable/ic_players"
-        android:scaleType="centerCrop" />
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_players"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:id="@+id/metaLayout"
@@ -20,35 +22,129 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@+id/upcomingIV"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="15dp"
-        android:layout_centerVertical="true">
+        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp">
 
         <TextView
             android:id="@+id/upcomingNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Session 1"
-            android:textSize="18sp"
-            android:textColor="@color/text_color"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/text_color" />
 
         <TextView
-            android:id="@+id/dateTimeTV"
+            android:id="@+id/numSessionsUpcomingTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="23-0ct-18 21:49"/>
+            tools:text="No. Session: 8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/text_color" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/statusTV"
+    <LinearLayout
+        android:id="@+id/upcoming_batch_programLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Ongoing"
-        android:padding="8dp"
-        android:background="@drawable/btn_bkg"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"/>
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/upcomingBatchNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            tools:text="Batch Name"
+            android:textColor="@color/text_color"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/upcomingProgramNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            tools:text="Program Name"
+            android:textColor="@color/text_color"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/countLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_player_small"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/upcoming_present_countTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/text_color"
+                android:layout_marginRight="2dp"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:id="@+id/upcoming_total_countTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:textColor="@color/text_color"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical|end">
+
+        <TextView
+            android:id="@+id/upcoming_timeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3:30pm"
+            android:textColor="@color/text_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
+
+        <TextView
+            android:id="@+id/upcoming_dateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="31-10-18"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

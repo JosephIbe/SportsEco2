@@ -61,11 +61,11 @@ public class AttendanceMainActivity extends AppCompatActivity {
 
     private void setUpViewPager(ViewPager viewPager) {
 
-        UpComingFragment us = new UpComingFragment();
+        UpComingFragment uf = new UpComingFragment();
         AttendanceHistoryFragment ahf = new AttendanceHistoryFragment();
 
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragTab(us, "UpComing Sessions");
+        pagerAdapter.addFragTab(uf, "UpComing Sessions");
         pagerAdapter.addFragTab(ahf, "Attendance History");
         viewPager.setAdapter(pagerAdapter);
     }

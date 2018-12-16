@@ -42,19 +42,19 @@
             android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:orientation="horizontal">
+            android:paddingBottom="8dp">
 
             <RadioButton
                 android:id="@+id/todayBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:text="Today"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -101,8 +101,8 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp">
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -116,26 +116,26 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="9dp"
                     android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
                     android:paddingTop="9dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="9dp"
                     android:text="2018"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_color"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/text_color" />
 
                 <RadioButton
                     android:id="@+id/secondBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="9dp"
-                    android:paddingBottom="9dp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="9dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="9dp"
                     android:text="2019"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -161,22 +161,23 @@
         android:layout_marginLeft="0dp"
         android:orientation="vertical">
 
-        <RadioGroup
+        <in.sashi.sporteco.utils.MultiLineRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:orientation="horizontal"
             android:paddingTop="10dp"
+            android:layout_margin="5dp"
             android:weightSum="6">
 
             <RadioButton
                 android:id="@+id/janBtn"
-                android:layout_width="49dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Jan"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -184,12 +185,12 @@
 
             <RadioButton
                 android:id="@+id/febBtn"
-                android:layout_width="49dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Feb"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -197,12 +198,12 @@
 
             <RadioButton
                 android:id="@+id/marchBtn"
-                android:layout_width="50dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Mar"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -210,12 +211,12 @@
 
             <RadioButton
                 android:id="@+id/aprilBtn"
-                android:layout_width="49dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Apr"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -223,12 +224,12 @@
 
             <RadioButton
                 android:id="@+id/mayBtn"
-                android:layout_width="51dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="18dp"
                 android:text="May"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -236,106 +237,96 @@
 
             <RadioButton
                 android:id="@+id/juneBtn"
-                android:layout_width="51dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="18dp"
                 android:text="Jun"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/text_color" />
 
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:weightSum="6">
-
             <RadioButton
                 android:id="@+id/julyBtn"
-                android:layout_width="51dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="10dp"
-                android:text="Jul"
+                android:paddingLeft="20dp"
+                android:text="July"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/text_color" />
 
             <RadioButton
                 android:id="@+id/augustBtn"
-                android:layout_width="51dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Aug"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/text_color" />
 
             <RadioButton
                 android:id="@+id/septBtn"
-                android:layout_width="51dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
-                android:text="Sep"
+                android:paddingLeft="20dp"
+                android:text="Sept"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/text_color" />
 
             <RadioButton
                 android:id="@+id/octBtn"
-                android:layout_width="51dp"
+                android:layout_width="57dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="20dp"
                 android:text="Oct"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/text_color" />
 
             <RadioButton
                 android:id="@+id/novBtn"
-                android:layout_width="51dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="18dp"
                 android:text="Nov"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/text_color" />
 
             <RadioButton
                 android:id="@+id/decBtn"
-                android:layout_width="51dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/filter_btns_bkg"
                 android:button="@null"
-                android:paddingLeft="12dp"
+                android:paddingLeft="18dp"
                 android:text="Dec"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/text_color" />
 
-        </RadioGroup>
+        </in.sashi.sporteco.utils.MultiLineRadioGroup>
 
     </LinearLayout>
 
@@ -356,8 +347,8 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
             android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:scrollbars="none">
 
             <RadioGroup
@@ -372,10 +363,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Program 1"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -388,10 +379,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Program 2"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -404,10 +395,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Program 3"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -420,10 +411,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Program 4"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -436,10 +427,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Program 5"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -460,8 +451,8 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
             android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:scrollbars="none">
 
             <RadioGroup
@@ -476,10 +467,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Session 1"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -492,10 +483,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Session 2"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -508,10 +499,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Session 3"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -524,10 +515,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Session 4"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -540,10 +531,10 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/filter_btns_bkg"
                     android:button="@null"
-                    android:paddingBottom="8dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp"
                     android:text="Session 5"
                     android:textAllCaps="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"

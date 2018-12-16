@@ -7,6 +7,7 @@ import in.sashi.sporteco.models.app.Players;
 import in.sashi.sporteco.models.app.Batch;
 import in.sashi.sporteco.models.app.Coach;
 import in.sashi.sporteco.models.app.PlayerSession;
+import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.models.app.Sessions;
 
 public class DBProvider extends ContentProvider {
@@ -19,6 +20,7 @@ public class DBProvider extends ContentProvider {
         builder.addModelClass(Sessions.class);
         builder.addModelClass(Players.class);
         builder.addModelClass(PlayerSession.class);
+        builder.addModelClass(Programs.class);
         return builder.create();
     }
 }

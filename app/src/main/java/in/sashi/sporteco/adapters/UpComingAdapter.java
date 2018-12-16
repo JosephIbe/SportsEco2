@@ -37,8 +37,15 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingViewHolder> {
     public void onBindViewHolder(UpComingViewHolder viewholder, final int position) {
         Sessions sessions = itemsList.get(position);
         viewholder.upcomingNameTV.setText(sessions.getSessionName());
-        viewholder.dateTimeTV.setText(sessions.getDateTime());
-        viewholder.statusTV.setText(sessions.getStatus());
+
+        viewholder.upcomingNameTV.setText(sessions.getSessionName());
+        viewholder.numSessionsUpcomingTV.setText(sessions.getNumSessions_Drills());
+        viewholder.upcomingBatchNameTV.setText(sessions.getBatchName());
+        viewholder.upcomingProgramNameTV.setText(sessions.getProgramName());
+        viewholder.upcoming_present_countTV.setText(sessions.getPresentCountPlayers());
+        viewholder.upcoming_total_countTV.setText(sessions.getParticipantsCount());
+        viewholder.upcoming_timeTV.setText(sessions.getHour_start());
+        viewholder.upcoming_dateTV.setText(sessions.getDate_start());
 
         Picasso.with(context)
                 .load(sessions.getSessionIcon())
