@@ -1,82 +1,78 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+//@Table(name = "sessions")
+//public class Sessions extends Model {
+public class Sessions {
 
-@Table(name = "sessions")
-public class Sessions extends Model {
-
-    @Column(name = "session_icon")
+//    @Column(name = "session_icon")
     public int sessionIcon;
 
-    @Column(name = "session_name")
+//    @Column(name = "session_name")
     public String sessionName;
 
-    @Column(name = "batch_name")
+//    @Column(name = "batch_name")
     public String batchName;
 
-    @Column(name = "participants_count")
+//    @Column(name = "participants_count")
     public String participantsCount;
 
-    @Column(name = "date_time")
+//    @Column(name = "date_time")
     public String dateTime;
 
-    @Column(name = "session_focus_points")
+//    @Column(name = "session_focus_points")
     public String sessionFocusPoints;
 
-    @Column(name = "equipments_reqd")
+//    @Column(name = "equipments_reqd")
     public String equipmentsReqd;
 
-    @Column(name = "date_start")
+//    @Column(name = "date_start")
     public String date_start;
 
-    @Column(name = "date_end")
+//    @Column(name = "date_end")
     public String date_end;
 
-    @Column(name = "hour_start")
+//    @Column(name = "hour_start")
     public String hour_start;
 
-    @Column(name = "hour_end")
+//    @Column(name = "hour_end")
     public String hour_end;
 
-    @Column(name = "minute_start")
+//    @Column(name = "minute_start")
     public String minute_start;
 
-    @Column(name = "minute_end")
+//    @Column(name = "minute_end")
     public String minute_end;
 
-    @Column(name = "coach_id")
+//    @Column(name = "coach_id")
     public String coachId;
 
-    @Column(name = "program_session_id")
+//    @Column(name = "program_session_id")
     public String programSessionId;
 
-    @Column(name = "program_id")
+//    @Column(name = "program_id")
     public String programId;
 
-    @Column(name = "program_name")
+//    @Column(name = "program_name")
     public String programName;
 
-    @Column(name = "session_desc")
+//    @Column(name = "session_desc")
     public String sessionDesc;
 
-    @Column(name = "session_image")
+//    @Column(name = "session_image")
     public String sessionCoverImage;
 
-    @Column(name = "session_duration")
+//    @Column(name = "session_duration")
     public String sessDuration;
 
-    @Column(name = "present_count_players")
+//    @Column(name = "present_count_players")
     public String presentCountPlayers;
 
-    @Column(name = "session_status")
+//    @Column(name = "session_status")
     public String status;
 
     public String numSessions_Drills;
 
-//    @Column(name = "session_video_link")
-//    public String sessionVideoLink;
+    public Drills drills;
 
     public Sessions() {
     }
@@ -296,5 +292,13 @@ public class Sessions extends Model {
 
     public void setNumSessions_Drills(String numSessions_Drills) {
         this.numSessions_Drills = numSessions_Drills;
+    }
+
+    public Drills getDrills() {
+        return drills;
+    }
+
+    public void setDrills(Drills drills) {
+        this.drills = drills;
     }
 }

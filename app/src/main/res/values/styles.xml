@@ -19,4 +19,12 @@
         <item name="android:background">@drawable/date_dialog_bkg</item>
     </style>
 
+    <style name="PlayerInfoDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/PlayerInfoDialogSheetStyle</item>
+    </style>
+
+    <style name="PlayerInfoDialogSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

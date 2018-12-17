@@ -11,15 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.activeandroid.query.Select;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.HistoryAdapter;
-import in.sashi.sporteco.models.app.Batch;
-import in.sashi.sporteco.models.app.Coach;
 import in.sashi.sporteco.models.app.Sessions;
 
 /**

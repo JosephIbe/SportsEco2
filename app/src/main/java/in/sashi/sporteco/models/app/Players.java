@@ -1,58 +1,55 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+//@Table(name = "all_players_coach")
+//public class Players extends Model {
+public class Players {
 
-@Table(name = "all_players_coach")
-public class Players extends Model {
-
-    @Column(name = "user_id_player")
+//    @Column(name = "user_id_player")
     public String userId;
 
-    @Column(name = "first_name_player")
+//    @Column(name = "first_name_player")
     public String firstName;
 
-    @Column(name = "last_name_player")
+//    @Column(name = "last_name_player")
     public String lastName;
 
-    @Column(name = "image_url_player")
+//    @Column(name = "image_url_player")
     public String imageURL;
 
-    @Column(name = "username_player")
+//    @Column(name = "username_player")
     public String username;
 
-    @Column(name = "address_player")
+//    @Column(name = "address_player")
     public String address;
 
-    @Column(name = "dob_player")
+//    @Column(name = "dob_player")
     public String dobPlayer;
 
-    @Column(name = "gender_player")
+//    @Column(name = "gender_player")
     public String genderPlayer;
 
-    @Column(name = "pincode_player")
+//    @Column(name = "pincode_player")
     public String pinCodePlayer;
 
-    @Column(name = "height_player")
+//    @Column(name = "height_player")
     public String heightPlayer;
 
-    @Column(name = "weight_player")
+//    @Column(name = "weight_player")
     public String weightPlayer;
 
-    @Column(name = "basketball_exp_player")
+//    @Column(name = "basketball_exp_player")
     public String bsktballExpPlayer;
 
-    @Column(name = "position_player")
+//    @Column(name = "position_player")
     public String positionPlayer;
 
-    @Column(name = "state_player")
+//    @Column(name = "state_player")
     public String statePlayer;
 
-    @Column(name = "mobile_player")
+//    @Column(name = "mobile_player")
     public String mobilePlayer;
 
-    @Column(name = "batch_player")
+//    @Column(name = "batch_player")
     public String batchPlayer;
 
     public boolean isSelected;

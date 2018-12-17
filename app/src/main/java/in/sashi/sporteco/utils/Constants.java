@@ -14,7 +14,7 @@ public class Constants {
      *  API URLS
      * **/
 
-    public static final String BASE_URL = "http://devsports.copycon.in/api";
+    public static final String BASE_URL = "http://devsports.copycon.in/api/";
 
     public static final String SUCCESS_MSG = "success";
 

@@ -15,20 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <meta-data
-            android:name="AA_DB_NAME"
-            android:value="sports_eco3.db" />
-        <meta-data
-            android:name="AA_DB_VERSION"
-            android:value="0405" />
 
-        <provider
-            android:name=".providers.DBProvider"
-            android:authorities="in.sashi.sporteco"
-            android:enabled="true"
-            android:exported="false" />
+        <!--<meta-data-->
+            <!--android:name="AA_DB_NAME"-->
+            <!--android:value="sports_eco3.db" />-->
+        <!--<meta-data-->
+            <!--android:name="AA_DB_VERSION"-->
+            <!--android:value="0405" />-->
 
-        <activity android:name=".ui.activities.MainActivity">
+        <!--<provider-->
+            <!--android:name=".providers.DBProvider"-->
+            <!--android:authorities="in.sashi.sporteco"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false" />-->
+
+        <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.SplashActivity"
+            android:name=".ui.activities.MainActivity"
             android:launchMode="singleTop" />
         <activity android:name=".ui.activities.ChooseAuthActivity" />
         <activity android:name=".ui.activities.LoginActivity" />

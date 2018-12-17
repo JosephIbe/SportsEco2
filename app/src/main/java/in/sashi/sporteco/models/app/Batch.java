@@ -1,27 +1,24 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-
-@Table(name = "coach_batches")
-public class Batch extends Model{
+//@Table(name = "coach_batches")
+//public class Batch extends Model{
+public class Batch {
 
     private String message;
 
-    @Column(name = "batch_id")
+//    @Column(name = "batch_id")
     public String batchId;
 
-    @Column(name = "batch_name")
+//    @Column(name = "batch_name")
     public String batchName;
 
-    @Column(name = "program_name")
+//    @Column(name = "program_name")
     public String programName;
 
-    @Column(name = "start_date")
+//    @Column(name = "start_date")
     public String startDate;
 
-    @Column(name = "playesr_count")
+//    @Column(name = "playesr_count")
     public String playersCount;
 
     public BatchFooter batchFooter;

@@ -1,55 +1,52 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+//@Table(name = "players_list")
+//public class PlayerSession extends Model {
+public class PlayerSession {
 
-@Table(name = "players_list")
-public class PlayerSession extends Model {
-
-    @Column(name = "user_id_player")
+//    @Column(name = "user_id_player")
     public String userId_player;
 
-    @Column(name = "first_name_player")
+//    @Column(name = "first_name_player")
     public String firstName_player;
 
-    @Column(name = "last_name_player")
+//    @Column(name = "last_name_player")
     public String lastName_player;
 
-    @Column(name = "image_url_player")
+//    @Column(name = "image_url_player")
     public String imageURL;
 
-    @Column(name = "username_player")
+//    @Column(name = "username_player")
     public String username;
 
-    @Column(name = "address_player")
+//    @Column(name = "address_player")
     public String address_player;
 
-    @Column(name = "batch_name_player")
+//    @Column(name = "batch_name_player")
     public String batchName_player;
 
-    @Column(name = "batch_id_player")
+//    @Column(name = "batch_id_player")
     public String batchId_player;
 
-    @Column(name = "program_name_player")
+//    @Column(name = "program_name_player")
     public String programName_player;
 
-    @Column(name = "program_id_player")
+//    @Column(name = "program_id_player")
     public String programIdPlayer;
 
-    @Column(name = "program_start_date_player")
+//    @Column(name = "program_start_date_player")
     public String startDate_player;
 
-    @Column(name = "program_end_date_player")
+//    @Column(name = "program_end_date_player")
     public String endDate_player;
 
-    @Column(name = "program_user_map_id_player")
+//    @Column(name = "program_user_map_id_player")
     public String programUserMapId_player;
 
-    @Column(name = "attendance_status")
+//    @Column(name = "attendance_status")
     public String attendanceStatus_player;
 
-    @Column(name = "session_id_player")
+//    @Column(name = "session_id_player")
     public String sessionId_player;
 
     public boolean isPresent;

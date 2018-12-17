@@ -1,43 +1,53 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+import com.google.gson.annotations.SerializedName;
 
-@Table(name = "coach_profile")
-public class Coach extends Model {
+//@Table(name = "coach_profile")
+//public class Coach extends Model {
+public class Coach {
 
-    @Column(name = "coach_id")
+//    @Column(name = "id_coach")
+    @SerializedName("coach_id")
     public String coachId;
 
-    @Column(name = "academy_id")
+//    @Column(name = "id_academy")
+    @SerializedName("academy_id")
     public String academyId;
 
-    @Column(name = "username")
+//    @Column(name = "username_coach")
+    @SerializedName("username")
     public String username;
 
-    @Column(name = "first_name")
+//    @Column(name = "first_name_coach")
+    @SerializedName("first_name")
     public String firstName;
 
-    @Column(name = "last_name")
+//    @Column(name = "last_name_coach")
+    @SerializedName("last_name")
     public String lastName;
 
-    @Column(name = "gender")
+//    @Column(name = "gender_coach")
+    @SerializedName("gender")
     public String gender;
 
-    @Column(name = "mobile_num")
+//    @Column(name = "mobile_num_coach")
+    @SerializedName("mobile")
     public String mobileNum;
 
-    @Column(name = "email_addr")
+//    @Column(name = "email_addr_coach")
+    @SerializedName("email")
     public String emailAddr;
 
-    @Column(name = "middle_name")
+//    @Column(name = "middle_name_coach")
+    @SerializedName("middle_name")
     public String midName;
 
-    @Column(name = "nick_name")
+//    @Column(name = "nick_name_coach")
+    @SerializedName("nick_name")
     public String nickName;
 
-    @Column(name = "state")
+//    @Column(name = "state_coach")
+    @SerializedName("state")
     public String originState;
 
     public Coach() {

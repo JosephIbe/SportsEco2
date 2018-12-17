@@ -15,8 +15,6 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ViewPagerAdapter;
-import in.sashi.sporteco.ui.fragments.AttendanceHistoryFragment;
-import in.sashi.sporteco.ui.fragments.UpComingFragment;
 import in.sashi.sporteco.ui.fragments.shared_fragments.BasicInfoFragment;
 import in.sashi.sporteco.ui.fragments.shared_fragments.CoachInfoFragment;
 import in.sashi.sporteco.ui.fragments.shared_fragments.PhysicalInfoFragment;
@@ -31,6 +29,12 @@ public class PlayerInfoFragment extends BottomSheetDialogFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter pagerAdapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.PlayerInfoDialogTheme);
+    }
 
     @Nullable
     @Override

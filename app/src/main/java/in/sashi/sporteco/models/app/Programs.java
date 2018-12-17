@@ -1,31 +1,28 @@
 package in.sashi.sporteco.models.app;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+//@Table(name = "program_details")
+//public class Programs extends Model {
+public class Programs {
 
-@Table(name = "program_details")
-public class Programs extends Model {
-
-    @Column(name = "program_name")
+//    @Column(name = "program_name")
     public String programName;
 
-    @Column(name = "program_id")
+//    @Column(name = "program_id")
     public String progId;
 
-    @Column(name = "prog_user_map_id")
+//    @Column(name = "prog_user_map_id")
     public String progUserMapId;
 
-    @Column(name = "start_date")
+//    @Column(name = "start_date")
     public String startDate;
 
-    @Column(name = "end_date")
+//    @Column(name = "end_date")
     public String endDate;
 
-    @Column(name = "batch")
+//    @Column(name = "batch")
     public Batch batch;
 
-    @Column(name = "coach_id")
+//    @Column(name = "coach_id")
     public String coachId;
 
     public String numSessions;
@@ -33,6 +30,8 @@ public class Programs extends Model {
     public String programDesc;
 
     public String placeName;
+
+    public Sessions sessions;
 
     public Programs() {
     }
@@ -125,5 +124,13 @@ public class Programs extends Model {
 
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
+    }
+
+    public Sessions getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(Sessions sessions) {
+        this.sessions = sessions;
     }
 }

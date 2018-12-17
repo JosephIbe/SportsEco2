@@ -2,7 +2,7 @@ package in.sashi.sporteco.extras;
 
 import android.app.Application;
 
-import com.activeandroid.ActiveAndroid;
+//import com.activeandroid.ActiveAndroid;
 import com.androidnetworking.AndroidNetworking;
 
 public class App extends Application {
@@ -11,6 +11,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         AndroidNetworking.initialize(this);
-        ActiveAndroid.initialize(this);
+//        ActiveAndroid.initialize(this);
     }
 }

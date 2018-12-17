@@ -40,66 +40,73 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Program Name"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-        <TextView
-            android:id="@+id/name_programTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Program Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Place Name"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="12dp"/>
-
-        <TextView
-            android:id="@+id/placeNameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Place Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="12dp"/>
-
-        <TextView
-            android:id="@+id/desc_programTV"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Lorem ipsum dolr sit amet ..."
-            android:inputType="textMultiLine"
-            android:maxLines="4"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="5dp"/>
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sessions"
-            android:textColor="@color/colorPrimary"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Program Name"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:id="@+id/name_programTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Program Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Place Name"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="12dp"/>
+
+            <TextView
+                android:id="@+id/placeNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Place Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="12dp"/>
+
+            <TextView
+                android:id="@+id/desc_programTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Lorem ipsum dolr sit amet ..."
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sessions"
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="12dp"/>
+
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/programsSessionsRV"

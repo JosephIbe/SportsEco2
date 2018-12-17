@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.activeandroid.query.Select;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -22,7 +21,11 @@ import org.json.JSONObject;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Batch;
 import in.sashi.sporteco.models.app.Coach;
+import in.sashi.sporteco.rest.RestClient;
 import in.sashi.sporteco.utils.Constants;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Coach coach;
     private Batch batch;
 
-    private boolean hasBatch = false;
+    private boolean isEnabled = true;
     private String username, pwd, coach_id;
 
     @Override
@@ -65,12 +68,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 // add validation later;
                 username = etUsername.getText().toString();
                 pwd = etPwd.getText().toString();
-                doLogin(username, pwd);
+//                doLogin(username, pwd);
+                attemptogin(username, pwd);
+                loginBtn.setEnabled(false);
                 break;
             case R.id.forgotTV:
                 Snackbar.make(findViewById(android.R.id.content), "Coming Soon", Snackbar.LENGTH_LONG).show();
                 break;
         }
+    }
+
+    private void attemptogin(String username, String pwd) {
+        Call<Coach> call = RestClient.getRestInstance()
+                .getLoginService()
+                .loginCoach("testcoach@gmail.com", "123@abcd"); // TODO: 12/17/2018 Use input values
+
+        call.enqueue(new Callback<Coach>() {
+            @Override
+            public void onResponse(Call<Coach> call, Response<Coach> response) {
+                if (response != null && response.code() == 200){
+                    Log.d(TAG, "Login Response:\t" + response.toString());
+                    Log.d(TAG, "Login Response:\t" + response.body());
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Login Failed with Error Code:\t" + response.code(),
+                            Snackbar.LENGTH_LONG).show();
+                    loginBtn.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Coach> call, Throwable t) {
+                Snackbar.make(findViewById(android.R.id.content), "Unable to Login...Check Your Connection or Credentials",
+                        Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void doLogin(String email, String pwd) {
@@ -118,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String email_coach = details.getString("email");
 
                                 // Save in db
-                                saveCoachDetails(coach_id, academyId, username, firstName, lastName, midName, nick, gender, mobile, state, email_coach);
+//                                saveCoachDetails(coach_id, academyId, username, firstName, lastName, midName, nick, gender, mobile, state, email_coach);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -133,37 +165,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
     }
 
-    private void saveCoachDetails(String idCoach, String academyId, String username, String firstName, String lastName, String midName, String nick, String gender, String mobile, String state, String email) {
-
-        Snackbar.make(findViewById(android.R.id.content), "Saving Coach Bio", Snackbar.LENGTH_LONG).show();
-
-        coach = new Coach();
-        coach.setCoachId(idCoach);
-        coach.setAcademyId(academyId);
-        coach.setUsername(username);
-        coach.setEmailAddr(email);
-        coach.setFirstName(firstName);
-        coach.setLastName(lastName);
-        coach.setMidName(midName);
-        coach.setNickName(nick);
-        coach.setGender(gender);
-        coach.setMobileNum(mobile);
-        coach.setOriginState(state);
-
-        coach.save();
-        Snackbar.make(findViewById(android.R.id.content), "Save Complete", Snackbar.LENGTH_LONG).show();
-
-        Coach coachQuery = new Select()
-                .from(Coach.class)
-                .where("coach_id=?", coach_id)
-                .executeSingle();
-        Log.d(TAG, "Coach id:\t" + coachQuery.coachId);
-        coach_id = coachQuery.coachId;
-
-        getAllData(coach_id);
-
-
-    }
+//    private void saveCoachDetails(String idCoach, String academyId, String username, String firstName, String lastName, String midName, String nick, String gender, String mobile, String state, String email) {
+//
+//        Snackbar.make(findViewById(android.R.id.content), "Saving Coach Bio", Snackbar.LENGTH_LONG).show();
+//
+//        coach = new Coach();
+//        coach.setCoachId(idCoach);
+//        coach.setAcademyId(academyId);
+//        coach.setUsername(username);
+//        coach.setEmailAddr(email);
+//        coach.setFirstName(firstName);
+//        coach.setLastName(lastName);
+//        coach.setMidName(midName);
+//        coach.setNickName(nick);
+//        coach.setGender(gender);
+//        coach.setMobileNum(mobile);
+//        coach.setOriginState(state);
+//
+//        coach.save();
+//        Snackbar.make(findViewById(android.R.id.content), "Save Complete", Snackbar.LENGTH_LONG).show();
+//
+//        Coach coachQuery = new Select()
+//                .from(Coach.class)
+//                .where("coach_id=?", coach_id)
+//                .executeSingle();
+//        Log.d(TAG, "Coach id:\t" + coachQuery.coachId);
+//        coach_id = coachQuery.coachId;
+//
+//        getAllData(coach_id);
+//
+//
+//    }
 
     private void getAllData(String coach_id) {
 
@@ -186,12 +218,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Snackbar.make(findViewById(android.R.id.content), "Waiting For GAD Response", Snackbar.LENGTH_LONG).show();
                         if (response != null){
-                            Snackbar.make(findViewById(android.R.id.content), "Response Complete", Snackbar.LENGTH_LONG).show();
                             Log.d(TAG, "GAD:\t" + response.toString());
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            Snackbar.make(findViewById(android.R.id.content), "Transitioning...", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
