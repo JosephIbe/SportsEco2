@@ -1,7 +1,7 @@
-package in.sashi.sporteco.rest;
+package in.sashi.sporteco.rest.api;
 
 import in.sashi.sporteco.models.app.Coach;
-import okhttp3.ResponseBody;
+import in.sashi.sporteco.models.app.CoachDetails;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

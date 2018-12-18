@@ -1,8 +1,6 @@
 package in.sashi.sporteco.rest;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
+import in.sashi.sporteco.rest.api.LoginService;
 import in.sashi.sporteco.utils.Constants;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

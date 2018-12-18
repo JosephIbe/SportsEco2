@@ -77,7 +77,7 @@ public class PlayerInfoFragment extends BottomSheetDialogFragment {
         pagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         pagerAdapter.addFragTab(bif, "Basic Info");
         pagerAdapter.addFragTab(pif, "Physical Info");
-        pagerAdapter.addFragTab(cif, "Coach Info");
+        pagerAdapter.addFragTab(cif, "CoachDetails Info");
         viewPager.setAdapter(pagerAdapter);
     }
 

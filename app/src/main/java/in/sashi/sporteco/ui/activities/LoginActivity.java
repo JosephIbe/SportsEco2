@@ -14,6 +14,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Batch;
 import in.sashi.sporteco.models.app.Coach;
+import in.sashi.sporteco.models.app.CoachDetails;
 import in.sashi.sporteco.rest.RestClient;
 import in.sashi.sporteco.utils.Constants;
 import retrofit2.Call;
@@ -35,7 +37,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView forgotTV;
     private Button loginBtn;
 
-    private Coach coach;
     private Batch batch;
 
     private boolean isEnabled = true;
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 username = etUsername.getText().toString();
                 pwd = etPwd.getText().toString();
 //                doLogin(username, pwd);
-                attemptogin(username, pwd);
+                attemptLogin(username, pwd);
                 loginBtn.setEnabled(false);
                 break;
             case R.id.forgotTV:
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void attemptogin(String username, String pwd) {
+    private void attemptLogin(String username, String pwd) {
         Call<Coach> call = RestClient.getRestInstance()
                 .getLoginService()
                 .loginCoach("testcoach@gmail.com", "123@abcd"); // TODO: 12/17/2018 Use input values
@@ -86,10 +87,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         call.enqueue(new Callback<Coach>() {
             @Override
             public void onResponse(Call<Coach> call, Response<Coach> response) {
-                if (response != null && response.code() == 200){
-                    Log.d(TAG, "Login Response:\t" + response.toString());
-                    Log.d(TAG, "Login Response:\t" + response.body());
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                if (response.isSuccessful()) {
+
+                    Coach coach = response.body();
+
+                    coach_id = coach.getCoachDetails().getCoachId();
+//                    Log.d(TAG, "CId:\t" + coach_id);
+                    String acadId = coach.getCoachDetails().getAcademyId();
+                    String username = coach.getCoachDetails().getUsername();
+                    String first = coach.getCoachDetails().getFirstName();
+                    String last = coach.getCoachDetails().getLastName();
+                    String gender = coach.getCoachDetails().getGender();
+                    String mobile = coach.getCoachDetails().getMobileNum();
+                    String email = coach.getCoachDetails().getEmailAddr();
+                    String mid_name = coach.getCoachDetails().getMidName();
+                    String nick = coach.getCoachDetails().getNickName();
+                    String state = coach.getCoachDetails().getOriginState();
+//                    Log.d(TAG, "State:\t" + state);
+
+                    CoachDetails coachDetails = new CoachDetails();
+//                    coachDetails.insertInfo(coach_id, acadId, username, first, last, gender, mobile, mid_name, nick, state);
+                    coachDetails.setCoachId(coach_id);
+                    coachDetails.setAcademyId(acadId);
+                    coachDetails.setFirstName(first);
+                    coachDetails.setLastName(last);
+                    coachDetails.setGender(gender);
+                    coachDetails.setMobileNum(mobile);
+                    coachDetails.setEmailAddr(email);
+                    coachDetails.setMidName(mid_name);
+                    coachDetails.setNickName(nick);
+                    coachDetails.setOriginState(state);
+                    coachDetails.save();
+
+//                    CoachDetails details = SQLite.select()
+//                            .from(CoachDetails.class)
+//                            .querySingle();
+
+//                    Log.d(TAG, "CId from db:\t" + details.getCoachId() + " first_name:\t" + details.getFirstName()); // name is null and id is showing properly
+
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Login Failed with Error Code:\t" + response.code(),
                             Snackbar.LENGTH_LONG).show();
@@ -119,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         AndroidNetworking.post(Constants.LOGIN_COACH)
                 .addJSONObjectBody(jsonObject)
-                .setTag("Coach Login")
+                .setTag("CoachDetails Login")
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -167,29 +203,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 //    private void saveCoachDetails(String idCoach, String academyId, String username, String firstName, String lastName, String midName, String nick, String gender, String mobile, String state, String email) {
 //
-//        Snackbar.make(findViewById(android.R.id.content), "Saving Coach Bio", Snackbar.LENGTH_LONG).show();
+//        Snackbar.make(findViewById(android.R.id.content), "Saving CoachDetails Bio", Snackbar.LENGTH_LONG).show();
 //
-//        coach = new Coach();
-//        coach.setCoachId(idCoach);
-//        coach.setAcademyId(academyId);
-//        coach.setUsername(username);
-//        coach.setEmailAddr(email);
-//        coach.setFirstName(firstName);
-//        coach.setLastName(lastName);
-//        coach.setMidName(midName);
-//        coach.setNickName(nick);
-//        coach.setGender(gender);
-//        coach.setMobileNum(mobile);
-//        coach.setOriginState(state);
+//        coachDetails = new CoachDetails();
+//        coachDetails.setCoachId(idCoach);
+//        coachDetails.setAcademyId(academyId);
+//        coachDetails.setUsername(username);
+//        coachDetails.setEmailAddr(email);
+//        coachDetails.setFirstName(firstName);
+//        coachDetails.setLastName(lastName);
+//        coachDetails.setMidName(midName);
+//        coachDetails.setNickName(nick);
+//        coachDetails.setGender(gender);
+//        coachDetails.setMobileNum(mobile);
+//        coachDetails.setOriginState(state);
 //
-//        coach.save();
+//        coachDetails.save();
 //        Snackbar.make(findViewById(android.R.id.content), "Save Complete", Snackbar.LENGTH_LONG).show();
 //
-//        Coach coachQuery = new Select()
-//                .from(Coach.class)
+//        CoachDetails coachQuery = new Select()
+//                .from(CoachDetails.class)
 //                .where("coach_id=?", coach_id)
 //                .executeSingle();
-//        Log.d(TAG, "Coach id:\t" + coachQuery.coachId);
+//        Log.d(TAG, "CoachDetails id:\t" + coachQuery.coachId);
 //        coach_id = coachQuery.coachId;
 //
 //        getAllData(coach_id);
@@ -211,14 +247,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         AndroidNetworking.post(Constants.GET_ALL_DATA)
-                .setTag("Get Coach Meta")
+                .setTag("Get CoachDetails Meta")
                 .setPriority(Priority.HIGH)
                 .addJSONObjectBody(data)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        if (response != null){
+                        if (response != null) {
                             Log.d(TAG, "GAD:\t" + response.toString());
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         }

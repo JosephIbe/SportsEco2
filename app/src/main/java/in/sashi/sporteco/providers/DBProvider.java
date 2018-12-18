@@ -7,7 +7,7 @@ public class DBProvider {
 //    @Override
 //    protected Configuration getConfiguration() {
 //        Configuration.Builder builder = new Configuration.Builder(getContext());
-//        builder.addModelClass(Coach.class);
+//        builder.addModelClass(CoachDetails.class);
 //        builder.addModelClass(Batch.class);
 //        builder.addModelClass(Sessions.class);
 //        builder.addModelClass(Players.class);

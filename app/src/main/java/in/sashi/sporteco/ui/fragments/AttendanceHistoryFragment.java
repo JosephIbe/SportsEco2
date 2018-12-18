@@ -145,8 +145,8 @@ public class AttendanceHistoryFragment extends Fragment {
 //    }
 //
 //    private String queryCoach() {
-//        Coach coach = new Select()
-//                .from(Coach.class)
+//        CoachDetails coach = new Select()
+//                .from(CoachDetails.class)
 //                .orderBy("id ASC")
 //                .executeSingle();
 //        return coach.coachId;

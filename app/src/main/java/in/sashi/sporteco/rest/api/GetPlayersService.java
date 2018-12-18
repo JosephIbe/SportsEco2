@@ -1,4 +1,4 @@
-package in.sashi.sporteco.rest;
+package in.sashi.sporteco.rest.api;
 
 import in.sashi.sporteco.models.app.Players;
 import retrofit2.Call;
