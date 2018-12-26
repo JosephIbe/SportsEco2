@@ -37,26 +37,26 @@ public class EvalSessionsAdapter extends RecyclerView.Adapter<EvalSessionsViewHo
     @Override
     public void onBindViewHolder(final EvalSessionsViewHolder holder, int position) {
         final Sessions sessions = itemsList.get(position);
-        holder.eval_session_nameTV.setText(sessions.getSessionName());
-        holder.eval_batch_nameTV.setText(sessions.getBatchName());
-        holder.eval_program_nameTV.setText(sessions.getProgramName());
+//        holder.eval_session_nameTV.setText(sessions.getSessionName());
+//        holder.eval_batch_nameTV.setText(sessions.getBatchName());
+//        holder.eval_program_nameTV.setText(sessions.getProgramName());
 //        holder.eval_num_sessionsTV.setText(); what here?
-        holder.eval_present_countTV.setText(sessions.getPresentCountPlayers());
-        holder.eval_dateTV.setText(sessions.getDateTime());
-        holder.eval_total_countTV.setText(sessions.getParticipantsCount());
-        holder.eval_timeTV.setText(sessions.getHour_start()); // TODO: 12/8/2018 Use proper time formatting
-
-        holder.eval_sess_rootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EvaluateSessionDetailFragment fragment = new EvaluateSessionDetailFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("name_session", sessions.getSessionName());
-                fragment.setArguments(bundle);
-                fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar);
-                fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "EvaluateSessionDetailFragment");
-            }
-        });
+//        holder.eval_present_countTV.setText(sessions.getPresentCountPlayers());
+//        holder.eval_dateTV.setText(sessions.getDateTime());
+//        holder.eval_total_countTV.setText(sessions.getParticipantsCount());
+//        holder.eval_timeTV.setText(sessions.getHour_start()); // TODO: 12/8/2018 Use proper time formatting
+//
+//        holder.eval_sess_rootLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EvaluateSessionDetailFragment fragment = new EvaluateSessionDetailFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("name_session", sessions.getSessionName());
+//                fragment.setArguments(bundle);
+//                fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar);
+//                fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "EvaluateSessionDetailFragment");
+//            }
+//        });
 
     }
 

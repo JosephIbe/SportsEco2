@@ -7,11 +7,11 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class, name = "sessions")
-public class Sessions extends BaseModel {
+@Table(database = SportsDatabase.class, name = "upcoming_sessions")
+public class UpComingSessions  extends BaseModel {
 
     @Column
-    public String session_name;
+    public String sessionName;
 
     @PrimaryKey
     @Column
@@ -20,26 +20,17 @@ public class Sessions extends BaseModel {
     @Column
     public String session_desc;
 
-    @Column
-    public String session_cover_image;
+//    @Column
+//    public String session_cover_image;
 
     @Column
-    public String sess_duration;
-
-    @Column
-    public String program_id;
+    public String sessDuration;
 
     @Column
     public String program_name;
 
     @Column
-    public String batch_name;
-
-    @Column
-    public String participants_count;
-
-    @Column
-    public String session_focus_points;
+    public String batchName;
 
     @Column
     public String equipments_reqd;
@@ -69,20 +60,20 @@ public class Sessions extends BaseModel {
     public String present_count;
 
     @Column
-    public String is_complete;
+    public String players_count;
 
     @Column
-    public String num_sessions_drills;
+    public String isComplete;
 
-    public Sessions() {
+    public UpComingSessions() {
     }
 
-    public String getSession_name() {
-        return session_name;
+    public String getSessionName() {
+        return sessionName;
     }
 
-    public void setSession_name(String session_name) {
-        this.session_name = session_name;
+    public void setSessionName(String sessionName) {
+        this.sessionName = sessionName;
     }
 
     public String getSession_id() {
@@ -101,28 +92,12 @@ public class Sessions extends BaseModel {
         this.session_desc = session_desc;
     }
 
-    public String getSession_cover_image() {
-        return session_cover_image;
+    public String getSessDuration() {
+        return sessDuration;
     }
 
-    public void setSession_cover_image(String session_cover_image) {
-        this.session_cover_image = session_cover_image;
-    }
-
-    public String getSess_duration() {
-        return sess_duration;
-    }
-
-    public void setSess_duration(String sess_duration) {
-        this.sess_duration = sess_duration;
-    }
-
-    public String getProgram_id() {
-        return program_id;
-    }
-
-    public void setProgram_id(String program_id) {
-        this.program_id = program_id;
+    public void setSessDuration(String sessDuration) {
+        this.sessDuration = sessDuration;
     }
 
     public String getProgram_name() {
@@ -133,28 +108,12 @@ public class Sessions extends BaseModel {
         this.program_name = program_name;
     }
 
-    public String getBatch_name() {
-        return batch_name;
+    public String getBatchName() {
+        return batchName;
     }
 
-    public void setBatch_name(String batch_name) {
-        this.batch_name = batch_name;
-    }
-
-    public String getParticipants_count() {
-        return participants_count;
-    }
-
-    public void setParticipants_count(String participants_count) {
-        this.participants_count = participants_count;
-    }
-
-    public String getSession_focus_points() {
-        return session_focus_points;
-    }
-
-    public void setSession_focus_points(String session_focus_points) {
-        this.session_focus_points = session_focus_points;
+    public void setBatchName(String batchName) {
+        this.batchName = batchName;
     }
 
     public String getEquipments_reqd() {
@@ -229,19 +188,20 @@ public class Sessions extends BaseModel {
         this.present_count = present_count;
     }
 
-    public String getIs_complete() {
-        return is_complete;
+    public String getPlayers_count() {
+        return players_count;
     }
 
-    public void setIs_complete(String is_complete) {
-        this.is_complete = is_complete;
+    public void setPlayers_count(String players_count) {
+        this.players_count = players_count;
     }
 
-    public String getNum_sessions_drills() {
-        return num_sessions_drills;
+    public String getIsComplete() {
+        return isComplete;
     }
 
-    public void setNum_sessions_drills(String num_sessions_drills) {
-        this.num_sessions_drills = num_sessions_drills;
+    public void setIsComplete(String isComplete) {
+        this.isComplete = isComplete;
     }
+
 }

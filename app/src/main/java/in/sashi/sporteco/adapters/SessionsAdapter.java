@@ -35,24 +35,24 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsViewHolder> {
     @Override
     public void onBindViewHolder(SessionsViewHolder viewholder, int position) {
         final Sessions sessions =  itemsList.get(position);
-        viewholder.sessionNameTV.setText(sessions.getSessionName());
-        viewholder.programNameTV.setText(sessions.getProgramName());
-        viewholder.batchNameTV.setText(sessions.getBatchName());
-        viewholder.countTV.setText(sessions.getParticipantsCount());
-
-        viewholder.sessCardHolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ViewSessionActivity.class);
-                intent.putExtra("session_name", sessions.getSessionName());
-                context.startActivity(intent);
-            }
-        });
-
-        Picasso.with(context)
-                .load(sessions.getSessionIcon())
-                .placeholder(R.drawable.app_logo_resized)
-                .into(viewholder.sessionIV);
+//        viewholder.sessionNameTV.setText(sessions.getSessionName());
+//        viewholder.programNameTV.setText(sessions.getProgramName());
+//        viewholder.batchNameTV.setText(sessions.getBatchName());
+//        viewholder.countTV.setText(sessions.getParticipantsCount());
+//
+//        viewholder.sessCardHolder.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, ViewSessionActivity.class);
+//                intent.putExtra("session_name", sessions.getSessionName());
+//                context.startActivity(intent);
+//            }
+//        });
+//
+//        Picasso.with(context)
+//                .load(sessions.getSessionIcon())
+//                .placeholder(R.drawable.app_logo_resized)
+//                .into(viewholder.sessionIV);
 
     }
 

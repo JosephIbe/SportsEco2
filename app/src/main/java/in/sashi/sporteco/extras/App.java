@@ -6,8 +6,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
-//import com.activeandroid.ActiveAndroid;
-
 public class App extends Application {
 
     @Override
@@ -15,6 +13,5 @@ public class App extends Application {
         super.onCreate();
         AndroidNetworking.initialize(this);
         FlowManager.init(new FlowConfig.Builder(this).build());
-//        ActiveAndroid.initialize(this);
     }
 }

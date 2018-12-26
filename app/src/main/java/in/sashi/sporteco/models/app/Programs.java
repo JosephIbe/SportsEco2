@@ -1,49 +1,52 @@
 package in.sashi.sporteco.models.app;
 
-//@Table(name = "program_details")
-//public class Programs extends Model {
-public class Programs {
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
-//    @Column(name = "program_name")
+import in.sashi.sporteco.rest.db.SportsDatabase;
+
+@Table(name = "programs", database = SportsDatabase.class)
+public class Programs extends BaseModel {
+
+    @Column
     public String programName;
 
-//    @Column(name = "program_id")
+    @PrimaryKey
+    @Column
     public String progId;
 
-//    @Column(name = "prog_user_map_id")
-    public String progUserMapId;
-
-//    @Column(name = "start_date")
+    @Column
     public String startDate;
 
-//    @Column(name = "end_date")
+    @Column
     public String endDate;
 
-//    @Column(name = "batch")
-    public Batch batch;
-
-//    @Column(name = "coach_id")
-    public String coachId;
-
+    @Column
     public String numSessions;
 
+    @Column
+    public String progImage;
+
+    @Column
     public String programDesc;
 
+    @Column
     public String placeName;
-
-    public Sessions sessions;
 
     public Programs() {
     }
 
-    public Programs(String programName, String progId, String progUserMapId, String startDate, String endDate, Batch batch, String coachId) {
+    public Programs(String programName, String progId, String startDate, String endDate, String numSessions, String progImage, String programDesc, String placeName) {
         this.programName = programName;
         this.progId = progId;
-        this.progUserMapId = progUserMapId;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.batch = batch;
-        this.coachId = coachId;
+        this.numSessions = numSessions;
+        this.progImage = progImage;
+        this.programDesc = programDesc;
+        this.placeName = placeName;
     }
 
     public String getProgramName() {
@@ -62,14 +65,6 @@ public class Programs {
         this.progId = progId;
     }
 
-    public String getProgUserMapId() {
-        return progUserMapId;
-    }
-
-    public void setProgUserMapId(String progUserMapId) {
-        this.progUserMapId = progUserMapId;
-    }
-
     public String getStartDate() {
         return startDate;
     }
@@ -84,22 +79,6 @@ public class Programs {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-    public Batch getBatch() {
-        return batch;
-    }
-
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
-
-    public String getCoachId() {
-        return coachId;
-    }
-
-    public void setCoachId(String coachId) {
-        this.coachId = coachId;
     }
 
     public String getNumSessions() {
@@ -126,11 +105,4 @@ public class Programs {
         this.placeName = placeName;
     }
 
-    public Sessions getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(Sessions sessions) {
-        this.sessions = sessions;
-    }
 }

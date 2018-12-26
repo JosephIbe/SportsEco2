@@ -43,34 +43,34 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
     @Override
     public void onBindViewHolder(HistoryViewHolder viewholder, final int position) {
         final Sessions sessions = itemsList.get(position);
-        viewholder.historyNameTV.setText(sessions.getSessionName());
-        viewholder.numSessionsHistoryTV.setText(sessions.getNumSessions_Drills());
-        viewholder.historyBatchNameTV.setText(sessions.getBatchName());
-        viewholder.historyProgramNameTV.setText(sessions.getProgramName());
-        viewholder.history_present_countTV.setText(sessions.getPresentCountPlayers());
-        viewholder.history_total_countTV.setText(sessions.getParticipantsCount());
-        viewholder.history_timeTV.setText(sessions.getHour_start());
-        viewholder.history_dateTV.setText(sessions.getDate_start());
-
-        Picasso.with(context)
-                .load(sessions.getSessionIcon())
-                .placeholder(R.drawable.app_logo_resized)
-                .into(viewholder.historyIV);
-
-        viewholder.rootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Clicked position " + position, Toast.LENGTH_SHORT).show();
-                AttendanceHistoryDetailsDialogFragment ahddf = new AttendanceHistoryDetailsDialogFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString(KEY_SESSION_NAME, sessions.getSessionName());
-                bundle.putString(KEY_PRESENT, sessions.getPresentCountPlayers());
-                bundle.putString(KEY_TOTAL, sessions.getParticipantsCount());
-                ahddf.setArguments(bundle);
-                ahddf.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar_Fullscreen);
-                ahddf.show(((AppCompatActivity)context).getSupportFragmentManager(), "AttendanceHistoryDetailsDialogFragment");
-            }
-        });
+//        viewholder.historyNameTV.setText(sessions.getSessionName());
+//        viewholder.numSessionsHistoryTV.setText(sessions.getNumSessions_Drills());
+//        viewholder.historyBatchNameTV.setText(sessions.getBatchName());
+//        viewholder.historyProgramNameTV.setText(sessions.getProgramName());
+//        viewholder.history_present_countTV.setText(sessions.getPresentCountPlayers());
+//        viewholder.history_total_countTV.setText(sessions.getParticipantsCount());
+//        viewholder.history_timeTV.setText(sessions.getHour_start());
+//        viewholder.history_dateTV.setText(sessions.getDate_start());
+//
+//        Picasso.with(context)
+//                .load(sessions.getSessionIcon())
+//                .placeholder(R.drawable.app_logo_resized)
+//                .into(viewholder.historyIV);
+//
+//        viewholder.rootLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "Clicked position " + position, Toast.LENGTH_SHORT).show();
+//                AttendanceHistoryDetailsDialogFragment ahddf = new AttendanceHistoryDetailsDialogFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString(KEY_SESSION_NAME, sessions.getSessionName());
+//                bundle.putString(KEY_PRESENT, sessions.getPresentCountPlayers());
+//                bundle.putString(KEY_TOTAL, sessions.getParticipantsCount());
+//                ahddf.setArguments(bundle);
+//                ahddf.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar_Fullscreen);
+//                ahddf.show(((AppCompatActivity)context).getSupportFragmentManager(), "AttendanceHistoryDetailsDialogFragment");
+//            }
+//        });
 
     }
 

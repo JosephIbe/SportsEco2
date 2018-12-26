@@ -1,23 +1,37 @@
 package in.sashi.sporteco.ui.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ProgramsAdapter;
+import in.sashi.sporteco.models.app.CoachDetails;
 import in.sashi.sporteco.models.app.Programs;
+import in.sashi.sporteco.utils.AppUtils;
+import in.sashi.sporteco.utils.Constants;
 
 public class ProgramsActivity extends AppCompatActivity {
 
@@ -38,6 +52,7 @@ public class ProgramsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_programs);
 
         init();
+        setSupportActionBar(toolbar);
 
     }
 
@@ -76,6 +91,82 @@ public class ProgramsActivity extends AppCompatActivity {
         programsRV.setAdapter(adapter);
 
         populate();
+
+//        fetchPrograms();
+
+    }
+
+    private void fetchPrograms() {
+
+        CoachDetails details = SQLite.select()
+                .from(CoachDetails.class)
+                .querySingle();
+
+        String coachId = AppUtils.getCoachId();
+        Log.d(TAG, "Coach id in programs:\t" + coachId);
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("coach_id", coachId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(Constants.BASE_URL + "coach_programs_screen")
+                .setPriority(Priority.HIGH)
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "Response:\t" + response.toString());
+                        try {
+                            JSONObject  object = new JSONObject(response.toString());
+                            JSONArray array = object.getJSONArray("programs");
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject obj = array.getJSONObject(i);
+                                Programs programs = new Programs();
+                                String name = obj.getString("prg_name");
+                                programs.setProgramName(name);
+                                Log.d(TAG, "pn:\t" + name);
+                                Log.d(TAG, "pn:\t" + programs.getProgramName());
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+
+//        Call<Programs> call = RestClient.getRestInstance()
+//                .getProgramsService()
+//                .getProgramsCoach(coachId);
+//
+//        call.enqueue(new Callback<Programs>() {
+//            @Override
+//            public void onResponse(Call<Programs> call, Response<Programs> response) {
+//                if (response.isSuccessful()){
+//                    Log.d(TAG, "Programs Response:\t" + response.body());
+//                    Programs programs = response.body();
+//                    Log.d(TAG, "pn:\t" + programs.getProgramName());
+//                } else {
+//                    Snackbar.make(findViewById(android.R.id.content), "Load Programs Failed with Error Code:\t" + response.code(),
+//                            Snackbar.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Programs> call, Throwable t) {
+//                Snackbar.make(findViewById(android.R.id.content), "Unable to Get Your Programs...Check Your Connection or Credentials",
+//                        Snackbar.LENGTH_LONG).show();
+//                Log.d(TAG, "Error:\t" + t.getMessage());
+//            }
+//        });
 
     }
 
@@ -153,4 +244,5 @@ public class ProgramsActivity extends AppCompatActivity {
         list.add(program9);
 
     }
+
 }

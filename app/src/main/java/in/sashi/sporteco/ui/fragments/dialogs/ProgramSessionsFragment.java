@@ -80,41 +80,42 @@ public class ProgramSessionsFragment extends DialogFragment {
         programsSessionsRV.setHasFixedSize(true);
         programsSessionsRV.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
-        populate();
+//        populate();
 
         adapter = new ProgramsSessionsAdapter(getActivity(), list);
         programsSessionsRV.setAdapter(adapter);
     }
 
-    private void populate() {
-        Sessions one = new Sessions();
-        one.setSessionName("Session 1");
-        one.setNumSessions_Drills("21");
-        list.add(one);
+//    private void populate() {
+//        Sessions one = new Sessions();
+//        one.setSessionName("Session 1");
+//        one.setNumSessions_Drills("21");
+//        list.add(one);
+//
+//        Sessions two = new Sessions();
+//        two.setSessionName("Session 2");
+//        two.setNumSessions_Drills("21");
+//        list.add(two);
+//
+//        Sessions three = new Sessions();
+//        three.setSessionName("Session 3");
+//        three.setNumSessions_Drills("21");
+//        list.add(three);
+//
+//        Sessions four = new Sessions();
+//        four.setSessionName("Session 4");
+//        four.setNumSessions_Drills("21");
+//        list.add(four);
+//
+//        Sessions five = new Sessions();
+//        five.setSessionName("Session 5");
+//        five.setNumSessions_Drills("21");
+//        list.add(five);
+//
+//        Sessions six = new Sessions();
+//        six.setSessionName("Session 6");
+//        six.setNumSessions_Drills("21");
+//        list.add(six);
+//    }
 
-        Sessions two = new Sessions();
-        two.setSessionName("Session 2");
-        two.setNumSessions_Drills("21");
-        list.add(two);
-
-        Sessions three = new Sessions();
-        three.setSessionName("Session 3");
-        three.setNumSessions_Drills("21");
-        list.add(three);
-
-        Sessions four = new Sessions();
-        four.setSessionName("Session 4");
-        four.setNumSessions_Drills("21");
-        list.add(four);
-
-        Sessions five = new Sessions();
-        five.setSessionName("Session 5");
-        five.setNumSessions_Drills("21");
-        list.add(five);
-
-        Sessions six = new Sessions();
-        six.setSessionName("Session 6");
-        six.setNumSessions_Drills("21");
-        list.add(six);
-    }
 }

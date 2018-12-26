@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
         initPicker();
 
-        setUpSessions();
+//        setUpSessions();
         sessionsAdapter = new SessionsAdapter(getActivity(), sessionsList);
         sessionsRV.setAdapter(sessionsAdapter);
 
@@ -127,69 +127,69 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
     }
 
-    private void setUpSessions() {
-        sessionsRV.setHasFixedSize(true);
-        LinearLayoutManager hlm = new LinearLayoutManager(getActivity());
-        hlm.setOrientation(LinearLayoutManager.HORIZONTAL);
-        sessionsRV.setLayoutManager(hlm);
-
-        Sessions sessions = new Sessions();
-        sessions.setProgramName("Program 2018");
-        sessions.setBatchName("Evening Batch");
-        sessions.setParticipantsCount("23");
-        sessions.setSessionName("Session 1");
-        sessions.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions);
-
-        Sessions sessions2 = new Sessions();
-        sessions2.setProgramName("Program 2018");
-        sessions2.setBatchName("Evening Batch");
-        sessions2.setParticipantsCount("23");
-        sessions2.setSessionName("Session 2");
-        sessions2.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions2);
-
-        Sessions sessions3 = new Sessions();
-        sessions3.setProgramName("Program 2018");
-        sessions3.setBatchName("Evening Batch");
-        sessions3.setParticipantsCount("23");
-        sessions3.setSessionName("Session 3");
-        sessions3.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions3);
-
-        Sessions sessions4 = new Sessions();
-        sessions4.setProgramName("Program 2018");
-        sessions4.setBatchName("Evening Batch");
-        sessions4.setParticipantsCount("23");
-        sessions4.setSessionName("Session 4");
-        sessions4.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions4);
-
-        Sessions sessions5 = new Sessions();
-        sessions5.setProgramName("Program 2018");
-        sessions5.setBatchName("Evening Batch");
-        sessions5.setParticipantsCount("23");
-        sessions5.setSessionName("Session 5");
-        sessions5.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions5);
-
-        Sessions sessions6 = new Sessions();
-        sessions6.setProgramName("Program 2018");
-        sessions6.setBatchName("Evening Batch");
-        sessions6.setParticipantsCount("23");
-        sessions6.setSessionName("Session 6");
-        sessions6.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions6);
-
-        Sessions sessions7 = new Sessions();
-        sessions7.setProgramName("Program 2018");
-        sessions7.setBatchName("Evening Batch");
-        sessions7.setParticipantsCount("23");
-        sessions7.setSessionName("Session 7");
-        sessions7.setSessionIcon(R.drawable.ic_basket_ball);
-        sessionsList.add(sessions7);
-
-    }
+//    private void setUpSessions() {
+//        sessionsRV.setHasFixedSize(true);
+//        LinearLayoutManager hlm = new LinearLayoutManager(getActivity());
+//        hlm.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        sessionsRV.setLayoutManager(hlm);
+//
+//        Sessions sessions = new Sessions();
+//        sessions.setProgramName("Program 2018");
+//        sessions.setBatchName("Evening Batch");
+//        sessions.setParticipantsCount("23");
+//        sessions.setSessionName("Session 1");
+//        sessions.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions);
+//
+//        Sessions sessions2 = new Sessions();
+//        sessions2.setProgramName("Program 2018");
+//        sessions2.setBatchName("Evening Batch");
+//        sessions2.setParticipantsCount("23");
+//        sessions2.setSessionName("Session 2");
+//        sessions2.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions2);
+//
+//        Sessions sessions3 = new Sessions();
+//        sessions3.setProgramName("Program 2018");
+//        sessions3.setBatchName("Evening Batch");
+//        sessions3.setParticipantsCount("23");
+//        sessions3.setSessionName("Session 3");
+//        sessions3.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions3);
+//
+//        Sessions sessions4 = new Sessions();
+//        sessions4.setProgramName("Program 2018");
+//        sessions4.setBatchName("Evening Batch");
+//        sessions4.setParticipantsCount("23");
+//        sessions4.setSessionName("Session 4");
+//        sessions4.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions4);
+//
+//        Sessions sessions5 = new Sessions();
+//        sessions5.setProgramName("Program 2018");
+//        sessions5.setBatchName("Evening Batch");
+//        sessions5.setParticipantsCount("23");
+//        sessions5.setSessionName("Session 5");
+//        sessions5.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions5);
+//
+//        Sessions sessions6 = new Sessions();
+//        sessions6.setProgramName("Program 2018");
+//        sessions6.setBatchName("Evening Batch");
+//        sessions6.setParticipantsCount("23");
+//        sessions6.setSessionName("Session 6");
+//        sessions6.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions6);
+//
+//        Sessions sessions7 = new Sessions();
+//        sessions7.setProgramName("Program 2018");
+//        sessions7.setBatchName("Evening Batch");
+//        sessions7.setParticipantsCount("23");
+//        sessions7.setSessionName("Session 7");
+//        sessions7.setSessionIcon(R.drawable.ic_basket_ball);
+//        sessionsList.add(sessions7);
+//
+//    }
 
     private void initPicker() {
         picker.setListener(this)

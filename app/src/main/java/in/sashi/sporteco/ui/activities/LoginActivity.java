@@ -92,7 +92,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Coach coach = response.body();
 
                     coach_id = coach.getCoachDetails().getCoachId();
-//                    Log.d(TAG, "CId:\t" + coach_id);
                     String acadId = coach.getCoachDetails().getAcademyId();
                     String username = coach.getCoachDetails().getUsername();
                     String first = coach.getCoachDetails().getFirstName();
@@ -103,10 +102,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     String mid_name = coach.getCoachDetails().getMidName();
                     String nick = coach.getCoachDetails().getNickName();
                     String state = coach.getCoachDetails().getOriginState();
-//                    Log.d(TAG, "State:\t" + state);
 
                     CoachDetails coachDetails = new CoachDetails();
-//                    coachDetails.insertInfo(coach_id, acadId, username, first, last, gender, mobile, mid_name, nick, state);
                     coachDetails.setCoachId(coach_id);
                     coachDetails.setAcademyId(acadId);
                     coachDetails.setFirstName(first);
@@ -116,16 +113,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     coachDetails.setEmailAddr(email);
                     coachDetails.setMidName(mid_name);
                     coachDetails.setNickName(nick);
+                    coachDetails.setUsername(username);
                     coachDetails.setOriginState(state);
                     coachDetails.save();
 
-//                    CoachDetails details = SQLite.select()
-//                            .from(CoachDetails.class)
-//                            .querySingle();
+                    CoachDetails details = SQLite.select()
+                            .from(CoachDetails.class)
+                            .querySingle();
 
-//                    Log.d(TAG, "CId from db:\t" + details.getCoachId() + " first_name:\t" + details.getFirstName()); // name is null and id is showing properly
+                    Log.d(TAG, "CId from db:\t" + details.getCoachId() + " first_name:\t" + details.getFirstName()
+                            + " last_name:\t" + details.getLastName() + " email:\t" + details.getEmailAddr()
+                            + " aid:\t" + details.getAcademyId() + " state:\t" + details.getOriginState());
 
-//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    coach_id = details.getCoachId();
+                    fetchAllData(coach_id); // TODO: 12/18/2018 Make api services for each
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Login Failed with Error Code:\t" + response.code(),
                             Snackbar.LENGTH_LONG).show();
@@ -137,101 +140,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onFailure(Call<Coach> call, Throwable t) {
                 Snackbar.make(findViewById(android.R.id.content), "Unable to Login...Check Your Connection or Credentials",
                         Snackbar.LENGTH_LONG).show();
+                Log.d(TAG, "Error:\t" + t.getMessage());
+                loginBtn.setEnabled(true);
             }
         });
     }
 
-    private void doLogin(String email, String pwd) {
+    private void fetchAllData(String coach_id) {
 
-        JSONObject jsonObject = new JSONObject();
-        try {
-//            jsonObject.put("username", email);
-//            jsonObject.put("password", pwd);
-            jsonObject.put("username", "testcoach@gmail.com");
-            jsonObject.put("password", "123@abcd");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        AndroidNetworking.post(Constants.LOGIN_COACH)
-                .addJSONObjectBody(jsonObject)
-                .setTag("CoachDetails Login")
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Snackbar.make(findViewById(android.R.id.content), "Waiting for Response", Snackbar.LENGTH_LONG).show();
-                        if (response != null) {
-
-                            Snackbar.make(findViewById(android.R.id.content), "Got Response", Snackbar.LENGTH_LONG).show();
-
-                            Log.d(TAG, "Login Resp:\t" + response.toString());
-
-                            try {
-                                JSONObject object = new JSONObject(response.toString());
-                                JSONObject details = object.getJSONObject("coach_details");
-
-                                coach_id = details.getString("coach_id");
-
-                                String academyId = details.getString("academy_id");
-                                String username = details.getString("username");
-                                String firstName = details.getString("first_name");
-                                String lastName = details.getString("last_name");
-                                String midName = details.getString("middle_name");
-                                String nick = details.getString("nick_name");
-                                String gender = details.getString("gender");
-                                String mobile = details.getString("mobile");
-                                String state = details.getString("state");
-                                String email_coach = details.getString("email");
-
-                                // Save in db
-//                                saveCoachDetails(coach_id, academyId, username, firstName, lastName, midName, nick, gender, mobile, state, email_coach);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.d(TAG, anError.getErrorDetail());
-                    }
-                });
     }
-
-//    private void saveCoachDetails(String idCoach, String academyId, String username, String firstName, String lastName, String midName, String nick, String gender, String mobile, String state, String email) {
-//
-//        Snackbar.make(findViewById(android.R.id.content), "Saving CoachDetails Bio", Snackbar.LENGTH_LONG).show();
-//
-//        coachDetails = new CoachDetails();
-//        coachDetails.setCoachId(idCoach);
-//        coachDetails.setAcademyId(academyId);
-//        coachDetails.setUsername(username);
-//        coachDetails.setEmailAddr(email);
-//        coachDetails.setFirstName(firstName);
-//        coachDetails.setLastName(lastName);
-//        coachDetails.setMidName(midName);
-//        coachDetails.setNickName(nick);
-//        coachDetails.setGender(gender);
-//        coachDetails.setMobileNum(mobile);
-//        coachDetails.setOriginState(state);
-//
-//        coachDetails.save();
-//        Snackbar.make(findViewById(android.R.id.content), "Save Complete", Snackbar.LENGTH_LONG).show();
-//
-//        CoachDetails coachQuery = new Select()
-//                .from(CoachDetails.class)
-//                .where("coach_id=?", coach_id)
-//                .executeSingle();
-//        Log.d(TAG, "CoachDetails id:\t" + coachQuery.coachId);
-//        coach_id = coachQuery.coachId;
-//
-//        getAllData(coach_id);
-//
-//
-//    }
 
     private void getAllData(String coach_id) {
 

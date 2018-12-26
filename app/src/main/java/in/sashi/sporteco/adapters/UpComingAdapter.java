@@ -14,14 +14,15 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Sessions;
+import in.sashi.sporteco.models.app.UpComingSessions;
 import in.sashi.sporteco.viewholders.UpComingViewHolder;
 
 public class UpComingAdapter extends RecyclerView.Adapter<UpComingViewHolder> {
 
     private final Context context;
-    private List<Sessions> itemsList;
+    private List<UpComingSessions> itemsList;
 
-    public UpComingAdapter(Context context, List<Sessions> itemsList) {
+    public UpComingAdapter(Context context, List<UpComingSessions> itemsList) {
         this.context = context;
         this.itemsList = itemsList;
     }
@@ -35,29 +36,24 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingViewHolder> {
 
     @Override
     public void onBindViewHolder(UpComingViewHolder viewholder, final int position) {
-        Sessions sessions = itemsList.get(position);
+        UpComingSessions sessions = itemsList.get(position);
         viewholder.upcomingNameTV.setText(sessions.getSessionName());
 
         viewholder.upcomingNameTV.setText(sessions.getSessionName());
-        viewholder.numSessionsUpcomingTV.setText(sessions.getNumSessions_Drills());
+//        viewholder.numSessionsUpcomingTV.setText(sessions.getNumSessions_Drills());
         viewholder.upcomingBatchNameTV.setText(sessions.getBatchName());
-        viewholder.upcomingProgramNameTV.setText(sessions.getProgramName());
-        viewholder.upcoming_present_countTV.setText(sessions.getPresentCountPlayers());
-        viewholder.upcoming_total_countTV.setText(sessions.getParticipantsCount());
+        viewholder.upcomingProgramNameTV.setText(sessions.getProgram_name());
+        viewholder.upcoming_present_countTV.setText(sessions.getPresent_count());
+        viewholder.upcoming_total_countTV.setText(sessions.getPlayers_count());
         viewholder.upcoming_timeTV.setText(sessions.getHour_start());
         viewholder.upcoming_dateTV.setText(sessions.getDate_start());
 
-        Picasso.with(context)
-                .load(sessions.getSessionIcon())
-                .placeholder(R.drawable.app_logo_resized)
-                .into(viewholder.upcomingIV);
-
-        viewholder.rootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Clicked a position " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        viewholder.rootLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "Clicked a position " + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 

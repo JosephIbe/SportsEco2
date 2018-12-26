@@ -1,57 +1,67 @@
 package in.sashi.sporteco.models.app;
 
-//@Table(name = "all_players_coach")
-//public class Players extends Model {
-public class Players {
+import com.google.gson.annotations.SerializedName;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
-//    @Column(name = "user_id_player")
+import in.sashi.sporteco.rest.db.SportsDatabase;
+
+@Table(database = SportsDatabase.class, name = "players")
+public class Players extends BaseModel {
+
+//    @SerializedName("")
+    @PrimaryKey
+    @Column
     public String userId;
 
-//    @Column(name = "first_name_player")
+    @Column
     public String firstName;
 
-//    @Column(name = "last_name_player")
+    @Column
     public String lastName;
 
-//    @Column(name = "image_url_player")
+    @Column
     public String imageURL;
 
-//    @Column(name = "username_player")
+    @Column
     public String username;
 
-//    @Column(name = "address_player")
+    @Column
     public String address;
 
-//    @Column(name = "dob_player")
+    @Column
     public String dobPlayer;
 
-//    @Column(name = "gender_player")
+    @Column
     public String genderPlayer;
 
-//    @Column(name = "pincode_player")
+    @Column
     public String pinCodePlayer;
 
-//    @Column(name = "height_player")
+    @Column
     public String heightPlayer;
 
-//    @Column(name = "weight_player")
+    @Column
     public String weightPlayer;
 
-//    @Column(name = "basketball_exp_player")
+    @Column
     public String bsktballExpPlayer;
 
-//    @Column(name = "position_player")
+    @Column
     public String positionPlayer;
 
-//    @Column(name = "state_player")
+    @Column
     public String statePlayer;
 
-//    @Column(name = "mobile_player")
+    @Column
     public String mobilePlayer;
 
-//    @Column(name = "batch_player")
+    @Column
     public String batchPlayer;
 
+    @Column
     public boolean isSelected;
 
     public Players() {

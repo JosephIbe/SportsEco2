@@ -11,7 +11,6 @@ public class DBProvider {
 //        builder.addModelClass(Batch.class);
 //        builder.addModelClass(Sessions.class);
 //        builder.addModelClass(Players.class);
-//        builder.addModelClass(PlayerSession.class);
 //        builder.addModelClass(Programs.class);
 //        return builder.create();
 //    }

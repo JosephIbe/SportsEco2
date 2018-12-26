@@ -41,8 +41,8 @@ public class ProgramsSessionsAdapter extends RecyclerView.Adapter<ProgramsSessio
 //        viewholder.program_sessionNameTV.setText("Session 1");
 //        viewholder.program_drillsTV.setText("23");
 
-        viewholder.program_drillsTV.setText(sessions.getNumSessions_Drills());
-        viewholder.program_sessionNameTV.setText(sessions.getSessionName());
+//        viewholder.program_drillsTV.setText(sessions.getNumSessions_Drills());
+//        viewholder.program_sessionNameTV.setText(sessions.getSessionName());
 
     }
 

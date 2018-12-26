@@ -1,24 +1,17 @@
 package in.sashi.sporteco.models.app;
 
-//@Table(name = "coach_batches")
-//public class Batch extends Model{
 public class Batch {
 
     private String message;
 
-//    @Column(name = "batch_id")
     public String batchId;
 
-//    @Column(name = "batch_name")
     public String batchName;
 
-//    @Column(name = "program_name")
     public String programName;
 
-//    @Column(name = "start_date")
     public String startDate;
 
-//    @Column(name = "playesr_count")
     public String playersCount;
 
     public BatchFooter batchFooter;

@@ -8,7 +8,7 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class)
+@Table(database = SportsDatabase.class, name = "coach_info")
 public class CoachDetails extends BaseModel {
 
     @SerializedName("coach_id")
@@ -17,34 +17,50 @@ public class CoachDetails extends BaseModel {
     public String coachId;
 
     @SerializedName("academy_id")
+    @Column
     public String academyId;
 
     @SerializedName("username")
+    @Column
     public String username;
 
     @SerializedName("first_name")
+    @Column
     public String firstName;
 
     @SerializedName("last_name")
+    @Column
     public String lastName;
 
     @SerializedName("gender")
+    @Column
     public String gender;
 
     @SerializedName("mobile")
+    @Column
     public String mobileNum;
 
     @SerializedName("email")
+    @Column
     public String emailAddr;
 
     @SerializedName("middle_name")
+    @Column
     public String midName;
 
     @SerializedName("nick_name")
+    @Column
     public String nickName;
 
     @SerializedName("state")
+    @Column
     public String originState;
+
+    public String batchCount;
+
+    public String playersCount;
+
+    public String programsCount;
 
     public CoachDetails() {
     }
@@ -137,16 +153,27 @@ public class CoachDetails extends BaseModel {
         this.originState = originState;
     }
 
-    public void insertInfo(String coach_id, String acadId, String username, String first, String last, String gender, String mobile, String mid_name, String nick, String state) {
-        this.coachId = coach_id;
-        this.academyId = acadId;
-        this.username = username;
-        this.firstName = first;
-        this.lastName = last;
-        this.gender = gender;
-        this.mobileNum = mobile;
-        this.midName = mid_name;
-        this.nickName = nick;
-        this.originState = state;
+    public String getBatchCount() {
+        return batchCount;
+    }
+
+    public void setBatchCount(String batchCount) {
+        this.batchCount = batchCount;
+    }
+
+    public String getPlayersCount() {
+        return playersCount;
+    }
+
+    public void setPlayersCount(String playersCount) {
+        this.playersCount = playersCount;
+    }
+
+    public String getProgramsCount() {
+        return programsCount;
+    }
+
+    public void setProgramsCount(String programsCount) {
+        this.programsCount = programsCount;
     }
 }
