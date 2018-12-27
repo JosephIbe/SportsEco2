@@ -113,7 +113,7 @@ public class UpComingFragment extends Fragment {
                                 sessions.setIsComplete(details.getString("session_complete"));
 
                                 sessionsList.add(sessions);
-                                sessions.save();
+//                                sessions.save();
 
                                 adapter = new UpComingAdapter(getActivity(), sessionsList);
                                 upComingRV.setAdapter(adapter);

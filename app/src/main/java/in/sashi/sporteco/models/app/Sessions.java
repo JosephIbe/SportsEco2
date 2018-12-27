@@ -1,14 +1,20 @@
 package in.sashi.sporteco.models.app;
 
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ConflictAction;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class, name = "sessions")
+@Table(database = SportsDatabase.class, name = "sessions",
+        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
+        cachingEnabled = true)
 public class Sessions extends BaseModel {
+
+    @Column
+    public String sessionIcon;
 
     @Column
     public String session_name;
@@ -75,6 +81,14 @@ public class Sessions extends BaseModel {
     public String num_sessions_drills;
 
     public Sessions() {
+    }
+
+    public String getSessionIcon() {
+        return sessionIcon;
+    }
+
+    public void setSessionIcon(String sessionIcon) {
+        this.sessionIcon = sessionIcon;
     }
 
     public String getSession_name() {

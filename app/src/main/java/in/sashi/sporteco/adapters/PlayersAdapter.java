@@ -22,6 +22,7 @@ import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_ADDRESS;
 import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_IMAGE_URL;
 import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_NAME;
 import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_STATE;
+import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_USER_ID;
 
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersViewHolder> {
 
@@ -46,10 +47,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersViewHolder> {
         viewholder.playerBatchTV.setText(players.getBatchPlayer());
         Picasso.with(context)
                 .load(players.getImageURL())
-//                .resize(100, 100)
-//                .centerCrop()
-//                .transform(new CircleTransform(50, 0))
-//                .fit()
+                .placeholder(R.drawable.app_logo_resized)
                 .placeholder(R.drawable.app_logo_resized)
                 .into(viewholder.playerCIV);
 
@@ -58,12 +56,12 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersViewHolder> {
             public void onClick(View v) {
                 PlayerInfoFragment fragment = new PlayerInfoFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString(PLAYER_KEY_IMAGE_URL, players.getImageURL());
-                String fullName = players.getFirstName() + " " + players.getLastName();
-                bundle.putString(PLAYER_KEY_NAME, fullName);
-                bundle.putString(PLAYER_KEY_ADDRESS, players.getAddress());
-                bundle.putString(PLAYER_KEY_STATE, players.getStatePlayer());
-//                bundle.putString(KEY_, players.);
+//                bundle.putString(PLAYER_KEY_IMAGE_URL, players.getImageURL());
+//                String fullName = players.getFirstName() + " " + players.getLastName();
+//                bundle.putString(PLAYER_KEY_NAME, fullName);
+//                bundle.putString(PLAYER_KEY_ADDRESS, players.getAddress());
+//                bundle.putString(PLAYER_KEY_STATE, players.getStatePlayer());
+                bundle.putString(PLAYER_KEY_USER_ID, players.getUserId());
                 fragment.setArguments(bundle);
                 fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "PlayerInfoFragment");
             }

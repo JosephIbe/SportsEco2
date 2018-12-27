@@ -32,8 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Session 1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/text_color" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/numSessionsUpcomingTV"

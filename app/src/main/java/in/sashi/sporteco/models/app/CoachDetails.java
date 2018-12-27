@@ -2,13 +2,16 @@ package in.sashi.sporteco.models.app;
 
 import com.google.gson.annotations.SerializedName;
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ConflictAction;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class, name = "coach_info")
+@Table(database = SportsDatabase.class, name = "coach_info",
+        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
+        cachingEnabled = true)
 public class CoachDetails extends BaseModel {
 
     @SerializedName("coach_id")
@@ -56,10 +59,19 @@ public class CoachDetails extends BaseModel {
     @Column
     public String originState;
 
+    @Column
+    public String address;
+
+    @Column
+    public String imageURL;
+
+    @Column
     public String batchCount;
 
+    @Column
     public String playersCount;
 
+    @Column
     public String programsCount;
 
     public CoachDetails() {
@@ -151,6 +163,22 @@ public class CoachDetails extends BaseModel {
 
     public void setOriginState(String originState) {
         this.originState = originState;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getBatchCount() {

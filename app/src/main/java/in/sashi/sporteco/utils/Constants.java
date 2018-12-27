@@ -60,6 +60,7 @@ public class Constants {
      *
      * */
 
+    public static final String PLAYER_KEY_USER_ID = "user_id";
     public static final String PLAYER_KEY_IMAGE_URL = "player_img_url";
     public static final String PLAYER_KEY_NAME = "player_name";
     public static final String PLAYER_KEY_ADDRESS = "player_address";

@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginBtn:
-                Snackbar.make(findViewById(android.R.id.content), "Login Clicked", Snackbar.LENGTH_LONG).show();
+//                Snackbar.make(findViewById(android.R.id.content), "Login Clicked", Snackbar.LENGTH_LONG).show();
                 // add validation later;
                 username = etUsername.getText().toString();
                 pwd = etPwd.getText().toString();
@@ -121,12 +121,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             .from(CoachDetails.class)
                             .querySingle();
 
-                    Log.d(TAG, "CId from db:\t" + details.getCoachId() + " first_name:\t" + details.getFirstName()
-                            + " last_name:\t" + details.getLastName() + " email:\t" + details.getEmailAddr()
-                            + " aid:\t" + details.getAcademyId() + " state:\t" + details.getOriginState());
-
                     coach_id = details.getCoachId();
-                    fetchAllData(coach_id); // TODO: 12/18/2018 Make api services for each
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                 } else {
@@ -144,45 +139,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginBtn.setEnabled(true);
             }
         });
-    }
-
-    private void fetchAllData(String coach_id) {
-
-    }
-
-    private void getAllData(String coach_id) {
-
-        Snackbar.make(findViewById(android.R.id.content), "Getting All Data", Snackbar.LENGTH_LONG).show();
-
-        Log.d(TAG, "Getting Data");
-
-        JSONObject data = new JSONObject();
-        try {
-            data.put("coach_id", coach_id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        AndroidNetworking.post(Constants.GET_ALL_DATA)
-                .setTag("Get CoachDetails Meta")
-                .setPriority(Priority.HIGH)
-                .addJSONObjectBody(data)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        if (response != null) {
-                            Log.d(TAG, "GAD:\t" + response.toString());
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.d(TAG, anError.getErrorDetail());
-                    }
-                });
-
     }
 
 }

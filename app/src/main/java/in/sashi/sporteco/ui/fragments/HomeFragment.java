@@ -15,12 +15,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.github.jhonnyx2012.horizontalpicker.DatePickerListener;
 import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker;
 
 import org.joda.time.DateTime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import in.sashi.sporteco.R;
@@ -37,6 +47,8 @@ import in.sashi.sporteco.ui.activities.EvaluateActivity;
 import in.sashi.sporteco.ui.activities.PlayersActivity;
 import in.sashi.sporteco.ui.activities.ProgramsActivity;
 import in.sashi.sporteco.ui.fragments.dialogs.DateDialogFragment;
+import in.sashi.sporteco.utils.AppUtils;
+import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.utils.RecyclerItemTouchListener;
 
 /**
@@ -85,7 +97,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
         initPicker();
 
-//        setUpSessions();
+        setUpSessions();
         sessionsAdapter = new SessionsAdapter(getActivity(), sessionsList);
         sessionsRV.setAdapter(sessionsAdapter);
 
@@ -96,7 +108,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
         viewAllSchedulesTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), CalendarViewActivity.class));
+//                startActivity(new Intent(getActivity(), CalendarViewActivity.class));
             }
         });
 
@@ -127,69 +139,63 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
     }
 
-//    private void setUpSessions() {
-//        sessionsRV.setHasFixedSize(true);
-//        LinearLayoutManager hlm = new LinearLayoutManager(getActivity());
-//        hlm.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        sessionsRV.setLayoutManager(hlm);
-//
-//        Sessions sessions = new Sessions();
-//        sessions.setProgramName("Program 2018");
-//        sessions.setBatchName("Evening Batch");
-//        sessions.setParticipantsCount("23");
-//        sessions.setSessionName("Session 1");
-//        sessions.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions);
-//
-//        Sessions sessions2 = new Sessions();
-//        sessions2.setProgramName("Program 2018");
-//        sessions2.setBatchName("Evening Batch");
-//        sessions2.setParticipantsCount("23");
-//        sessions2.setSessionName("Session 2");
-//        sessions2.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions2);
-//
-//        Sessions sessions3 = new Sessions();
-//        sessions3.setProgramName("Program 2018");
-//        sessions3.setBatchName("Evening Batch");
-//        sessions3.setParticipantsCount("23");
-//        sessions3.setSessionName("Session 3");
-//        sessions3.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions3);
-//
-//        Sessions sessions4 = new Sessions();
-//        sessions4.setProgramName("Program 2018");
-//        sessions4.setBatchName("Evening Batch");
-//        sessions4.setParticipantsCount("23");
-//        sessions4.setSessionName("Session 4");
-//        sessions4.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions4);
-//
-//        Sessions sessions5 = new Sessions();
-//        sessions5.setProgramName("Program 2018");
-//        sessions5.setBatchName("Evening Batch");
-//        sessions5.setParticipantsCount("23");
-//        sessions5.setSessionName("Session 5");
-//        sessions5.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions5);
-//
-//        Sessions sessions6 = new Sessions();
-//        sessions6.setProgramName("Program 2018");
-//        sessions6.setBatchName("Evening Batch");
-//        sessions6.setParticipantsCount("23");
-//        sessions6.setSessionName("Session 6");
-//        sessions6.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions6);
-//
-//        Sessions sessions7 = new Sessions();
-//        sessions7.setProgramName("Program 2018");
-//        sessions7.setBatchName("Evening Batch");
-//        sessions7.setParticipantsCount("23");
-//        sessions7.setSessionName("Session 7");
-//        sessions7.setSessionIcon(R.drawable.ic_basket_ball);
-//        sessionsList.add(sessions7);
-//
-//    }
+    private void setUpSessions() {
+        sessionsRV.setHasFixedSize(true);
+        LinearLayoutManager hlm = new LinearLayoutManager(getActivity());
+        hlm.setOrientation(LinearLayoutManager.HORIZONTAL);
+        sessionsRV.setLayoutManager(hlm);
+
+        String coachId = AppUtils.getCoachId();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("coach_id", coachId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(Constants.BASE_URL + "session_list")
+                .setPriority(Priority.HIGH)
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject object = new JSONObject(response.toString());
+                            JSONArray arr = object.getJSONArray("session_details");
+                            for (int i = 0; i < arr.length(); i++) {
+                                JSONObject details = arr.getJSONObject(i);
+                                Sessions sessions = new Sessions();
+                                sessions.setSession_name(details.getString("prg_session_name"));
+                                sessions.setBatch_name(details.getString("batch_name"));
+                                sessions.setProgram_name(details.getString("prg_name"));
+                                sessions.setSession_id(details.getString("prg_session_id"));
+                                sessions.setIs_complete(details.getString("session_complete"));
+                                sessions.setEquipments_reqd(details.getString("prg_session_equipment"));
+                                sessions.setSession_desc(details.getString("prg_session_description"));
+                                sessions.setSession_focus_points(details.getString("prg_session_image"));
+                                sessions.setParticipants_count(details.getString("player_count"));
+                                sessions.setSessionIcon(details.getString("prg_session_image"));
+
+                                sessionsList.add(sessions);
+                                sessions.save();
+
+                                sessionsAdapter = new SessionsAdapter(getActivity(), sessionsList);
+                                sessionsRV.setAdapter(sessionsAdapter);
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+    }
 
     private void initPicker() {
         picker.setListener(this)
@@ -256,7 +262,6 @@ public class HomeFragment extends Fragment implements DatePickerListener {
                         break;
                     case 3:
                         startActivity(new Intent(getActivity(), ProgramsActivity.class));
-                        Toast.makeText(getActivity(), "Programs Clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
                         Toast.makeText(getActivity(), "VOD Clicked", Toast.LENGTH_SHORT).show();
@@ -268,11 +273,25 @@ public class HomeFragment extends Fragment implements DatePickerListener {
 
     @Override
     public void onDateSelected(DateTime dateSelected) {
-        Log.d(TAG, "Selected date is " + dateSelected.toString().substring(0, 10));
-        Toast.makeText(getActivity(), "Selected date is " + dateSelected.toString().substring(0, 10), Toast.LENGTH_SHORT).show();
+        String splicedDate = dateSelected.toString().substring(0, 10);
+        Log.d(TAG, "Selected date is " + splicedDate);
+        Toast.makeText(getActivity(), "Selected date is " + splicedDate, Toast.LENGTH_SHORT).show();
 
+        String fd = null;
         Bundle bundle = new Bundle();
-        bundle.putString("date_sel", dateSelected.toString());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("EEE, dd MMM yyyy");
+
+        try {
+            Date date = sdf.parse(splicedDate);
+            fd = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        bundle.putString("date_sel", splicedDate);
+        bundle.putString("date_formatted", fd);
 
         DateDialogFragment dateDialogFragment = new DateDialogFragment();
         dateDialogFragment.setArguments(bundle);

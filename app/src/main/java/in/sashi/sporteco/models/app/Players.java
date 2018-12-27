@@ -2,13 +2,16 @@ package in.sashi.sporteco.models.app;
 
 import com.google.gson.annotations.SerializedName;
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ConflictAction;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class, name = "players")
+@Table(database = SportsDatabase.class, name = "players",
+        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
+        cachingEnabled = true)
 public class Players extends BaseModel {
 
 //    @SerializedName("")
