@@ -87,27 +87,22 @@ public class ProgramsActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         programsRV.setLayoutManager(llm);
         programsRV.addItemDecoration(new DividerItemDecoration(this, llm.getOrientation()));
-        adapter = new ProgramsAdapter(this, list);
-        programsRV.setAdapter(adapter);
 
-        populate();
-
-//        fetchPrograms();
+        fetchPrograms();
 
     }
 
     private void fetchPrograms() {
 
-        CoachDetails details = SQLite.select()
-                .from(CoachDetails.class)
-                .querySingle();
+//        CoachDetails details = SQLite.select()
+//                .from(CoachDetails.class)
+//                .querySingle();
 
-        String coachId = AppUtils.getCoachId();
-        Log.d(TAG, "Coach id in programs:\t" + coachId);
+        Log.d(TAG, "Coach id in programs:\t" + AppUtils.getCoachId());
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("coach_id", coachId);
+            jsonObject.put("coach_id", AppUtils.getCoachId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -122,12 +117,27 @@ public class ProgramsActivity extends AppCompatActivity {
                         Log.d(TAG, "Response:\t" + response.toString());
                         try {
                             JSONObject  object = new JSONObject(response.toString());
-                            JSONArray array = object.getJSONArray("programs");
+//                            JSONArray array = object.getJSONArray("programs");
+                            JSONArray array = object.getJSONArray("program_details");
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject obj = array.getJSONObject(i);
+
                                 Programs programs = new Programs();
                                 String name = obj.getString("prg_name");
                                 programs.setProgramName(name);
+                                programs.setProgId(obj.getString("prg_id"));
+                                programs.setNumSessions(obj.getString("prg_no_session"));
+                                programs.setStartDate(obj.getString("prg_start_date"));
+                                programs.setProgImg(obj.getString("prg_image"));
+                                programs.setPlaceName(null);
+                                programs.setProgramDesc(null);
+                                programs.setPlayer_count(obj.getString("player_count"));
+
+                                list.add(programs);
+                                adapter = new ProgramsAdapter(ProgramsActivity.this, list);
+                                programsRV.setAdapter(adapter);
+                                programs.save();
+
                                 Log.d(TAG, "pn:\t" + name);
                                 Log.d(TAG, "pn:\t" + programs.getProgramName());
                             }
@@ -141,32 +151,6 @@ public class ProgramsActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-//        Call<Programs> call = RestClient.getRestInstance()
-//                .getProgramsService()
-//                .getProgramsCoach(coachId);
-//
-//        call.enqueue(new Callback<Programs>() {
-//            @Override
-//            public void onResponse(Call<Programs> call, Response<Programs> response) {
-//                if (response.isSuccessful()){
-//                    Log.d(TAG, "Programs Response:\t" + response.body());
-//                    Programs programs = response.body();
-//                    Log.d(TAG, "pn:\t" + programs.getProgramName());
-//                } else {
-//                    Snackbar.make(findViewById(android.R.id.content), "Load Programs Failed with Error Code:\t" + response.code(),
-//                            Snackbar.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Programs> call, Throwable t) {
-//                Snackbar.make(findViewById(android.R.id.content), "Unable to Get Your Programs...Check Your Connection or Credentials",
-//                        Snackbar.LENGTH_LONG).show();
-//                Log.d(TAG, "Error:\t" + t.getMessage());
-//            }
-//        });
 
     }
 

@@ -160,6 +160,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d(TAG, "SeshResp:\t" + response.toString());
                         try {
                             JSONObject object = new JSONObject(response.toString());
                             JSONArray arr = object.getJSONArray("session_details");
@@ -173,7 +174,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
                                 sessions.setIs_complete(details.getString("session_complete"));
                                 sessions.setEquipments_reqd(details.getString("prg_session_equipment"));
                                 sessions.setSession_desc(details.getString("prg_session_description"));
-                                sessions.setSession_focus_points(details.getString("prg_session_image"));
+                                sessions.setSession_focus_points(details.getString("prg_session_focus_points"));
                                 sessions.setParticipants_count(details.getString("player_count"));
                                 sessions.setSessionIcon(details.getString("prg_session_image"));
 

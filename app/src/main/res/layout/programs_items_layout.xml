@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/text_color"
-            tools:text="Program Name" />
+            tools:text="Program Name"
+            android:maxLines="1"
+            android:maxLength="15"/>
 
         <LinearLayout
             android:id="@+id/numSessionsLayout"

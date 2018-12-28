@@ -30,13 +30,16 @@ public class Programs extends BaseModel {
     public String numSessions;
 
     @Column
-    public String progImage;
-
-    @Column
     public String programDesc;
 
     @Column
     public String placeName;
+
+    @Column
+    public String progImg;
+
+    @Column
+    public String player_count;
 
     public Programs() {
     }
@@ -47,7 +50,7 @@ public class Programs extends BaseModel {
         this.startDate = startDate;
         this.endDate = endDate;
         this.numSessions = numSessions;
-        this.progImage = progImage;
+        this.progImg = progImage;
         this.programDesc = programDesc;
         this.placeName = placeName;
     }
@@ -108,4 +111,19 @@ public class Programs extends BaseModel {
         this.placeName = placeName;
     }
 
+    public String getProgImg() {
+        return progImg;
+    }
+
+    public void setProgImg(String progImg) {
+        this.progImg = progImg;
+    }
+
+    public String getPlayer_count() {
+        return player_count;
+    }
+
+    public void setPlayer_count(String player_count) {
+        this.player_count = player_count;
+    }
 }

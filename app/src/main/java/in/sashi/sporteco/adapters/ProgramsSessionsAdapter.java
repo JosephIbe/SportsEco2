@@ -7,9 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import in.sashi.sporteco.R;
+import in.sashi.sporteco.models.app.ProgramSessionDetails;
 import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.models.app.Sessions;
 import in.sashi.sporteco.viewholders.ProgramsSessionsViewHolder;
@@ -17,13 +20,13 @@ import in.sashi.sporteco.viewholders.ProgramsSessionsViewHolder;
 public class ProgramsSessionsAdapter extends RecyclerView.Adapter<ProgramsSessionsViewHolder> {
 
     private final Context context;
-    private List<Sessions> itemsList;
+    private List<ProgramSessionDetails> itemsList;
 
     public ProgramsSessionsAdapter(Context ctx) {
         this.context = ctx;
     }
 
-    public ProgramsSessionsAdapter(Context context, List<Sessions> itemsList) {
+    public ProgramsSessionsAdapter(Context context, List<ProgramSessionDetails> itemsList) {
         this.context = context;
         this.itemsList = itemsList;
     }
@@ -36,13 +39,22 @@ public class ProgramsSessionsAdapter extends RecyclerView.Adapter<ProgramsSessio
 
     @Override
     public void onBindViewHolder(ProgramsSessionsViewHolder viewholder, int position) {
-        Sessions sessions = itemsList.get(position); // TODO: 12/16/2018 Bind Drills to Sessions and Sessions to Programs from Server
+        ProgramSessionDetails sessions = itemsList.get(position); // TODO: 12/16/2018 Bind Drills to Sessions and Sessions to Programs from Server
 
-//        viewholder.program_sessionNameTV.setText("Session 1");
-//        viewholder.program_drillsTV.setText("23");
+        viewholder.program_sessionNameTV.setText(sessions.getProgSessionName());
+        viewholder.program_drillsTV.setText(sessions.getProgSessionNumDrills());
 
-//        viewholder.program_drillsTV.setText(sessions.getNumSessions_Drills());
-//        viewholder.program_sessionNameTV.setText(sessions.getSessionName());
+        Picasso.with(context)
+                .load(sessions.getProgImage())
+                .placeholder(R.drawable.app_logo_resized)
+                .into(viewholder.program_sessionIV);
+
+        viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 

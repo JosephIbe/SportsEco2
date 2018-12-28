@@ -19,6 +19,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.squareup.picasso.Picasso;
 
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ViewPagerAdapter;
+import in.sashi.sporteco.models.app.Coach;
 import in.sashi.sporteco.models.app.CoachDetails;
 import in.sashi.sporteco.models.app.CoachDetails_Table;
 import in.sashi.sporteco.ui.activities.MainActivity;
@@ -120,7 +122,10 @@ public class ProfileFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response.toString());
                             JSONObject details = jsonObject.getJSONObject("coach_details");
 
-                            coach = new CoachDetails();
+//                            coach = new CoachDetails();
+                            coach = new SQLite().select()
+                                    .from(CoachDetails.class)
+                                    .querySingle();
 
                             coach.setFirstName(details.getString("first_name"));
                             coach.setLastName(details.getString("last_name"));

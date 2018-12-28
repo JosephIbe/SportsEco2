@@ -105,7 +105,7 @@ public class UpComingFragment extends Fragment {
                                 sessions.setProgram_name(details.getString("prg_name"));
                                 sessions.setEquipments_reqd(details.getString("prg_session_equipment"));
                                 sessions.setSessDuration(details.getString("prg_session_duration"));
-                                sessions.setDateTime(details.getString("prg_session_time"));
+                                sessions.setDateTime(details.getString("session_time"));
                                 sessions.setDate_start(details.getString("prg_session_start_datetime"));
                                 sessions.setDate_end(details.getString("prg_session_end_datetime"));
                                 sessions.setPresent_count(details.getString("present_count"));
@@ -113,7 +113,8 @@ public class UpComingFragment extends Fragment {
                                 sessions.setIsComplete(details.getString("session_complete"));
 
                                 sessionsList.add(sessions);
-//                                sessions.save();
+                                Log.d(TAG, "Upcoming size:\t" + sessionsList.size());
+                                sessions.save();
 
                                 adapter = new UpComingAdapter(getActivity(), sessionsList);
                                 upComingRV.setAdapter(adapter);

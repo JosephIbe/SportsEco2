@@ -11,17 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.ui.fragments.dialogs.ProgramSessionsFragment;
-import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.viewholders.ProgramsViewHolder;
 
-import static in.sashi.sporteco.utils.Constants.PROGRAM_DESC_KEY;
-import static in.sashi.sporteco.utils.Constants.PROGRAM_NAME_KEY;
-import static in.sashi.sporteco.utils.Constants.PROGRAM_PLACE_NAME_KEY;
+import static in.sashi.sporteco.utils.Constants.PROGRAM_ID_KEY;
 
 public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsViewHolder> {
 
@@ -45,15 +44,21 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsViewHolder> {
         viewholder.programTV.setText(programs.getProgramName());
         viewholder.sessionProgramsTV.setText(programs.getNumSessions());
         viewholder.dateProgramsTV.setText(programs.getStartDate());
+
+        Picasso.with(context)
+                .load(programs.getProgImg())
+                .placeholder(R.drawable.ic_new_program)
+                .into(viewholder.programsCIV);
+
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Clicked:\t" + position, Toast.LENGTH_SHORT).show();
                 ProgramSessionsFragment fragment = new ProgramSessionsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString(PROGRAM_NAME_KEY, programs.getProgramName());
-                bundle.putString(PROGRAM_DESC_KEY, programs.getProgramDesc());
-                bundle.putString(PROGRAM_PLACE_NAME_KEY, programs.getPlaceName());
+//                bundle.putString(PROGRAM_NAME_KEY, programs.getProgramName());
+//                bundle.putString(PROGRAM_DESC_KEY, programs.getProgramDesc());
+//                bundle.putString(PROGRAM_PLACE_NAME_KEY, programs.getPlaceName());
+                bundle.putString(PROGRAM_ID_KEY, programs.getProgId());
                 fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
                 fragment.setArguments(bundle);
                 fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "ProgramSessionsFragment");
