@@ -7,8 +7,8 @@
     android:layout_marginLeft="10dp"
     android:padding="5dp">
 
-    <RadioButton
-        android:id="@+id/radioTodo"
+    <CheckBox
+        android:id="@+id/checkTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="false"
@@ -23,7 +23,7 @@
         android:textColor="@color/gray"
         android:layout_centerVertical="true"
         android:maxLines="1"
-        android:layout_toRightOf="@id/radioTodo"
+        android:layout_toRightOf="@id/checkTodo"
         android:layout_marginLeft="20dp"/>
 
 </RelativeLayout>

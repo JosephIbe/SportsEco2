@@ -1,15 +1,27 @@
-package in.sashi.sporteco.ui.activities;
+package in.sashi.sporteco.ui.fragments.dialogs;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,48 +29,55 @@ import java.util.List;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.DrillsAdapter;
 import in.sashi.sporteco.models.app.Drills;
+import in.sashi.sporteco.utils.Constants;
 
-public class StartSessionActivity extends AppCompatActivity {
+public class StartSessionDialogFragment extends DialogFragment {
 
-    private static final String TAG = StartSessionActivity.class.getSimpleName();
+    private static final String TAG = StartSessionDialogFragment.class.getSimpleName();
 
     private Toolbar toolbar;
     private ImageView backIV;
     private TextView nameSessStartTV;
 
-    private String session_name;
+    private String session_name, session_id;
 
     private RecyclerView startSessRV;
     private List<Drills> itemsList = new ArrayList<>();
     private DrillsAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_session);
+        session_name = getArguments().getString(Constants.SESSION_NAME_KEY);
+        session_id = getArguments().getString(Constants.SESSION_ID_KEY);
+    }
 
-        session_name = getIntent().getExtras().getString("session_name");
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_start_session_dialog, container, false);
 
-        init();
-        setSupportActionBar(toolbar);
+        init(view);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         backIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartSessionActivity.this, MainActivity.class));
-                finish();
+                dismiss();
             }
         });
 
         nameSessStartTV.setText(session_name);
 
+        return view;
+
     }
 
-    private void init() {
-        toolbar = findViewById(R.id.toolbar);
-        backIV = findViewById(R.id.backIV);
-        nameSessStartTV = findViewById(R.id.nameSessStartTV);
-        startSessRV = findViewById(R.id.startSessRV);
+    private void init(View view) {
+        toolbar = view.findViewById(R.id.toolbar);
+        backIV = view.findViewById(R.id.backIV);
+        nameSessStartTV = view.findViewById(R.id.nameSessStartTV);
+        startSessRV = view.findViewById(R.id.startSessRV);
 
         setUpRV();
 
@@ -66,13 +85,40 @@ public class StartSessionActivity extends AppCompatActivity {
 
     private void setUpRV() {
         startSessRV.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         startSessRV.setLayoutManager(llm);
-        startSessRV.addItemDecoration(new DividerItemDecoration(this, llm.getOrientation()));
+        startSessRV.addItemDecoration(new DividerItemDecoration(getActivity(), llm.getOrientation()));
 
         mockDrills();
 
+        getSessionDrills();
+
+    }
+
+    private void getSessionDrills() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(Constants.SESSION_ID_KEY, session_id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        AndroidNetworking.post(Constants.BASE_URL + "session_drills_list")
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "Sesh Drills Response:\t" + response.toString());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private void mockDrills() {
@@ -148,7 +194,7 @@ public class StartSessionActivity extends AppCompatActivity {
         nine.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(nine);
 
-        adapter = new DrillsAdapter(this, itemsList);
+        adapter = new DrillsAdapter(getActivity(), itemsList);
         startSessRV.setAdapter(adapter);
 
     }

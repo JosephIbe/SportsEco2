@@ -22,7 +22,6 @@ public class Constants {
 
     public static final String LOGIN_COACH = BASE_URL + "coach_login";
 
-    public static final String GET_ALL_DATA = BASE_URL + "get_all_data"; //+ coach id
 
 //    public static final String COACH_BATCH_LIST = BASE_URL + "coach_batch_list/";
 //
@@ -56,6 +55,13 @@ public class Constants {
 //    public static final String GET_COMPLETED_SESSIONS = BASE_URL + "completed_sessions'";
 
     /**
+     *  Session Constanta
+     * **/
+
+    public static final String SESSION_NAME_KEY = "session_name";
+    public static final String SESSION_ID_KEY = "session_id";
+
+    /**
      *  Player Constants
      *
      * */
@@ -75,5 +81,19 @@ public class Constants {
     public static final String PROGRAM_NAME_KEY = "program_name";
     public static final String PROGRAM_DESC_KEY = "program_desc";
     public static final String PROGRAM_PLACE_NAME_KEY = "program_place_name";
+
+    /**
+     *  Program Session Constants
+     *
+     * */
+    public static final String PROGRAM_SESSION_ID_KEY = "program_session_id";
+
+    /**
+     *  Drills Constants
+     * **/
+
+    public static final String DRILL_TITLE_KEY = "drill_title";
+    public static final String DRILL_DURATION_KEY = "drill_duration";
+
 
 }

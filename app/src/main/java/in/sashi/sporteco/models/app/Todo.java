@@ -1,14 +1,16 @@
 package in.sashi.sporteco.models.app;
 
-public class ToDo {
+public class Todo {
 
     public String itemTitle;
+    public String itemDesc;
     public boolean isComplete;
 
-    public ToDo() { }
+    public Todo() { }
 
-    public ToDo(String itemTitle, boolean isComplete) {
+    public Todo(String itemTitle, String itemDesc, boolean isComplete) {
         this.itemTitle = itemTitle;
+        this.itemDesc = itemDesc;
         this.isComplete = isComplete;
     }
 
@@ -18,6 +20,14 @@ public class ToDo {
 
     public void setItemTitle(String itemTitle) {
         this.itemTitle = itemTitle;
+    }
+
+    public String getItemDesc() {
+        return itemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        this.itemDesc = itemDesc;
     }
 
     public boolean isComplete() {

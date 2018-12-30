@@ -14,6 +14,7 @@ import java.util.List;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Sessions;
 import in.sashi.sporteco.ui.activities.ViewSessionActivity;
+import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.viewholders.SessionsViewHolder;
 
 public class SessionsAdapter extends RecyclerView.Adapter<SessionsViewHolder> {
@@ -44,7 +45,8 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ViewSessionActivity.class);
-                intent.putExtra("session_name", sessions.getSession_name());
+                intent.putExtra(Constants.SESSION_NAME_KEY, sessions.getSession_name());
+                intent.putExtra(Constants.SESSION_ID_KEY, sessions.getSession_id());
                 context.startActivity(intent);
             }
         });

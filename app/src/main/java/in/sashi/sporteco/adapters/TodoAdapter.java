@@ -5,19 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.ToDo;
+import in.sashi.sporteco.models.app.Todo;
 import in.sashi.sporteco.viewholders.ToDoViewHolder;
 
 public class TodoAdapter extends RecyclerView.Adapter<ToDoViewHolder> {
 
     private final Context context;
-    private List<ToDo> itemsList;
+    private List<Todo> itemsList;
 
-    public TodoAdapter(Context context, List<ToDo> itemsList) {
+    public TodoAdapter(Context context, List<Todo> itemsList) {
         this.context = context;
         this.itemsList = itemsList;
     }
@@ -30,8 +31,16 @@ public class TodoAdapter extends RecyclerView.Adapter<ToDoViewHolder> {
 
     @Override
     public void onBindViewHolder(ToDoViewHolder viewholder, int position) {
-        ToDo itemTodo = itemsList.get(position);
+        Todo itemTodo = itemsList.get(position);
         viewholder.todoItemTV.setText(itemTodo.getItemTitle());
+        viewholder.checkTodo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+
+                }
+            }
+        });
     }
 
     @Override

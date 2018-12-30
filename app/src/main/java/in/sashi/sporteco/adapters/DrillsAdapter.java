@@ -1,6 +1,5 @@
 package in.sashi.sporteco.adapters;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,6 +15,8 @@ import java.util.List;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Drills;
 import in.sashi.sporteco.ui.fragments.dialogs.DrillsDetailsFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.OnGoingDrillDetailsFragment;
+import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.viewholders.DrillItemsViewHolder;
 
 public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
@@ -70,13 +71,23 @@ public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
             @Override
             public void onClick(View v) {
                 drills.setPlaying(true);
-                if(drills.isPlaying){
-                    viewholder.playBtn.setImageResource(R.drawable.ic_stop);
-                    viewholder.timerLayout.setVisibility(View.VISIBLE);
-                }
+                showOnGoingDrillDetail(drills.getTitle(), drills.getDuration());
+//                if(drills.isPlaying){
+//                    viewholder.playBtn.setImageResource(R.drawable.ic_stop);
+//                    viewholder.timerLayout.setVisibility(View.VISIBLE);
+//                }
             }
         });
 
+    }
+
+    private void showOnGoingDrillDetail(String title, String duration) {
+        OnGoingDrillDetailsFragment drillDetailsFragment = new OnGoingDrillDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.DRILL_TITLE_KEY, title);
+        bundle.putString(Constants.DRILL_DURATION_KEY, duration);
+        drillDetailsFragment.setArguments(bundle);
+        drillDetailsFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "OnGoingDrillDetailsFragment");
     }
 
     @Override

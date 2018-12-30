@@ -26,7 +26,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/date_dialog_bkg"
+        android:background="@drawable/rounded_top_dialog_bkg"
         android:layout_below="@+id/imageLayout"
         android:layout_marginTop="1dp">
 

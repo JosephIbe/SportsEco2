@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cal_sessionCIV"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_new_schedule"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"/>
+
+        <TextView
+            android:id="@+id/cal_sessionNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Session 11111111"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:maxLength="14"
+            android:layout_toRightOf="@+id/cal_sessionCIV"/>
+
+        <TextView
+            android:id="@+id/cal_timeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12pm - 3pm"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_below="@id/cal_sessionNameTV"
+            android:layout_marginTop="3dp"
+            android:layout_alignStart="@id/cal_sessionNameTV"
+            android:layout_alignLeft="@id/cal_sessionNameTV" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="150dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:paddingLeft="85dp">
+
+            <TextView
+                android:id="@+id/cal_programNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Program Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/cal_batchTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batch Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_no_players"/>
+
+            <TextView
+                android:id="@+id/cal_sessionCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(23)"
+                android:textSize="16sp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

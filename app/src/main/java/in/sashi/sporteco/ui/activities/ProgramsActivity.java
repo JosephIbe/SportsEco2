@@ -17,7 +17,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +27,6 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ProgramsAdapter;
-import in.sashi.sporteco.models.app.CoachDetails;
 import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
@@ -93,12 +91,6 @@ public class ProgramsActivity extends AppCompatActivity {
     }
 
     private void fetchPrograms() {
-
-//        CoachDetails details = SQLite.select()
-//                .from(CoachDetails.class)
-//                .querySingle();
-
-        Log.d(TAG, "Coach id in programs:\t" + AppUtils.getCoachId());
 
         JSONObject jsonObject = new JSONObject();
         try {

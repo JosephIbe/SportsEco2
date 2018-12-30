@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.ui.fragments.dialogs.MarkAttendanceFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.StartSessionDialogFragment;
+import in.sashi.sporteco.utils.Constants;
 
 public class ViewSessionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,14 +27,15 @@ public class ViewSessionActivity extends AppCompatActivity implements View.OnCli
     private Button attendanceBtn, startBtn, addPlayerBtn;
 
     private RecyclerView focusRV, equipmentsRV;
-    private String session_name;
+    private String session_name, session_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_session);
 
-        session_name = getIntent().getExtras().getString("session_name");
+        session_name = getIntent().getExtras().getString(Constants.SESSION_NAME_KEY);
+        session_id = getIntent().getExtras().getString(Constants.SESSION_ID_KEY);
 
         init();
         setSupportActionBar(toolbar);
@@ -70,9 +73,14 @@ public class ViewSessionActivity extends AppCompatActivity implements View.OnCli
                 fragment.show(getSupportFragmentManager(), "MarkAttendanceFragment");
                 break;
             case R.id.startBtn:
-                Intent startIntent = new Intent(ViewSessionActivity.this, StartSessionActivity.class);
-                startIntent.putExtra("session_name", session_name);
-                startActivity(startIntent);
+                StartSessionDialogFragment sessionDialogFragment = new StartSessionDialogFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.SESSION_NAME_KEY, session_name);
+                bundle.putString(Constants.SESSION_ID_KEY, session_id);
+                sessionDialogFragment.setArguments(bundle);
+                sessionDialogFragment.setCancelable(false);
+                sessionDialogFragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar_Fullscreen);
+                sessionDialogFragment.show(getSupportFragmentManager(), "StartSessionDialogFragment");
                 break;
             case R.id.addPlayerBtn:
                 Snackbar.make(findViewById(android.R.id.content), "What View?", Snackbar.LENGTH_LONG).show();

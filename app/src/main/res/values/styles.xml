@@ -16,7 +16,7 @@
     </style>
 
     <style name="RoundSheets" parent="@style/Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/date_dialog_bkg</item>
+        <item name="android:background">@drawable/rounded_top_dialog_bkg</item>
     </style>
 
     <style name="PlayerInfoDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">

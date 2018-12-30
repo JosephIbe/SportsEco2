@@ -40,9 +40,8 @@ import in.sashi.sporteco.adapters.TodoAdapter;
 import in.sashi.sporteco.interfaces.RecyclerClickListener;
 import in.sashi.sporteco.models.app.HomeActions;
 import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.models.app.ToDo;
+import in.sashi.sporteco.models.app.Todo;
 import in.sashi.sporteco.ui.activities.AttendanceMainActivity;
-import in.sashi.sporteco.ui.activities.CalendarViewActivity;
 import in.sashi.sporteco.ui.activities.EvaluateActivity;
 import in.sashi.sporteco.ui.activities.PlayersActivity;
 import in.sashi.sporteco.ui.activities.ProgramsActivity;
@@ -70,7 +69,7 @@ public class HomeFragment extends Fragment implements DatePickerListener {
     private List<Sessions> sessionsList = new ArrayList<>();
     private SessionsAdapter sessionsAdapter;
 
-    private List<ToDo> toDoList = new ArrayList<>();
+    private List<Todo> todoList = new ArrayList<>();
     private TodoAdapter todoAdapter;
 
     public HomeFragment() {
@@ -119,24 +118,43 @@ public class HomeFragment extends Fragment implements DatePickerListener {
         todosRV.setHasFixedSize(true);
         todosRV.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ToDo item1 = new ToDo();
-        item1.setComplete(false);
-        item1.setItemTitle("Complete September");
-        toDoList.add(item1);
+//        Todo item1 = new Todo();
+//        item1.setComplete(false);
+//        item1.setItemTitle("Complete September");
+//        todoList.add(item1);
+//
+//        Todo item2 = new Todo();
+//        item2.setComplete(false);
+//        item2.setItemTitle("Review October");
+//        todoList.add(item2);
+//
+//        Todo item3 = new Todo();
+//        item3.setComplete(false);
+//        item3.setItemTitle("Plan for November and so on...");
+//        todoList.add(item3);
 
-        ToDo item2 = new ToDo();
-        item2.setComplete(false);
-        item2.setItemTitle("Review October");
-        toDoList.add(item2);
+        fetchTodos();
 
-        ToDo item3 = new ToDo();
-        item3.setComplete(false);
-        item3.setItemTitle("Plan for November and so on...");
-        toDoList.add(item3);
-
-        todoAdapter = new TodoAdapter(getActivity(), toDoList);
+        todoAdapter = new TodoAdapter(getActivity(), todoList);
         todosRV.setAdapter(todoAdapter);
 
+    }
+
+    private void fetchTodos() {
+        AndroidNetworking.get(Constants.BASE_URL + "todays_todo_list")
+                .setTag("Get Today's Todo List")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "Todos Response:\t" + response.toString());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private void setUpSessions() {
