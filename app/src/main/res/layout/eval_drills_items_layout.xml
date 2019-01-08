@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/evalDrillCIV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="1dp"
+            tools:src="@drawable/ic_players" />
+
+        <LinearLayout
+            android:id="@+id/drillMetaLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/evalDrillCIV"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/evalDrillNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:text="Carolina Shooting"
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/evalDrillDurationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20:00" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/info"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/subItemsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="#f4f4f4"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Sub Item 1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:maxLength="10"
+                android:maxLines="1"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorPrimary"
+                android:numStars="5"
+                android:rating="2"
+                android:stepSize="0.5" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,7 +2,7 @@ package in.sashi.sporteco.utils;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-import in.sashi.sporteco.models.app.CoachDetails;
+import in.sashi.sporteco.models.coach.CoachDetails;
 
 public class AppUtils {
 

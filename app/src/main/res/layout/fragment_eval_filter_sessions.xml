@@ -352,90 +352,10 @@
             android:scrollbars="none">
 
             <RadioGroup
+                android:id="@+id/programsGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/program1Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Program 1"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/program2Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Program 2"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/program3Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Program 3"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/program4Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Program 4"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/program5Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Program 5"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
             </RadioGroup>
 
         </HorizontalScrollView>
@@ -456,90 +376,10 @@
             android:scrollbars="none">
 
             <RadioGroup
+                android:id="@+id/sessionsGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/session1Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Session 1"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/session2Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Session 2"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/session3Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Session 3"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/session4Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Session 4"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
-                <RadioButton
-                    android:id="@+id/session5Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/filter_btns_bkg"
-                    android:button="@null"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="Session 5"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/text_color" />
-
             </RadioGroup>
 
         </HorizontalScrollView>

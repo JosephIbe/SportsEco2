@@ -10,10 +10,12 @@ import android.widget.CompoundButton;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.Players;
+import in.sashi.sporteco.models.players.Players;
+import in.sashi.sporteco.models.sessions.PlayerSession;
 import in.sashi.sporteco.viewholders.MarkAttendanceViewHolder;
 
 public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceViewHolder> {
@@ -21,11 +23,15 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
     private static final String TAG = MarkAttendanceAdapter.class.getSimpleName();
 
     private final Context context;
-    private List<Players> itemsList;
+    private List<PlayerSession> itemsList;
+
+    private List<String> selectedList = new ArrayList<>();
 
     public int numPresent = 0;
+    int count = 0;
+    private MarkAttendanceViewHolder vh;
 
-    public MarkAttendanceAdapter(Context context, List<Players> itemsList) {
+    public MarkAttendanceAdapter(Context context, List<PlayerSession> itemsList) {
         this.context = context;
         this.itemsList = itemsList;
     }
@@ -33,42 +39,49 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
     @Override
     public MarkAttendanceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mark_attendance_items_layout, parent, false);
-        return new MarkAttendanceViewHolder(view);
+        vh = new MarkAttendanceViewHolder(view);
+        return vh;
     }
 
     @Override
     public void onBindViewHolder(final MarkAttendanceViewHolder viewholder, int position) {
-        Players players = itemsList.get(position);
+        final PlayerSession players = itemsList.get(position);
         viewholder.namePlayerTV.setText(players.getFirstName() + " " + players.getLastName());
         Picasso.with(context)
                 .load(players.getImageURL())
-//                .resize(100, 100)
-//                .centerCrop()
-//                .transform(new CircleTransform(50, 0))
-//                .fit()
                 .placeholder(R.drawable.app_logo_resized)
                 .into(viewholder.playerAvatarIV);
 
+        final boolean isClicked = players.isSelected();
         viewholder.playerAvatarIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                boolean isChecked = viewholder.checkBoxPlayer.isChecked();
+//                viewholder.checkBoxPlayer.setVisibility(isClicked ? View.VISIBLE : View.INVISIBLE);
+//
+//                players.setSelected(!players.isSelected());
+//                players.setSelected(!isClicked);
+//                Log.d(TAG, "Sel Status " + players.isSelected());
 
-                if (viewholder.checkBoxPlayer.isChecked()){
-                    Log.d(TAG, "UnChecked:\t" + isChecked);
+//                boolean isChecked = viewholder.checkBoxPlayer.isChecked();
+
+                if (viewholder.checkBoxPlayer.isChecked()) {
+
+//                    if (selectedList.contains(players.getFirstName())) {
+//                        selectedList.remove(players.getFirstName());
+//                        Log.d(TAG, "Removed:\t" + players.getFirstName());
+//                    }
+
                     viewholder.checkBoxPlayer.setChecked(false);
-                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
-                    if (numPresent > 0){
-                        numPresent -= 1;
-                    } else {
-                        numPresent = 0;
-                    }
+                    viewholder.checkBoxPlayer.setVisibility(View.INVISIBLE);
+
                 } else {
-                    Log.d(TAG, "Checked:\t" + isChecked);
+//                    if (!selectedList.contains(players.getFirstName())) {
+//                        selectedList.add(players.getFirstName());
+//                        Log.d(TAG, "Added:\t" + players.getFirstName());
+//                    }
                     viewholder.checkBoxPlayer.setChecked(true);
                     viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
-                    numPresent += 1;
                 }
             }
         });
@@ -77,77 +90,20 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Log.d(TAG, "Checked:\t" + isChecked);
-                if (isChecked){
+                if (isChecked) {
                     viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
+                    players.setSelected(isChecked);
+                    numPresent++;
+                    Log.d(TAG, "Checkbox visible:\t and count:\t" + numPresent);
                 } else {
-                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
+                    viewholder.checkBoxPlayer.setVisibility(View.INVISIBLE);
+                    players.setSelected(isChecked);
+                    numPresent--;
+                    Log.d(TAG, "Checkbox invisible:\t and count:\t" + numPresent);
                 }
             }
         });
     }
-
-//    @Override
-//    public void onBindViewHolder(final MarkAttendanceViewHolder viewholder, final int position) {
-//        final Players players = itemsList.get(position);
-//        viewholder.namePlayerTV.setText(players.getFirstName() + " " + players.getLastName());
-//        Picasso.with(context)
-//                .load(players.getImageURL())
-////                .resize(100, 100)
-////                .centerCrop()
-////                .transform(new CircleTransform(50, 0))
-////                .fit()
-//                .placeholder(R.drawable.app_logo_resized)
-//                .into(viewholder.playerAvatarIV);
-//
-//        viewholder.playerAvatarIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
-//
-////                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show();
-////                players.setSelected(true);
-////                if (players.isSelected()){
-////                    viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
-////                } else {
-////                    players.setSelected(false);
-////                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
-////                }
-//
-//                players.setSelected(true);
-//                viewholder.checkBoxPlayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                    @Override
-//                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                        if (isChecked && players.isSelected()) {
-//                            Log.d(TAG, "Checked:\t" + isChecked);
-//                        } else {
-//                            players.setSelected(false);
-//                            Log.d(TAG, "Checked:\t" + isChecked);
-//                        }
-//                    }
-//                });
-//
-//                viewholder.checkBoxPlayer.setChecked(players.isSelected());
-////                if (!players.isSelected()){
-////                    viewholder.checkBoxPlayer.setVisibility(View.GONE);
-////                }
-//
-////                viewholder.checkBoxPlayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-////                    @Override
-////                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-////                        if (isChecked){
-////                            Log.d(TAG, "Checked Value:\t" + isChecked);
-////                            Toast.makeText(context, "Checked:\t" + isChecked, Toast.LENGTH_SHORT).show();
-////                        } else {
-////                            viewholder.checkBoxPlayer.setVisibility(View.GONE);
-////                            Toast.makeText(context, "Checked:\t" + isChecked, Toast.LENGTH_SHORT).show();
-////                            Log.d(TAG, "UnChecked Value:\t" + isChecked);
-////                        }
-////                    }
-////                });
-//            }
-//        });
-//
-//    }
 
     @Override
     public int getItemCount() {
@@ -158,11 +114,11 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
     }
 
     public void checkAll() {
-
+        vh.checkBoxPlayer.setChecked(true);
     }
 
     public void unCheckAll() {
-
+        vh.checkBoxPlayer.setChecked(false);
     }
 
     public int sendNumChecked() {

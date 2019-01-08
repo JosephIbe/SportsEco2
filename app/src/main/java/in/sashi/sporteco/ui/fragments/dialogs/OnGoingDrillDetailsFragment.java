@@ -2,6 +2,7 @@ package in.sashi.sporteco.ui.fragments.dialogs;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class OnGoingDrillDetailsFragment extends RoundedCornersSheet {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_on_going_drill_details, container, false);
         getDialog().setCancelable(false);
+        getDialog().setCanceledOnTouchOutside(false);
         init(view);
         return view;
     }
@@ -94,8 +96,13 @@ public class OnGoingDrillDetailsFragment extends RoundedCornersSheet {
 
             @Override
             public void onFinish() {
-                drillTimeLeftTV.setText("00:00");
-                dismiss();
+//                drillTimeLeftTV.setText("00:00");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dismiss();
+                    }
+                }, 1000);
             }
         }.start();
     }

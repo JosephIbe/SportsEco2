@@ -20,6 +20,7 @@
         android:baselineAligned="false">
 
         <LinearLayout
+            android:id="@+id/addPlayer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -28,19 +29,20 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/app_logo_resized"
+                app:srcCompat="@drawable/ic_new_player"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="New Session"
+                android:text="Player"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/addProgram"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -49,19 +51,20 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_players"
+                app:srcCompat="@drawable/ic_new_program"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Enroll Player"
+                android:text="Program"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/addBatch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,14 +73,36 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_programs"
+                app:srcCompat="@drawable/ic_new_batch"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="New Batch"
+                android:text="Batch"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addSchedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_new_schedule"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Schdeule"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#f15429</color>
     <color name="colorPrimaryDark">#f15429</color> //change cpd
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#f15429</color>
 
     <color name="et_border_color">#dadada</color>
     <color name="gray">#595959</color>

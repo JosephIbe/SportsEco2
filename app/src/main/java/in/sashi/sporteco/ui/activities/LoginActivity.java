@@ -10,21 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.Batch;
-import in.sashi.sporteco.models.app.Coach;
-import in.sashi.sporteco.models.app.CoachDetails;
+import in.sashi.sporteco.models.coach.Coach;
+import in.sashi.sporteco.models.coach.CoachDetails;
 import in.sashi.sporteco.rest.RestClient;
-import in.sashi.sporteco.utils.Constants;
+import in.sashi.sporteco.utils.PrefsUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,9 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView forgotTV;
     private Button loginBtn;
 
-    private Batch batch;
-
-    private boolean isEnabled = true;
+    private boolean isEnabled = true, hasLoggedIn = false;
     private String username, pwd, coach_id;
 
     @Override
@@ -65,11 +55,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loginBtn:
-//                Snackbar.make(findViewById(android.R.id.content), "Login Clicked", Snackbar.LENGTH_LONG).show();
                 // add validation later;
                 username = etUsername.getText().toString();
                 pwd = etPwd.getText().toString();
-//                doLogin(username, pwd);
                 attemptLogin(username, pwd);
                 loginBtn.setEnabled(false);
                 break;
@@ -85,6 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .loginCoach("testcoach@gmail.com", "123@abcd"); // TODO: 12/17/2018 Use input values
 
         call.enqueue(new Callback<Coach>() {
+
             @Override
             public void onResponse(Call<Coach> call, Response<Coach> response) {
                 if (response.isSuccessful()) {
@@ -122,6 +111,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             .querySingle();
 
                     coach_id = details.getCoachId();
+                    if (coach_id != null) {
+                        hasLoggedIn = true;
+                        new PrefsUtils(LoginActivity.this).saveLoginStatus(hasLoggedIn);
+                    }
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                 } else {

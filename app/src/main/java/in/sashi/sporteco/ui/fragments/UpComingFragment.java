@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -25,8 +24,7 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.UpComingAdapter;
-import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.models.app.UpComingSessions;
+import in.sashi.sporteco.models.sessions.UpComingSessions;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
 
@@ -104,7 +102,7 @@ public class UpComingFragment extends Fragment {
                                 sessions.setBatchName(details.getString("batch_name"));
                                 sessions.setProgram_name(details.getString("prg_name"));
                                 sessions.setEquipments_reqd(details.getString("prg_session_equipment"));
-                                sessions.setSessDuration(details.getString("prg_session_duration"));
+//                                sessions.setSessDuration(details.getString("prg_session_duration"));
                                 sessions.setDateTime(details.getString("session_time"));
                                 sessions.setDate_start(details.getString("prg_session_start_datetime"));
                                 sessions.setDate_end(details.getString("prg_session_end_datetime"));

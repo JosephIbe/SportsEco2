@@ -1,11 +1,13 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.players;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ConflictAction;
+import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import in.sashi.sporteco.models.app.Skills;
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
 @Table(database = SportsDatabase.class, name = "players",
@@ -61,32 +63,21 @@ public class Players extends BaseModel {
     public String mobilePlayer;
 
     @Column
-    public String batchPlayer;
+    public String batchPlayer; // TODO: 1/8/2019 Add batch as array for case of multiple batches
+
+    @Column
+    public String attendanceStatus;
+
+    @Column
+    public String sessionId;
 
     @Column
     public boolean isSelected;
 
-    public Players() {
-    }
+    @ForeignKey
+    public Skills skills;
 
-    public Players(String userId, String firstName, String lastName, String imageURL, String username, String address, String dobPlayer, String genderPlayer, String pinCodePlayer, String heightPlayer, String weightPlayer, String bsktballExpPlayer, String positionPlayer, String statePlayer, String mobilePlayer, String batchPlayer, boolean isSelected) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.imageURL = imageURL;
-        this.username = username;
-        this.address = address;
-        this.dobPlayer = dobPlayer;
-        this.genderPlayer = genderPlayer;
-        this.pinCodePlayer = pinCodePlayer;
-        this.heightPlayer = heightPlayer;
-        this.weightPlayer = weightPlayer;
-        this.bsktballExpPlayer = bsktballExpPlayer;
-        this.positionPlayer = positionPlayer;
-        this.statePlayer = statePlayer;
-        this.mobilePlayer = mobilePlayer;
-        this.batchPlayer = batchPlayer;
-        this.isSelected = isSelected;
+    public Players() {
     }
 
     public String getUserId() {
@@ -217,11 +208,35 @@ public class Players extends BaseModel {
         this.batchPlayer = batchPlayer;
     }
 
+    public String getAttendanceStatus() {
+        return attendanceStatus;
+    }
+
+    public void setAttendanceStatus(String attendanceStatus) {
+        this.attendanceStatus = attendanceStatus;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
     public boolean isSelected() {
         return isSelected;
     }
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public Skills getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Skills skills) {
+        this.skills = skills;
     }
 }

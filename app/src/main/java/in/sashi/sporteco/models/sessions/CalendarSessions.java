@@ -1,4 +1,4 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.sessions;
 
 public class CalendarSessions {
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +20,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.CalendarSessionsAdapter;
-import in.sashi.sporteco.models.app.CalendarSessions;
+import in.sashi.sporteco.models.sessions.CalendarSessions;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.utils.EmptyRecyclerView;
@@ -91,7 +89,7 @@ public class DateDialogFragment extends RoundedCornersSheet {
         try {
             jsonObject.put("coach_id", AppUtils.getCoachId());
 //            jsonObject.put("calendar_date", dateSel);
-            jsonObject.put("calendar_date", "2018-12-09");
+            jsonObject.put("calendar_date", "2019-01-13");
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -28,7 +28,6 @@ public class EvaluateActivity extends AppCompatActivity implements View.OnClickL
     private ViewPager viewPager;
     private ViewPagerAdapter pagerAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

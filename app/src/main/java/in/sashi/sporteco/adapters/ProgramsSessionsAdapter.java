@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.ProgramSessionDetails;
+import in.sashi.sporteco.models.sessions.ProgramSessionDetails;
 import in.sashi.sporteco.ui.fragments.dialogs.ViewSessionDialogFragment;
 import in.sashi.sporteco.utils.Constants;
 import in.sashi.sporteco.viewholders.ProgramsSessionsViewHolder;

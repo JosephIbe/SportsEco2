@@ -1,4 +1,4 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.coach;
 
 import com.google.gson.annotations.SerializedName;
 

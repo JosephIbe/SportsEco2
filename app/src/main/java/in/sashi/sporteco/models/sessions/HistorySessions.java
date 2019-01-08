@@ -1,4 +1,4 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.sessions;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ConflictAction;
@@ -10,8 +10,7 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
 @Table(database = SportsDatabase.class, name = "history_sessions",
-        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
-        cachingEnabled = true)
+        insertConflict = ConflictAction.IGNORE, cachingEnabled = true)
 public class HistorySessions extends BaseModel {
 
     @Column

@@ -13,6 +13,8 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.app.Batch;
+import in.sashi.sporteco.models.batch.EvalBatch;
+import in.sashi.sporteco.models.players.Players;
 import in.sashi.sporteco.ui.fragments.dialogs.EvalFilterBatchFragment;
 import in.sashi.sporteco.ui.fragments.evaluate.EvaluateSessionDetailFragment;
 import in.sashi.sporteco.viewholders.EvalBatchViewHolder;
@@ -20,9 +22,9 @@ import in.sashi.sporteco.viewholders.EvalBatchViewHolder;
 public class EvalBatchAdapter extends RecyclerView.Adapter<EvalBatchViewHolder> {
 
     private final Context context;
-    private List<Batch> itemsList;
+    private List<EvalBatch> itemsList;
 
-    public EvalBatchAdapter(Context context, List<Batch> itemsList) {
+    public EvalBatchAdapter(Context context, List<EvalBatch> itemsList) {
         this.context = context;
         this.itemsList = itemsList;
     }
@@ -35,12 +37,13 @@ public class EvalBatchAdapter extends RecyclerView.Adapter<EvalBatchViewHolder> 
 
     @Override
     public void onBindViewHolder(EvalBatchViewHolder holder, int position) {
-        final Batch batch = itemsList.get(position);
+        final EvalBatch batch = itemsList.get(position);
 
         holder.batch_nameTV.setText(batch.getBatchName());
         holder.program_nameTV.setText(batch.getProgramName());
         holder.playersCountTV.setText(batch.getPlayersCount());
-        holder.startDateTV.setText(batch.getStartDate());
+//        holder.startDateTV.setText(batch.getStartDate());
+        holder.startDateTV.setText("Alright, ok");
 
         holder.evalBatchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,7 @@ public class EvalBatchAdapter extends RecyclerView.Adapter<EvalBatchViewHolder> 
                 EvalFilterBatchFragment fragment = new EvalFilterBatchFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("name_batch", batch.getBatchName());
+                bundle.putString("id_batch", batch.getBatchId());
                 fragment.setArguments(bundle);
                 fragment.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar);
                 fragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "EvalFilterBatchFragment");

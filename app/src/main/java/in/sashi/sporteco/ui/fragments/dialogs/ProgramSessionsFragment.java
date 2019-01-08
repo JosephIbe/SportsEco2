@@ -29,10 +29,9 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ProgramsSessionsAdapter;
-import in.sashi.sporteco.models.app.ProgramSessionDetails;
-import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.models.app.Programs_Table;
-import in.sashi.sporteco.models.app.Sessions;
+import in.sashi.sporteco.models.sessions.ProgramSessionDetails;
+import in.sashi.sporteco.models.app.Programs;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
 

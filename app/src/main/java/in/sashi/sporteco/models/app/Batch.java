@@ -14,8 +14,6 @@ public class Batch {
 
     public String playersCount;
 
-    public BatchFooter batchFooter;
-
     public Batch() {
     }
 
@@ -75,11 +73,4 @@ public class Batch {
         this.playersCount = playersCount;
     }
 
-    public BatchFooter getBatchFooter() {
-        return batchFooter;
-    }
-
-    public void setBatchFooter(BatchFooter batchFooter) {
-        this.batchFooter = batchFooter;
-    }
 }

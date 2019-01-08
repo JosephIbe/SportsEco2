@@ -26,11 +26,8 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.HistoryAdapter;
-import in.sashi.sporteco.adapters.UpComingAdapter;
-import in.sashi.sporteco.models.app.HistorySessions;
-import in.sashi.sporteco.models.app.PlayerSession;
-import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.models.app.UpComingSessions;
+import in.sashi.sporteco.models.sessions.HistorySessions;
+import in.sashi.sporteco.models.sessions.PlayerSession;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
 

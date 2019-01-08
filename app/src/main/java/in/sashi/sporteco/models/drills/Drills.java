@@ -1,16 +1,54 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.drills;
 
-public class Drills {
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import in.sashi.sporteco.rest.db.SportsDatabase;
+
+@Table(name = "session_drills", database = SportsDatabase.class)
+public class Drills extends BaseModel {
+
+    @Column
     public int iconImg;
+
+    @Column
     public String title;
+
+    @Column
     public String duration;
+
+    @Column
     public String coverImg;
+
+    @Column
     public String desc;
+
+    @Column
     public String focusPts;
-    public boolean isFavorite;
-    public boolean isPlaying;
+
+    @Column
+    @PrimaryKey
+    public String progId;
+
+    @Column
+    @PrimaryKey
+    public String progSessId;
+
+    @Column
+    public String progSessionStepsId;
+
+    @Column
+    public String drillSessionMapping;
+
+    @Column
     public String drillFocusPts;
+
+    @Column
+    public boolean isFavorite;
+
+    public boolean isPlaying;
 
     public Drills() {
     }

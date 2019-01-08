@@ -1,24 +1,15 @@
 package in.sashi.sporteco.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.HistorySessions;
-import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.ui.fragments.dialogs.AttendanceHistoryDetailsDialogFragment;
+import in.sashi.sporteco.models.sessions.HistorySessions;
 import in.sashi.sporteco.viewholders.HistoryViewHolder;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {

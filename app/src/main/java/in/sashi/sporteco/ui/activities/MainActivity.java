@@ -1,26 +1,30 @@
 package in.sashi.sporteco.ui.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.Window;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.TestDialog;
-import in.sashi.sporteco.ui.fragments.AddFragment;
 import in.sashi.sporteco.ui.fragments.AlertsFragment;
-import in.sashi.sporteco.ui.fragments.MessagesFragment;
 import in.sashi.sporteco.ui.fragments.HomeFragment;
+import in.sashi.sporteco.ui.fragments.MessagesFragment;
 import in.sashi.sporteco.ui.fragments.ProfileFragment;
+import in.sashi.sporteco.ui.fragments.dialogs.NewBatchDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.NewProgramDialog;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -88,9 +92,63 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 switchFragment(fragment);
                 return true;
             case R.id.nav_add:
-                fragment = new AddFragment();
-                switchFragment(fragment);
-                return true;
+                // show popup window
+                View view = getLayoutInflater().inflate(R.layout.add_dialog_layout, null);
+                PopupWindow window = new PopupWindow(view, LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT, true);
+                window.setOutsideTouchable(true);
+
+                LinearLayout addSchedule = window.getContentView().findViewById(R.id.addSchedule);
+                addSchedule.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Snackbar.make(findViewById(android.R.id.content), "Add Schedule Clicked", Snackbar.LENGTH_LONG)
+                                .show();
+
+                    }
+                });
+
+                LinearLayout addPlayer = window.getContentView().findViewById(R.id.addPlayer);
+                addPlayer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Snackbar.make(findViewById(android.R.id.content), "Add Player Clicked", Snackbar.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+                LinearLayout addProgram = window.getContentView().findViewById(R.id.addProgram);
+                addProgram.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Snackbar.make(findViewById(android.R.id.content), "Add Player Clicked", Snackbar.LENGTH_LONG)
+                                .show();
+                        NewProgramDialog programDialog = new NewProgramDialog();
+                        programDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+                        programDialog.show(getSupportFragmentManager(), "NewProgramDialog");
+                    }
+                });
+
+                LinearLayout addBatch = window.getContentView().findViewById(R.id.addBatch);
+                addBatch.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Snackbar.make(findViewById(android.R.id.content), "Add Batch Clicked", Snackbar.LENGTH_LONG)
+                                .show();
+                        NewBatchDialog batchDialog = new NewBatchDialog();
+                        batchDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+                        batchDialog.show(getSupportFragmentManager(), "NewBatchDialog");
+                    }
+                });
+
+//                window.showAtLocation(navEx, Gravity.BOTTOM, 0, 120);
+                window.showAtLocation(navEx, Gravity.BOTTOM, 0, navEx.getItemHeight() - 3);
+
+                break;
+
+//                fragment = new AddFragment();
+//                switchFragment(fragment);
+//                return true;
 
 //                TestDialog dialog = new TestDialog();
 //                dialog.show();

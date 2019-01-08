@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -25,9 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.adapters.MarkAttendanceAdapter;
 import in.sashi.sporteco.adapters.PlayersAdapter;
-import in.sashi.sporteco.models.app.Players;
+import in.sashi.sporteco.models.players.Players;
 import in.sashi.sporteco.utils.AppUtils;
 
 import static in.sashi.sporteco.utils.Constants.BASE_URL;
@@ -108,7 +106,7 @@ public class PlayersActivity extends AppCompatActivity {
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject details = array.getJSONObject(i);
                                 Players players = new Players();
-                                players.setUserId(details.getString("user_id"));
+                                players.setUserId(details.getString("player_id"));
                                 players.setFirstName(details.getString("first_name"));
                                 players.setLastName(details.getString("last_name"));
                                 players.setUsername(details.getString("username"));

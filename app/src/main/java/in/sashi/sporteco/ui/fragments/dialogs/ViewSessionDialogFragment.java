@@ -7,7 +7,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,8 @@ import android.widget.TextView;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.ProgramSessionDetails;
-import in.sashi.sporteco.models.app.ProgramSessionDetails_Table;
+import in.sashi.sporteco.models.sessions.ProgramSessionDetails;
+import in.sashi.sporteco.models.sessions.ProgramSessionDetails_Table;
 import in.sashi.sporteco.utils.Constants;
 
 public class ViewSessionDialogFragment extends DialogFragment implements View.OnClickListener {
@@ -41,14 +40,14 @@ public class ViewSessionDialogFragment extends DialogFragment implements View.On
         super.onCreate(savedInstanceState);
 
         progSessionId = getArguments().getString(Constants.PROGRAM_SESSION_ID_KEY);
-        Log.d(TAG, "ProgSessId:\t" + progSessionId);
+//        Log.d(TAG, "ProgSessId:\t" + progSessionId);
 
         details = SQLite.select()
                 .from(ProgramSessionDetails.class)
                 .where(ProgramSessionDetails_Table.progSessionId.is(progSessionId))
                 .querySingle();
 
-        Log.d(TAG, "PSD NumDrills:\t" + details.getProgSessionNumDrills());
+//        Log.d(TAG, "PSD NumDrills:\t" + details.getProgSessionNumDrills());
 
     }
 

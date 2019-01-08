@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.CalendarSessions;
+import in.sashi.sporteco.models.sessions.CalendarSessions;
 import in.sashi.sporteco.viewholders.CalendarSessionsViewHolder;
 
 public class CalendarSessionsAdapter extends RecyclerView.Adapter<CalendarSessionsViewHolder> {

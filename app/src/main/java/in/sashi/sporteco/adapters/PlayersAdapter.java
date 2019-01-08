@@ -2,7 +2,6 @@ package in.sashi.sporteco.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,14 +13,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.Players;
+import in.sashi.sporteco.models.players.Players;
 import in.sashi.sporteco.ui.fragments.players.PlayerInfoFragment;
 import in.sashi.sporteco.viewholders.PlayersViewHolder;
 
-import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_ADDRESS;
-import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_IMAGE_URL;
-import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_NAME;
-import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_STATE;
 import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_USER_ID;
 
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersViewHolder> {

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.Drills;
+import in.sashi.sporteco.models.drills.Drills;
 import in.sashi.sporteco.ui.fragments.dialogs.DrillsDetailsFragment;
 import in.sashi.sporteco.ui.fragments.dialogs.OnGoingDrillDetailsFragment;
 import in.sashi.sporteco.utils.Constants;
@@ -83,10 +83,14 @@ public class DrillsAdapter extends RecyclerView.Adapter<DrillItemsViewHolder> {
 
     private void showOnGoingDrillDetail(String title, String duration) {
         OnGoingDrillDetailsFragment drillDetailsFragment = new OnGoingDrillDetailsFragment();
+        if (drillDetailsFragment.getDialog() != null){
+            drillDetailsFragment.getDialog().setCanceledOnTouchOutside(false);
+        }
         Bundle bundle = new Bundle();
         bundle.putString(Constants.DRILL_TITLE_KEY, title);
         bundle.putString(Constants.DRILL_DURATION_KEY, duration);
         drillDetailsFragment.setArguments(bundle);
+        drillDetailsFragment.setCancelable(false);
         drillDetailsFragment.show(((AppCompatActivity)context).getSupportFragmentManager(), "OnGoingDrillDetailsFragment");
     }
 

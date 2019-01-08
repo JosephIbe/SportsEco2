@@ -6,15 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.models.app.UpComingSessions;
+import in.sashi.sporteco.models.sessions.UpComingSessions;
 import in.sashi.sporteco.viewholders.UpComingViewHolder;
 
 public class UpComingAdapter extends RecyclerView.Adapter<UpComingViewHolder> {

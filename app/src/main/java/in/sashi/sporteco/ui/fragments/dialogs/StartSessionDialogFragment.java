@@ -28,7 +28,7 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.DrillsAdapter;
-import in.sashi.sporteco.models.app.Drills;
+import in.sashi.sporteco.models.drills.Drills;
 import in.sashi.sporteco.utils.Constants;
 
 public class StartSessionDialogFragment extends DialogFragment {
@@ -104,7 +104,6 @@ public class StartSessionDialogFragment extends DialogFragment {
             e.printStackTrace();
         }
 
-
         AndroidNetworking.post(Constants.BASE_URL + "session_drills_list")
                 .addJSONObjectBody(jsonObject)
                 .build()
@@ -126,7 +125,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         one.setPlaying(false);
         one.setFavorite(false);
         one.setTitle("Carolina Shooting1");
-        one.setDuration("20:01");
+        one.setDuration("05:01");
         one.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(one);
 
@@ -134,7 +133,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         two.setPlaying(false);
         two.setFavorite(false);
         two.setTitle("Carolina Shooting2");
-        two.setDuration("20:02");
+        two.setDuration("01:02");
         two.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(two);
 
@@ -142,7 +141,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         three.setPlaying(false);
         three.setFavorite(false);
         three.setTitle("Carolina Shooting3");
-        three.setDuration("20:03");
+        three.setDuration("05:03");
         three.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(three);
 
@@ -150,7 +149,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         four.setPlaying(false);
         four.setFavorite(false);
         four.setTitle("Carolina Shooting4");
-        four.setDuration("20:04");
+        four.setDuration("05:04");
         four.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(four);
 
@@ -158,7 +157,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         five.setPlaying(false);
         five.setFavorite(false);
         five.setTitle("Carolina Shooting5");
-        five.setDuration("20:05");
+        five.setDuration("05:05");
         five.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(five);
 
@@ -166,7 +165,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         six.setPlaying(false);
         six.setFavorite(false);
         six.setTitle("Carolina Shooting6");
-        six.setDuration("20:06");
+        six.setDuration("05:06");
         six.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(six);
 
@@ -174,7 +173,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         seven.setPlaying(false);
         seven.setFavorite(false);
         seven.setTitle("Carolina Shooting7");
-        seven.setDuration("20:07");
+        seven.setDuration("05:07");
         seven.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(seven);
 
@@ -182,7 +181,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         eight.setPlaying(false);
         eight.setFavorite(false);
         eight.setTitle("Carolina Shooting8");
-        eight.setDuration("20:08");
+        eight.setDuration("05:08");
         eight.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(eight);
 
@@ -190,7 +189,7 @@ public class StartSessionDialogFragment extends DialogFragment {
         nine.setPlaying(false);
         nine.setFavorite(false);
         nine.setTitle("Carolina Shooting9");
-        nine.setDuration("20:09");
+        nine.setDuration("05:09");
         nine.setIconImg(R.drawable.ic_drill_icon_bordered);
         itemsList.add(nine);
 

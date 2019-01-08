@@ -51,7 +51,7 @@ public class TestDialog extends Fragment {
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-        View view = inflater.inflate(R.layout.test_dialog_layout, container, false);
+        View view = inflater.inflate(R.layout.add_dialog_layout, container, false);
         return  view;
     }
 }

@@ -1,17 +1,14 @@
-package in.sashi.sporteco.models.app;
+package in.sashi.sporteco.models.batch;
 
 import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.ConflictAction;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
-@Table(database = SportsDatabase.class, name = "players_session",
-        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
-        cachingEnabled = true)
-public class PlayerSession extends BaseModel {
+@Table(name = "eval_batch_players", database = SportsDatabase.class)
+public class EvalBatchPlayers extends BaseModel {
 
     @PrimaryKey
     @Column
@@ -35,7 +32,10 @@ public class PlayerSession extends BaseModel {
     @Column
     public String statePlayer;
 
-    public PlayerSession() {
+    @Column
+    public String batchId;
+
+    public EvalBatchPlayers() {
     }
 
     public String getUserId() {
@@ -93,5 +93,7 @@ public class PlayerSession extends BaseModel {
     public void setStatePlayer(String statePlayer) {
         this.statePlayer = statePlayer;
     }
+
+    
 
 }

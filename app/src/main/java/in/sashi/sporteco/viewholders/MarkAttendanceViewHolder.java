@@ -8,12 +8,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import in.sashi.sporteco.R;
 
 public class MarkAttendanceViewHolder extends RecyclerView.ViewHolder {
 
     public RelativeLayout playerAvatarLayout;
-    public ImageView playerAvatarIV;
+    public CircleImageView playerAvatarIV;
     public CheckBox checkBoxPlayer;
     public TextView namePlayerTV;
 

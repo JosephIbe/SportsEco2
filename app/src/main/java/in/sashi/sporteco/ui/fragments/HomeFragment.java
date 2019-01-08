@@ -36,11 +36,11 @@ import java.util.List;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ActionsAdapter;
 import in.sashi.sporteco.adapters.SessionsAdapter;
-import in.sashi.sporteco.adapters.TodoAdapter;
+import in.sashi.sporteco.adapters.TasksAdapter;
 import in.sashi.sporteco.interfaces.RecyclerClickListener;
 import in.sashi.sporteco.models.app.HomeActions;
-import in.sashi.sporteco.models.app.Sessions;
-import in.sashi.sporteco.models.app.Todo;
+import in.sashi.sporteco.models.sessions.Sessions;
+import in.sashi.sporteco.models.app.Tasks;
 import in.sashi.sporteco.ui.activities.AttendanceMainActivity;
 import in.sashi.sporteco.ui.activities.EvaluateActivity;
 import in.sashi.sporteco.ui.activities.PlayersActivity;
@@ -48,6 +48,7 @@ import in.sashi.sporteco.ui.activities.ProgramsActivity;
 import in.sashi.sporteco.ui.fragments.dialogs.DateDialogFragment;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.Constants;
+import in.sashi.sporteco.utils.PrefsUtils;
 import in.sashi.sporteco.utils.RecyclerItemTouchListener;
 
 /**
@@ -69,8 +70,8 @@ public class HomeFragment extends Fragment implements DatePickerListener {
     private List<Sessions> sessionsList = new ArrayList<>();
     private SessionsAdapter sessionsAdapter;
 
-    private List<Todo> todoList = new ArrayList<>();
-    private TodoAdapter todoAdapter;
+    private List<Tasks> tasksList = new ArrayList<>();
+    private TasksAdapter tasksAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -117,37 +118,40 @@ public class HomeFragment extends Fragment implements DatePickerListener {
     private void setUpTodos() {
         todosRV.setHasFixedSize(true);
         todosRV.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-//        Todo item1 = new Todo();
-//        item1.setComplete(false);
-//        item1.setItemTitle("Complete September");
-//        todoList.add(item1);
-//
-//        Todo item2 = new Todo();
-//        item2.setComplete(false);
-//        item2.setItemTitle("Review October");
-//        todoList.add(item2);
-//
-//        Todo item3 = new Todo();
-//        item3.setComplete(false);
-//        item3.setItemTitle("Plan for November and so on...");
-//        todoList.add(item3);
-
         fetchTodos();
-
-        todoAdapter = new TodoAdapter(getActivity(), todoList);
-        todosRV.setAdapter(todoAdapter);
-
     }
 
     private void fetchTodos() {
+        Log.d(TAG, "Login Status:\t" + new PrefsUtils(getActivity()).getLoginStatus());
         AndroidNetworking.get(Constants.BASE_URL + "todays_todo_list")
-                .setTag("Get Today's Todo List")
+                .setTag("Get Today's Tasks List")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, "Todos Response:\t" + response.toString());
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.toString());
+                            JSONArray jsonArray = jsonObject.getJSONArray("tasks");
+
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                Tasks tasks = new Tasks();
+                                tasks.setComplete(object.getString("completed_status"));
+                                tasks.setTaskId(object.getString("todo_list_id"));
+                                tasks.setTaskTitle(object.getString("task_name"));
+                                tasks.setTaskDesc(object.getString("task_description"));
+
+                                tasksList.add(tasks);
+                                tasksAdapter = new TasksAdapter(getActivity(), tasksList);
+                                todosRV.setAdapter(tasksAdapter);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
@@ -188,7 +192,8 @@ public class HomeFragment extends Fragment implements DatePickerListener {
                                 sessions.setSession_name(details.getString("prg_session_name"));
                                 sessions.setBatch_name(details.getString("batch_name"));
                                 sessions.setProgram_name(details.getString("prg_name"));
-                                sessions.setSession_id(details.getString("prg_session_id"));
+//                                sessions.setProgram_id(details.getString("program_id"));
+                                sessions.setProg_sessionId(details.getString("prg_session_id"));
                                 sessions.setIs_complete(details.getString("session_complete"));
                                 sessions.setEquipments_reqd(details.getString("prg_session_equipment"));
                                 sessions.setSession_desc(details.getString("prg_session_description"));

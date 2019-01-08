@@ -32,7 +32,6 @@
         <activity android:name=".ui.activities.EvaluateActivity" />
         <activity android:name=".ui.activities.CalendarViewActivity" />
         <activity android:name=".ui.activities.ViewSessionActivity" />
-        <activity android:name=".ui.fragments.dialogs.StartSessionDialogFragment" />
         <activity android:name=".ui.activities.PlayersActivity" />
         <activity android:name=".ui.activities.ProgramsActivity"></activity>
     </application>

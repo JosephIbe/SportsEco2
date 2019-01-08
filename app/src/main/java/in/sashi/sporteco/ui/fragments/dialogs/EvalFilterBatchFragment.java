@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,7 +31,7 @@ public class EvalFilterBatchFragment extends DialogFragment implements View.OnCl
     private Toolbar toolbar;
     private ImageView closeIV;
     private TextView batch_nameTV, detail_player_nameTV;
-    private RadioGroup playersGroup;
+    private RecyclerView evalBatchPlayersRV;
 
     private RatingBar batchRatingBar;
     private EditText commentsBox_batch;
@@ -37,6 +39,7 @@ public class EvalFilterBatchFragment extends DialogFragment implements View.OnCl
 
     private LinearLayout doneLayout;
     private RelativeLayout rootLayout_batch;
+    private String bid;
 
     @Nullable
     @Override
@@ -52,7 +55,7 @@ public class EvalFilterBatchFragment extends DialogFragment implements View.OnCl
     private void init(View view) {
         toolbar = view.findViewById(R.id.toolbar);
         closeIV = view.findViewById(R.id.closeIV);
-        playersGroup = view.findViewById(R.id.playersGroup);
+        evalBatchPlayersRV = view.findViewById(R.id.evalBatchPlayersRV);
         batch_nameTV = view.findViewById(R.id.batch_nameTV);
         detail_player_nameTV = view.findViewById(R.id.detail_player_nameTV);
         doneBtn = view.findViewById(R.id.doneBtn);
@@ -60,11 +63,24 @@ public class EvalFilterBatchFragment extends DialogFragment implements View.OnCl
 
         Log.d(TAG, "Name:\t" + getArguments().getString("name_batch"));
         String name = getArguments().getString("name_batch");
+        bid = getArguments().getString("id_batch");
         batch_nameTV.setText(name);
 
         closeIV.setOnClickListener(this);
         doneBtn.setOnClickListener(this);
 //        doneLayout.setOnClickListener(this);
+
+        setUpPlayersRV();
+
+    }
+
+    private void setUpPlayersRV() {
+        evalBatchPlayersRV.setHasFixedSize(true);
+        LinearLayoutManager hlm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        evalBatchPlayersRV.setLayoutManager(hlm);
+
+//        fetchPlayersFromDB(bid);
+        // TODO: 1/7/2019 Get Players based on batch id
 
     }
 

@@ -12,9 +12,9 @@ import com.elyeproj.loaderviewlibrary.LoaderTextView;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.models.app.CoachDetails;
-import in.sashi.sporteco.models.app.Players;
-import in.sashi.sporteco.models.app.Players_Table;
+import in.sashi.sporteco.models.coach.CoachDetails;
+import in.sashi.sporteco.models.players.Players;
+import in.sashi.sporteco.models.players.Players_Table;
 import in.sashi.sporteco.utils.AppUtils;
 
 /**

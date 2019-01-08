@@ -17,13 +17,12 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ViewPagerAdapter;
-import in.sashi.sporteco.models.app.Players;
-import in.sashi.sporteco.models.app.Players_Table;
+import in.sashi.sporteco.models.players.Players;
+import in.sashi.sporteco.models.players.Players_Table;
 import in.sashi.sporteco.ui.fragments.shared_fragments.BasicInfoFragment;
 import in.sashi.sporteco.ui.fragments.shared_fragments.CoachInfoFragment;
 import in.sashi.sporteco.ui.fragments.shared_fragments.PhysicalInfoFragment;
 
-import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_IMAGE_URL;
 import static in.sashi.sporteco.utils.Constants.PLAYER_KEY_USER_ID;
 
 public class PlayerInfoFragment extends BottomSheetDialogFragment {

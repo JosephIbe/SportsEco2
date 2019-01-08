@@ -9,7 +9,6 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 import in.sashi.sporteco.rest.db.SportsDatabase;
 
 @Table(name = "programs", database = SportsDatabase.class,
-        insertConflict = ConflictAction.REPLACE, updateConflict = ConflictAction.REPLACE,
         cachingEnabled = true)
 public class Programs extends BaseModel {
 
