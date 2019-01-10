@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -64,18 +65,27 @@ public class PlayerInfoFragment extends BottomSheetDialogFragment {
         user_id = getArguments().getString(PLAYER_KEY_USER_ID);
         Log.d(TAG, "Pid:\t" + user_id);
 
-        players = SQLite.select()
-                    .from(Players.class)
-                    .where(Players_Table.userId.is(user_id))
-                    .querySingle();
-        String imgURL = players.getImageURL();
-        Log.d(TAG, "PImgURL:\t" + imgURL);
+        SQLite.select()
+                .from(Players.class)
+                .where(Players_Table.userId.is(user_id))
+                .async()
+                .querySingleResultCallback(new QueryTransaction.QueryResultSingleCallback<Players>() {
+                    @Override
+                    public void onSingleQueryResult(QueryTransaction transaction, @Nullable Players mPlayers) {
+                        players = mPlayers;
+                        String imgURL = players.getImageURL();
+                        loadImage(imgURL);
+                        Log.d(TAG, "PImgURL:\t" + imgURL);
+                    }
+                }).execute();
 
+    }
+
+    private void loadImage(String imgURL) {
         Picasso.with(getActivity())
                 .load(imgURL)
                 .placeholder(R.drawable.app_logo_resized)
                 .into(infoCIV);
-
     }
 
     private void setUpTabs() {

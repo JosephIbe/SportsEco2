@@ -25,10 +25,6 @@ public class ProgramsSessionsAdapter extends RecyclerView.Adapter<ProgramsSessio
     private final Context context;
     private List<ProgramSessionDetails> itemsList;
 
-    public ProgramsSessionsAdapter(Context ctx) {
-        this.context = ctx;
-    }
-
     public ProgramsSessionsAdapter(Context context, List<ProgramSessionDetails> itemsList) {
         this.context = context;
         this.itemsList = itemsList;

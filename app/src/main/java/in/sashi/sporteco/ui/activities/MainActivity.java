@@ -24,7 +24,9 @@ import in.sashi.sporteco.ui.fragments.HomeFragment;
 import in.sashi.sporteco.ui.fragments.MessagesFragment;
 import in.sashi.sporteco.ui.fragments.ProfileFragment;
 import in.sashi.sporteco.ui.fragments.dialogs.NewBatchDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.NewPlayerDialog;
 import in.sashi.sporteco.ui.fragments.dialogs.NewProgramDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.NewScheduleDialog;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -102,9 +104,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 addSchedule.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Snackbar.make(findViewById(android.R.id.content), "Add Schedule Clicked", Snackbar.LENGTH_LONG)
-                                .show();
-
+                        NewScheduleDialog scheduleDialog = new NewScheduleDialog();
+                        scheduleDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+                        scheduleDialog.show(getSupportFragmentManager(), "NewScheduleDialog");
                     }
                 });
 
@@ -112,8 +114,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 addPlayer.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Snackbar.make(findViewById(android.R.id.content), "Add Player Clicked", Snackbar.LENGTH_LONG)
-                                .show();
+                        NewPlayerDialog playerDialog = new NewPlayerDialog();
+                        playerDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+                        playerDialog.show(getSupportFragmentManager(), "NewPlayerDialog");
                     }
                 });
 
@@ -121,8 +124,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 addProgram.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Snackbar.make(findViewById(android.R.id.content), "Add Player Clicked", Snackbar.LENGTH_LONG)
-                                .show();
                         NewProgramDialog programDialog = new NewProgramDialog();
                         programDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
                         programDialog.show(getSupportFragmentManager(), "NewProgramDialog");
@@ -133,8 +134,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 addBatch.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Snackbar.make(findViewById(android.R.id.content), "Add Batch Clicked", Snackbar.LENGTH_LONG)
-                                .show();
                         NewBatchDialog batchDialog = new NewBatchDialog();
                         batchDialog.setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Light_NoTitleBar_Fullscreen);
                         batchDialog.show(getSupportFragmentManager(), "NewBatchDialog");
@@ -143,19 +142,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 //                window.showAtLocation(navEx, Gravity.BOTTOM, 0, 120);
                 window.showAtLocation(navEx, Gravity.BOTTOM, 0, navEx.getItemHeight() - 3);
-
                 break;
-
-//                fragment = new AddFragment();
-//                switchFragment(fragment);
-//                return true;
-
-//                TestDialog dialog = new TestDialog();
-//                dialog.show();
-
-//                Window window = dialog.getWindow();
-//                window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
             case R.id.nav_messages:
                 fragment = new MessagesFragment();
                 switchFragment(fragment);

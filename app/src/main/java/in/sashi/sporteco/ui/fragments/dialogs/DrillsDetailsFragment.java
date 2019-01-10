@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class DrillsDetailsFragment extends DialogFragment implements View.OnClic
     private TextView nameDrillTV, drillDescTV;
     private RecyclerView drillFocusRV, drillEquipmentsRV;
     private RelativeLayout startDrillBtn, evaluateDrillBtn;
+    private LinearLayout drillActionsLayout;
 
     private String drill_name;
 
@@ -59,6 +61,7 @@ public class DrillsDetailsFragment extends DialogFragment implements View.OnClic
         drillEquipmentsRV = v.findViewById(R.id.drillEquipmentsRV);
         startDrillBtn = v.findViewById(R.id.startDrillBtn);
         evaluateDrillBtn = v.findViewById(R.id.evaluateDrillBtn);
+        drillActionsLayout = v.findViewById(R.id.drillActionsLayout);
 
         nameDrillTV.setText(drill_name);
 
@@ -71,10 +74,10 @@ public class DrillsDetailsFragment extends DialogFragment implements View.OnClic
                 dismiss();
                 break;
             case R.id.evaluateDrillBtn:
-                Snackbar.make(getActivity().findViewById(android.R.id.content), "No UI Provided", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(drillActionsLayout, "No UI Provided", Snackbar.LENGTH_LONG).show();
                 break;
             case R.id.startDrillBtn:
-                Snackbar.make(getActivity().findViewById(android.R.id.content), "No UI Provided", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(drillActionsLayout, "No UI Provided", Snackbar.LENGTH_LONG).show();
                 break;
         }
     }

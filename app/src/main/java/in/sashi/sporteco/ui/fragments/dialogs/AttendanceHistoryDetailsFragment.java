@@ -8,7 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +16,12 @@ import android.widget.TextView;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.ViewPagerAdapter;
-import in.sashi.sporteco.ui.fragments.ChatsFragment;
-import in.sashi.sporteco.ui.fragments.GroupsFragment;
 import in.sashi.sporteco.ui.fragments.attendance.AbsentFragment;
 import in.sashi.sporteco.ui.fragments.attendance.PresentFragment;
 
-public class AttendanceHistoryDetailsDialogFragment extends DialogFragment {
+public class AttendanceHistoryDetailsFragment extends DialogFragment {
 
-    private static final String TAG = AttendanceHistoryDetailsDialogFragment.class.getSimpleName();
+    private static final String TAG = AttendanceHistoryDetailsFragment.class.getSimpleName();
 
     public static final String KEY_SESSION_NAME = "session_name";
     public static final String KEY_PRESENT = "players_present";
@@ -88,7 +85,7 @@ public class AttendanceHistoryDetailsDialogFragment extends DialogFragment {
 
         pagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         pagerAdapter.addFragTab(af, "Present " + presentCount);
-        pagerAdapter.addFragTab(pf, "Absent" + absentCount);
+        pagerAdapter.addFragTab(pf, "Absent " + absentCount);
         viewPager.setAdapter(pagerAdapter);
     }
 

@@ -1,6 +1,7 @@
 package in.sashi.sporteco.ui.fragments.shared_fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.elyeproj.loaderviewlibrary.LoaderTextView;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.models.coach.CoachDetails;
@@ -27,8 +29,7 @@ public class BasicInfoFragment extends Fragment {
     private LoaderTextView nameTV, emailTV, addressTV, phoneTV, stateTV;
     private LinearLayout nameLayout;
 
-    private CoachDetails query;
-    private Players players;
+//    private CoachDetails query;
 
     private boolean fromCoach = false, fromPlayers = false;
     private String playerId = null;
@@ -71,44 +72,49 @@ public class BasicInfoFragment extends Fragment {
 
         if (fromCoach) {
 
-            //        query = SQLite.select()
-//                .from(CoachDetails.class)
-//                .where(CoachDetails_Table.coachId.is(AppUtils.getCoachId()))
-//                .querySingle();
-
-//        query = new Select()
-//                .from(CoachDetails.class)
-//                .where(CoachDetails_Table.coachId.is(AppUtils.getCoachId()))
-//                .querySingle();
-
-            query = SQLite.select()
+            SQLite.select()
                     .from(CoachDetails.class)
-                    .querySingle();
+                    .async()
+                    .querySingleResultCallback(new QueryTransaction.QueryResultSingleCallback<CoachDetails>() {
+                        @Override
+                        public void onSingleQueryResult(QueryTransaction transaction, @Nullable CoachDetails mQuery) {
+                            setCoachBasicInfo(mQuery);
+                        }
+                    }).execute();
 
-            Log.d(TAG, "Cid profile:\t" + AppUtils.getCoachId());
-            Log.d(TAG, "CEmail:\t" + query.getEmailAddr());
-
-            nameLayout.setVisibility(View.GONE);
-            emailTV.setText(query.username);
-            phoneTV.setText(query.getMobileNum());
-            addressTV.setText(query.getAddress());
-            stateTV.setText(query.getOriginState());
-        } else if (fromPlayers){
-
-            players = SQLite.select()
-                    .from(Players.class)
-                    .where(Players_Table.userId.is(playerId))
-                    .querySingle();
+        } else if (fromPlayers) {
 
             nameLayout.setVisibility(View.VISIBLE);
-            nameTV.setText(players.getFirstName() + " " + players.getLastName());
-            emailTV.setText(players.getUsername());
-            phoneTV.setText(players.getMobilePlayer());
-            addressTV.setText(players.getAddress());
-            stateTV.setText(players.getStatePlayer());
+
+            SQLite.select()
+                    .from(Players.class)
+                    .where(Players_Table.userId.is(playerId))
+                    .async()
+                    .querySingleResultCallback(new QueryTransaction.QueryResultSingleCallback<Players>() {
+                        @Override
+                        public void onSingleQueryResult(QueryTransaction transaction, @Nullable Players players) {
+                            setPlayerBasicDetails(players);
+                        }
+                    }).execute();
 
         }
 
+    }
+
+    private void setCoachBasicInfo(CoachDetails mQuery) {
+        nameLayout.setVisibility(View.GONE);
+        emailTV.setText(mQuery.username);
+        phoneTV.setText(mQuery.mobileNum);
+        addressTV.setText(mQuery.address);
+        stateTV.setText(mQuery.originState);
+    }
+
+    private void setPlayerBasicDetails(Players players) {
+        nameTV.setText(players.getFirstName() + " " + players.getLastName());
+        emailTV.setText(players.getUsername());
+        phoneTV.setText(players.getMobilePlayer());
+        addressTV.setText(players.getAddress());
+        stateTV.setText(players.getStatePlayer());
     }
 
 }

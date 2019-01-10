@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,39 +22,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.adapters.AddProgramSessionsAdapter;
+import in.sashi.sporteco.adapters.ScheduleSessionsAdapter;
 import in.sashi.sporteco.models.sessions.Sessions;
 
-public class NewProgramDialog extends DialogFragment {
+public class NewScheduleDialog extends DialogFragment {
 
-    private static final String TAG = NewProgramDialog.class.getSimpleName();
+    private static final String TAG = NewScheduleDialog.class.getSimpleName();
 
     private Toolbar toolbar;
     private ImageView backIV;
+    private Button schedDoneBtn;
 
-    private EditText progNameET, placeTV, descET;
-    private Button programDoneBtn;
-
-    private RecyclerView addProgramSessionsRV;
+    private RecyclerView scheduleSessionsRV;
     private List<Sessions> list = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_program_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_new_schedule_dialog, container, false);
         init(view);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         return view;
     }
 
     private void init(View view) {
         toolbar = view.findViewById(R.id.toolbar);
         backIV = view.findViewById(R.id.backIV);
-        progNameET = view.findViewById(R.id.progNameET);
-        placeTV = view.findViewById(R.id.placeTV);
-        descET = view.findViewById(R.id.descET);
-        programDoneBtn = view.findViewById(R.id.programDoneBtn);
-        addProgramSessionsRV = view.findViewById(R.id.addProgramSessionsRV);
+        scheduleSessionsRV = view.findViewById(R.id.scheduleSessionsRV);
+        schedDoneBtn = view.findViewById(R.id.schedDoneBtn);
 
         backIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,23 +58,26 @@ public class NewProgramDialog extends DialogFragment {
             }
         });
 
-        populateSessions();
+        setUpSessionsRV();
 
-        programDoneBtn.setOnClickListener(new View.OnClickListener() {
+        schedDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 1/8/2019 validate
                 Toast.makeText(getActivity(), "What Next?", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void populateSessions() {
+    private void setUpSessionsRV() {
+        scheduleSessionsRV.setHasFixedSize(true);
+        scheduleSessionsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        addProgramSessionsRV.setHasFixedSize(true);
-        addProgramSessionsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        populate();
 
+    }
+
+    private void populate() {
         SQLite.select()
                 .from(Sessions.class)
                 .async()
@@ -88,9 +85,8 @@ public class NewProgramDialog extends DialogFragment {
                     @Override
                     public void onListQueryResult(QueryTransaction transaction, @NonNull List<Sessions> tResult) {
                         list = tResult;
-                        addProgramSessionsRV.setAdapter(new AddProgramSessionsAdapter(getActivity(), list));
+                        scheduleSessionsRV.setAdapter(new ScheduleSessionsAdapter(getActivity(), list));
                     }
                 }).execute();
-
     }
 }

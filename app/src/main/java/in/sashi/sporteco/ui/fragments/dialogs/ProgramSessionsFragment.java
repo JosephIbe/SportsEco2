@@ -19,6 +19,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -113,12 +114,17 @@ public class ProgramSessionsFragment extends DialogFragment {
 
         getProgramDetails(AppUtils.getCoachId(), programId);
 
-        List<ProgramSessionDetails> sessionDetailsList = SQLite.select()
+        SQLite.select()
                 .from(ProgramSessionDetails.class)
-                .queryList();
-
-        adapter = new ProgramsSessionsAdapter(getActivity(), sessionDetailsList);
-        programsSessionsRV.setAdapter(adapter);
+                .async()
+                .queryListResultCallback(new QueryTransaction.QueryResultListCallback<ProgramSessionDetails>() {
+                    @Override
+                    public void onListQueryResult(QueryTransaction transaction, @NonNull List<ProgramSessionDetails> tResult) {
+                        list = tResult;
+                        adapter = new ProgramsSessionsAdapter(getActivity(), list);
+                        programsSessionsRV.setAdapter(adapter);
+                    }
+                }).execute();
     }
 
     private void getProgramDetails(String coachId, String pid) {
