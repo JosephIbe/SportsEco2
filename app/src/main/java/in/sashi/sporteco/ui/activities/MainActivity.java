@@ -3,7 +3,6 @@ package in.sashi.sporteco.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -23,10 +22,10 @@ import in.sashi.sporteco.ui.fragments.AlertsFragment;
 import in.sashi.sporteco.ui.fragments.HomeFragment;
 import in.sashi.sporteco.ui.fragments.MessagesFragment;
 import in.sashi.sporteco.ui.fragments.ProfileFragment;
-import in.sashi.sporteco.ui.fragments.dialogs.NewBatchDialog;
-import in.sashi.sporteco.ui.fragments.dialogs.NewPlayerDialog;
-import in.sashi.sporteco.ui.fragments.dialogs.NewProgramDialog;
-import in.sashi.sporteco.ui.fragments.dialogs.NewScheduleDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs.NewBatchDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs.NewPlayerDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs.programs.NewProgramDialog;
+import in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs.NewScheduleDialog;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

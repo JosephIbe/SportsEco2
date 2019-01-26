@@ -4,4 +4,9 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/white</item>
     </style>
+
+    <style name="RatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="android:colorControlActivated">@color/bluish</item>
+        <item name="android:colorControlNormal">@color/nav_icon_color</item>
+    </style>
 </resources>

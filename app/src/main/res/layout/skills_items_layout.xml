@@ -1,35 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:layout_weight="2"
     android:orientation="horizontal"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="5dp">
 
     <ImageView
+        android:id="@+id/skillIV"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_players"
-        android:layout_gravity="center_vertical"/>
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_players" />
 
     <TextView
         android:id="@+id/nameSkillTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Transition Running"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
         android:maxLength="25"
         android:padding="3dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:text="Transition Running" />
 
+    <!--<RatingBar-->
+    <!--android:id="@+id/skillsRatingBar"-->
+    <!--style="@style/RatingBar"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:layout_toRightOf="@id/nameSkillTV"-->
+    <!--android:max="5"-->
+    <!--android:numStars="5"-->
+    <!--android:padding="10dp" />-->
+
+    <!--style="?android:attr/ratingBarStyleIndicator"-->
     <RatingBar
         android:id="@+id/skillsRatingBar"
+        style="@style/RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_gravity="center_vertical|right"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/nameSkillTV"/>
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@id/nameSkillTV"
+        android:isIndicator="false"
+        android:max="5"
+        android:numStars="5"
+        android:padding="10dp"
+        android:scaleX="1"
+        android:scaleY="0.8"
+        android:theme="@style/CustomHeightRatingBar" />
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<RatingBar-->
+    <!--android:id="@+id/skillsRatingBar"-->
+    <!--style="?android:attr/ratingBarStyleIndicator"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:max="5"-->
+    <!--android:stepSize="0.5"-->
+    <!--android:scaleX=".7"-->
+    <!--android:scaleY=".7"-->
+    <!--android:transformPivotX="0dp"-->
+    <!--android:transformPivotY="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentRight="true" />-->
+
+    <!--</RelativeLayout>-->
 
 </LinearLayout>

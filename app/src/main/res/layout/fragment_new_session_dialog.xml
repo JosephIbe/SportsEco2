@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?android:attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/closeIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_close" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/closeIV"
+                android:text="New Session"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/imageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar">
+
+                <ImageView
+                    android:id="@+id/newSessionIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/grey_bkg" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/cameraFAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/newSessionIV"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_camera"
+                    app:fabSize="normal" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageLayout"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/sessionNameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Session Name"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp" />
+
+                <EditText
+                    android:id="@+id/sessionDescET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Description"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/focus_pts"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/focusPtsRVLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <in.sashi.sporteco.utils.EmptyRecyclerView
+                            android:id="@+id/sessionFocus_ptsRV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="50dp" />
+
+                        <TextView
+                            android:id="@+id/emptyText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You Have No Focus Points Yet"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                            android:fontFamily="casual"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/focusPtsRVLayout"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
+
+                        <EditText
+                            android:id="@+id/focusPtsET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:maxLength="25"
+                            android:background="@android:color/transparent"
+                            android:hint="Add Focus Points..."
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/addFocusPtsIV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ADD"
+                            android:textColor="@color/colorPrimary"
+                            android:padding="5dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/newSessionDoneBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/done"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:layout_gravity="bottom" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

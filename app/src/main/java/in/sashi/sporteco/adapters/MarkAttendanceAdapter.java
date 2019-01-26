@@ -52,34 +52,55 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
                 .placeholder(R.drawable.app_logo_resized)
                 .into(viewholder.playerAvatarIV);
 
+
+        viewholder.checkBoxPlayer.setChecked(itemsList.get(position).isSelected());
+        viewholder.checkBoxPlayer.setTag(position);
+
+//        viewholder.checkBoxPlayer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Integer posClicked = (Integer) viewholder.checkBoxPlayer.getTag();
+//
+//                if (itemsList.get(posClicked).isSelected()){
+//                    itemsList.get(posClicked).setSelected(false);
+//                } else {
+//                    itemsList.get(posClicked).setSelected(true);
+//                }
+//
+//            }
+//        });
+
         final boolean isClicked = players.isSelected();
         viewholder.playerAvatarIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                viewholder.checkBoxPlayer.setVisibility(isClicked ? View.VISIBLE : View.INVISIBLE);
-//
-//                players.setSelected(!players.isSelected());
-//                players.setSelected(!isClicked);
-//                Log.d(TAG, "Sel Status " + players.isSelected());
+                int visible = viewholder.checkBoxPlayer.getVisibility();
+                Log.d(TAG, "CBVStatus:\t" + visible);
 
-//                boolean isChecked = viewholder.checkBoxPlayer.isChecked();
+                viewholder.checkBoxPlayer.setVisibility(isClicked ? View.VISIBLE : View.INVISIBLE);
+
+                players.setSelected(!players.isSelected());
+                players.setSelected(!isClicked);
+                Log.d(TAG, "Sel Status " + players.isSelected());
+
+                boolean isChecked = viewholder.checkBoxPlayer.isChecked();
 
                 if (viewholder.checkBoxPlayer.isChecked()) {
 
-//                    if (selectedList.contains(players.getFirstName())) {
-//                        selectedList.remove(players.getFirstName());
-//                        Log.d(TAG, "Removed:\t" + players.getFirstName());
-//                    }
-
+                    if (selectedList.contains(players.getFirstName())) {
+                        selectedList.remove(players.getFirstName());
+                        Log.d(TAG, "Removed:\t" + players.getFirstName());
+                    }
+//
                     viewholder.checkBoxPlayer.setChecked(false);
                     viewholder.checkBoxPlayer.setVisibility(View.INVISIBLE);
 
                 } else {
-//                    if (!selectedList.contains(players.getFirstName())) {
-//                        selectedList.add(players.getFirstName());
-//                        Log.d(TAG, "Added:\t" + players.getFirstName());
-//                    }
+                    if (!selectedList.contains(players.getFirstName())) {
+                        selectedList.add(players.getFirstName());
+                        Log.d(TAG, "Added:\t" + players.getFirstName());
+                    }
                     viewholder.checkBoxPlayer.setChecked(true);
                     viewholder.checkBoxPlayer.setVisibility(View.VISIBLE);
                 }
@@ -105,6 +126,7 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
         });
     }
 
+
     @Override
     public int getItemCount() {
         if (itemsList == null) {
@@ -113,12 +135,12 @@ public class MarkAttendanceAdapter extends RecyclerView.Adapter<MarkAttendanceVi
         return itemsList.size();
     }
 
-    public void checkAll() {
-        vh.checkBoxPlayer.setChecked(true);
+    public void checkAll(boolean checked) {
+        vh.checkBoxPlayer.setChecked(checked);
     }
 
-    public void unCheckAll() {
-        vh.checkBoxPlayer.setChecked(false);
+    public void unCheckAll(boolean unChecked) {
+        vh.checkBoxPlayer.setChecked(unChecked);
     }
 
     public int sendNumChecked() {

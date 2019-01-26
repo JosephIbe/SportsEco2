@@ -1,4 +1,4 @@
-package in.sashi.sporteco.ui.fragments.dialogs;
+package in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

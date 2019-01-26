@@ -22,7 +22,9 @@ import android.widget.TextView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
+import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +35,6 @@ import java.util.List;
 
 import in.sashi.sporteco.R;
 import in.sashi.sporteco.adapters.MarkAttendanceAdapter;
-import in.sashi.sporteco.models.players.Players;
 import in.sashi.sporteco.models.sessions.PlayerSession;
 import in.sashi.sporteco.models.sessions.Sessions;
 import in.sashi.sporteco.utils.Constants;
@@ -51,6 +52,7 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
 
     private RecyclerView attRV;
     private MarkAttendanceAdapter adapter;
+    private List<PlayerSession> playersQueryList = new ArrayList<>();
     private List<PlayerSession> playersList = new ArrayList<>();
 
     private int numPresent = 0, numAbsent = 0, sumPlayers = 0;
@@ -86,11 +88,11 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
 //        numPresent = adapter.sendNumChecked();
 //        Log.d(TAG, "Num Checked:\t" + numPresent);
 //        presentTV.setText(numPresent + "");
-//
+
 //        sumPlayers = adapter.getItemCount();
 //        Log.d(TAG, "Sum Players:\t" + sumPlayers);
 //        totalTV.setText(sumPlayers + "");
-//
+
 //        numAbsent = sumPlayers - numPresent;
 //        Log.d(TAG, "Num Absent:\t" + numAbsent);
 //        absentTV.setText(numAbsent + "");
@@ -101,10 +103,31 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
         attRV.setHasFixedSize(true);
         attRV.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
-//        populate();
         // TODO: 1/5/2019 Get Players in session from session id
         getPlayersInSession(new Select().from(Sessions.class).querySingle().prog_sessionId);
 
+//        populate(false);
+        playersList = populate(false);
+        adapter = new MarkAttendanceAdapter(getActivity(), playersList);
+        attRV.setAdapter(adapter);
+
+    }
+
+    private List<PlayerSession> populate(final boolean select) {
+        // TODO: 1/12/2019 Query with session & progSession id
+        SQLite.select()
+                .from(PlayerSession.class)
+                .async()
+                .queryListResultCallback(new QueryTransaction.QueryResultListCallback<PlayerSession>() {
+                    @Override
+                    public void onListQueryResult(QueryTransaction transaction, @NonNull List<PlayerSession> tResult) {
+                        playersQueryList = tResult;
+                        for (int i = 0; i < playersQueryList.size(); i++){
+                            playersQueryList.get(i).setSelected(select);
+                        }
+                    }
+                }).execute();
+        return playersQueryList;
     }
 
     private void getPlayersInSession(final String program_sessId) {
@@ -141,11 +164,9 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
                                 session.setStatePlayer(obj.getString("state"));
                                 session.setUserId(obj.getString("player_id"));
                                 session.setProgSessId(program_sessId);
+                                session.setSelected(false);
 
                                 session.save();
-                                playersList.add(session);
-                                adapter = new MarkAttendanceAdapter(getActivity(), playersList);
-                                attRV.setAdapter(adapter);
 
                             }
 
@@ -162,77 +183,6 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
 
     }
 
-//    private void populate() {
-//        Players one = new Players();
-//        one.setFirstName("Joseph");
-//        one.setLastName("Joey");
-//        one.setImageURL("https://bit.ly/2QoW661");
-//        one.setSelected(false);
-//        playersList.add(one);
-//
-//        Players two = new Players();
-//        two.setFirstName("Nikola");
-//        two.setLastName("Jokic");
-//        two.setImageURL("https://bit.ly/2DK1GJD");
-//        two.setSelected(false);
-//        playersList.add(two);
-//
-//        Players three = new Players();
-//        three.setFirstName("Michael");
-//        three.setLastName("Jordan");
-//        three.setImageURL("https://bit.ly/2DK1GJD");
-//        three.setSelected(false);
-//        playersList.add(three);
-//
-//        Players four = new Players();
-//        four.setFirstName("Cheryl");
-//        one.setLastName("Miller");
-//        four.setImageURL("https://bit.ly/2SaeAEs");
-//        four.setSelected(true);
-//        playersList.add(four);
-//
-//        Players five = new Players();
-//        five.setFirstName("Dwayne");
-//        five.setLastName("Wade");
-//        five.setImageURL("https://bit.ly/2DK1GJD");
-//        five.setSelected(true);
-//        playersList.add(five);
-//
-//        Players six = new Players();
-//        six.setFirstName("Maya");
-//        six.setLastName("Moore");
-//        six.setImageURL("https://bit.ly/2SaeAEs");
-//        playersList.add(six);
-//
-//        Players seven = new Players();
-//        seven.setFirstName("Steph");
-//        seven.setLastName("Curry");
-//        seven.setImageURL("https://bit.ly/2DK1GJD");
-//        playersList.add(seven);
-//
-//        Players eight = new Players();
-//        eight.setFirstName("Lisa");
-//        eight.setLastName("Leslie");
-//        eight.setImageURL("https://bit.ly/2SaeAEs");
-//        playersList.add(eight);
-//
-//        Players nine = new Players();
-//        nine.setFirstName("Lebron");
-//        nine.setLastName("Blabla");
-//        nine.setImageURL("https://bit.ly/2DK1GJD");
-//        playersList.add(nine);
-//
-//        Players ten = new Players();
-//        ten.setFirstName("Diana");
-//        ten.setLastName("Taurasi");
-//        ten.setImageURL("https://bit.ly/2SaeAEs");
-//        playersList.add(ten);
-//
-//        adapter = new MarkAttendanceAdapter(getActivity(), playersList);
-//        attRV.setAdapter(adapter);
-//
-//    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -248,9 +198,27 @@ public class MarkAttendanceFragment extends DialogFragment implements View.OnCli
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
-            adapter.checkAll();
+            List<PlayerSession> selectAll = populate(true);
+            adapter = new MarkAttendanceAdapter(getActivity(), selectAll);
+            attRV.setAdapter(adapter);
+
+            Log.d(TAG, "Select All Size:\t" + selectAll.size());
+            presentTV.setText("" + selectAll.size());
+            totalTV.setText("" + selectAll.size());
+            absentTV.setText("0");
+
+//            adapter.checkAll(isChecked);
         } else {
-            adapter.unCheckAll();
+            List<PlayerSession> deSelectAll = populate(false);
+            adapter = new MarkAttendanceAdapter(getActivity(), deSelectAll);
+            attRV.setAdapter(adapter);
+
+            Log.d(TAG, "Select All Size:\t" + deSelectAll.size());
+            presentTV.setText("0");
+            totalTV.setText("" + playersQueryList.size());
+            absentTV.setText(deSelectAll.size() + "");
+
+//            adapter.unCheckAll(isChecked);
         }
     }
 

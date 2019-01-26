@@ -70,11 +70,12 @@ public class EvalSkillsFragment extends Fragment {
         skillPlayersRV = view.findViewById(R.id.skillPlayersRV);
         skillsRV = view.findViewById(R.id.skillsRV);
 
-        skillsRV.setHasFixedSize(true);
         skillPlayersRV.setHasFixedSize(true);
+        skillsRV.setHasFixedSize(true);
 
         LinearLayoutManager hlm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         skillPlayersRV.setLayoutManager(hlm);
+
         skillsRV.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 //        getPlayers();
@@ -109,14 +110,9 @@ public class EvalSkillsFragment extends Fragment {
     }
 
     private void populatePlayers() {
-        skillPlayersRV.setAdapter(new SkillsPlayersAdapter(getActivity(), getPlayers()));
+        skillPlayersRV.setAdapter(new SkillsPlayersAdapter(getActivity(), getPlayersAsync()));
     }
 
-    private List<Players> getPlayers() {
-        return new Select()
-                .from(Players.class)
-                .queryList();
-    }
 
     private void getSkillsToEvaluate() {
         AndroidNetworking.get(Constants.BASE_URL + "get_basketball_skills")

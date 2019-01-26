@@ -1,4 +1,4 @@
-package in.sashi.sporteco.ui.fragments.dialogs;
+package in.sashi.sporteco.ui.fragments.dialogs.home_actions_dialogs.programs;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
-import in.sashi.sporteco.adapters.AddProgramSessionsAdapter;
+import in.sashi.sporteco.adapters.AddSessionsProgramAdapter;
+import in.sashi.sporteco.models.app.AdapterHeaderItem;
 import in.sashi.sporteco.models.sessions.Sessions;
 
 public class NewProgramDialog extends DialogFragment {
@@ -37,7 +38,7 @@ public class NewProgramDialog extends DialogFragment {
     private Button programDoneBtn;
 
     private RecyclerView addProgramSessionsRV;
-    private List<Sessions> list = new ArrayList<>();
+    private List<Object> list = new ArrayList<>();
 
     @Nullable
     @Override
@@ -81,14 +82,18 @@ public class NewProgramDialog extends DialogFragment {
         addProgramSessionsRV.setHasFixedSize(true);
         addProgramSessionsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        AdapterHeaderItem headerItem = new AdapterHeaderItem();
+        headerItem.setHeaderTitle("Add Session");
+        list.add(headerItem);
+
         SQLite.select()
                 .from(Sessions.class)
                 .async()
                 .queryListResultCallback(new QueryTransaction.QueryResultListCallback<Sessions>() {
                     @Override
                     public void onListQueryResult(QueryTransaction transaction, @NonNull List<Sessions> tResult) {
-                        list = tResult;
-                        addProgramSessionsRV.setAdapter(new AddProgramSessionsAdapter(getActivity(), list));
+//                        list.add(tResult);
+                        addProgramSessionsRV.setAdapter(new AddSessionsProgramAdapter(getActivity(), list));
                     }
                 }).execute();
 
