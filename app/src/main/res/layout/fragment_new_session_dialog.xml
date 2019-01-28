@@ -40,11 +40,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@id/toolbar"
+        android:scrollbars="none">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -52,8 +51,7 @@
             <RelativeLayout
                 android:id="@+id/imageLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/toolbar">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/newSessionIV"
@@ -74,6 +72,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/inputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageLayout"
@@ -102,6 +101,79 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- Focus Pts -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/focus_pts"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/gray" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <RelativeLayout
+                            android:id="@+id/focusPtsRVLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <in.sashi.sporteco.utils.EmptyRecyclerView
+                                android:id="@+id/sessionFocus_ptsRV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="50dp" />
+
+                            <TextView
+                                android:id="@+id/emptyText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="casual"
+                                android:text="You Have No Focus Points Yet"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/focusPtsRVLayout"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/focusPtsET"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="Add Focus Points..."
+                                android:maxLength="35"
+                                android:maxLines="1" />
+
+                            <TextView
+                                android:id="@+id/addFocusPtsTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="ADD"
+                                android:textColor="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Equips Reqd -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,70 +188,81 @@
                     android:layout_marginTop="10dp">
 
                     <RelativeLayout
-                        android:id="@+id/focusPtsRVLayout"
+                        android:id="@+id/equipReqdLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <in.sashi.sporteco.utils.EmptyRecyclerView
-                            android:id="@+id/sessionFocus_ptsRV"
+                            android:id="@+id/equipReqdRV"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:minHeight="50dp" />
 
                         <TextView
-                            android:id="@+id/emptyText"
+                            android:id="@+id/equipReqd_emptyText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="You Have No Focus Points Yet"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                            android:layout_centerInParent="true"
                             android:fontFamily="casual"
-                            android:layout_centerInParent="true"/>
+                            android:text="You Have No Equipment Yet"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/focusPtsRVLayout"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp">
+                        android:layout_below="@+id/equipReqdLayout"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/focusPtsET"
+                            android:id="@+id/equipRqdET"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:maxLength="25"
+                            android:layout_weight="1"
                             android:background="@android:color/transparent"
-                            android:hint="Add Focus Points..."
-                            android:layout_weight="1"/>
+                            android:hint="Add Required Equipments..."
+                            android:maxLength="35"
+                            android:maxLines="1" />
 
                         <TextView
-                            android:id="@+id/addFocusPtsIV"
+                            android:id="@+id/addEquipRqdTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:padding="5dp"
                             android:text="ADD"
-                            android:textColor="@color/colorPrimary"
-                            android:padding="5dp" />
+                            android:textColor="@color/colorPrimary" />
 
                     </LinearLayout>
 
                 </RelativeLayout>
 
+                <!-- Drills List -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/drills"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/gray" />
+
+
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/newSessionDoneBtn"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/done"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:layout_gravity="bottom" />
+            <!--<Button-->
+                <!--android:id="@+id/newSessionDoneBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="55dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/done"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+                <!--android:textColor="@color/white" />-->
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </ScrollView>
 

@@ -21,7 +21,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -38,7 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.sashi.sporteco.R;
+import in.sashi.sporteco.adapters.EquipmentsAdapter;
 import in.sashi.sporteco.adapters.FocusPointsAdapter;
+import in.sashi.sporteco.models.app.Equipments;
 import in.sashi.sporteco.models.app.FocusPoints;
 import in.sashi.sporteco.utils.AppUtils;
 import in.sashi.sporteco.utils.EmptyRecyclerView;
@@ -49,13 +50,17 @@ public class NewSessionDialog extends DialogFragment {
 
     private Toolbar toolbar;
     private ImageView closeIV, newSessionIV;
-    private TextView addFocusPts;
-    private EditText sessionNameET, sessionDescET, focusPtsET;
+    private TextView addFocusPts, addEquipRqdTV;
+    private EditText sessionNameET, sessionDescET, focusPtsET, equipRqdET;
 
-    private EmptyRecyclerView sessionFocus_ptsRV;
-    private TextView emptyText;
+    private EmptyRecyclerView sessionFocus_ptsRV, equipReqdRV;
+    private TextView emptyText, equipReqd_emptyText;
+
     private List<FocusPoints> pointsList = new ArrayList<>();
     private FocusPointsAdapter adapter;
+
+    private List<Equipments> reqdList = new ArrayList<>();
+    private EquipmentsAdapter reqdAdapter;
 
     private FloatingActionButton cameraFAB;
     private Button newSessionDoneBtn;
@@ -79,11 +84,15 @@ public class NewSessionDialog extends DialogFragment {
         sessionNameET = view.findViewById(R.id.sessionNameET);
         sessionDescET = view.findViewById(R.id.sessionDescET);
         focusPtsET = view.findViewById(R.id.focusPtsET);
-        addFocusPts = view.findViewById(R.id.addFocusPtsIV);
+        equipRqdET = view.findViewById(R.id.equipRqdET);
+        addFocusPts = view.findViewById(R.id.addFocusPtsTV);
+        addEquipRqdTV = view.findViewById(R.id.addEquipRqdTV);
         sessionFocus_ptsRV = view.findViewById(R.id.sessionFocus_ptsRV);
+        equipReqdRV = view.findViewById(R.id.equipReqdRV);
         emptyText = view.findViewById(R.id.emptyText);
+        equipReqd_emptyText = view.findViewById(R.id.equipReqd_emptyText);
         cameraFAB = view.findViewById(R.id.cameraFAB);
-        newSessionDoneBtn = view.findViewById(R.id.newSessionDoneBtn);
+//        newSessionDoneBtn = view.findViewById(R.id.newSessionDoneBtn);
 
         closeIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +109,7 @@ public class NewSessionDialog extends DialogFragment {
         });
 
         setUpFocusPoints();
+        setUpEquipRqd();
 
         addFocusPts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,13 +119,42 @@ public class NewSessionDialog extends DialogFragment {
             }
         });
 
-        newSessionDoneBtn.setOnClickListener(new View.OnClickListener() {
+        addEquipRqdTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addEquipments();
             }
         });
 
+//        newSessionDoneBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
+    }
+
+    private void setUpEquipRqd() {
+        equipReqdRV.setHasFixedSize(true);
+        equipReqdRV.setEmptyView(equipReqd_emptyText);
+        equipReqdRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    private void addEquipments() {
+        String text = equipRqdET.getText().toString();
+        if (!TextUtils.isEmpty(text)) {
+            Log.d(TAG, "Equip in filter:\t" + text);
+            Equipments equipments = new Equipments();
+            equipments.setTitle(equipRqdET.getText().toString());
+            reqdList.add(equipments);
+            reqdAdapter = new EquipmentsAdapter(getActivity(), reqdList);
+            equipReqdRV.setAdapter(reqdAdapter);
+            equipRqdET.setText("");
+            Log.d(TAG, "List size:\t" + pointsList.size());
+        } else {
+            Snackbar.make(getActivity().findViewById(android.R.id.content), "Can't Submit Empty Values", Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     private void setUpFocusPoints() {
